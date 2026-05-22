@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GW2 LFG</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="Web Art/favicon.ico" />
+</head>
+
+<body>
+    <div class="page-shell">
+        <div class="corner-info-stack">
+            <div class="region-toggle" id="regionToggle" role="group" aria-label="Choose event region">
+                <button type="button" class="region-toggle-button" data-region="NA" aria-pressed="true">NA</button>
+                <button type="button" class="region-toggle-button" data-region="EU" aria-pressed="false">EU</button>
+            </div>
+
+            <section class="about-blurb" aria-labelledby="aboutBlurbTitle">
+                <h2 id="aboutBlurbTitle">About GW2 LFG</h2>
+                <p>
+                    Welcome to GW2 LFG! This website is meant to help players organize for group content in Guild Wars
+                    2.<br></br>
+
+                    To submit an event, please join the Discord server: https://discord.gg/3rgzdfnsgM<br></br>
+
+                    website by: GoodJudy.7238 (NA server)
+                </p>
+            </section>
+        </div>
+
+        <div class="site-grid dashboard-layout">
+
+            <main class="main-column">
+                <header class="top-nav">
+                    <a href="https://en-forum.guildwars2.com/forum/30-looking-for-guild/" class="nav-button" target="_blank" rel="noopener noreferrer">ArenaNet Guild Forums</a>
+                    <a href="https://snowcrows.com/groups" class="nav-button" target="_blank" rel="noopener noreferrer">SnowCrows Group Finder</a>
+                    <a href="https://convergencecorp.net/" class="nav-button" target="_blank" rel="noopener noreferrer">Convergence Corp</a>
+                    <a href="https://gw2mists.com/en/guilds" class="nav-button" target="_blank" rel="noopener noreferrer">WvW Guild Hub</a>
+                    <a href="https://gw2rp.carrd.co/" class="nav-button" target="_blank" rel="noopener noreferrer">RP Guild Hub</a>
+                </header>
+
+                <section class="timeline-section" aria-labelledby="timelineTitle">
+                    <h2 class="section-title" id="timelineTitle">Next 24 Hours</h2>
+
+                    <div class="timeline-card">
+                        <div class="timeline-labels" id="timelineLabels" aria-hidden="true"></div>
+
+                        <div class="timeline-bar-wrapper">
+                            <div class="timeline-bar" id="timelineBar"
+                                aria-label="Upcoming events in the next 24 hours">
+                                <div class="timeline-ticks" id="timelineTicks" aria-hidden="true"></div>
+                                <div class="timeline-pins" id="timelinePins"></div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-empty-state" id="timelineEmptyState" hidden>
+                            No events scheduled in the next 24 hours.
+                        </div>
+                    </div>
+                </section>
+
+                <section class="schedule-section">
+                    <h2 class="schedule-title">Schedule</h2>
+
+                    <div class="schedule-frame">
+                        <div class="schedule-safe-area">
+                            <div class="schedule-day-buttons" id="scheduleDayButtons"></div>
+
+                            <div class="schedule-content-shell">
+                                <div class="schedule-header-row">
+                                    <div class="schedule-heading-group">
+                                        <h3 id="scheduleSelectedDay">Schedule</h3>
+                                        <div class="schedule-selected-date" id="scheduleSelectedDate">Loading
+                                            date...
+                                        </div>
+                                    </div>
+
+                                    <span id="scheduleSelectedDayCount">0 events</span>
+                                </div>
+                                <div class="schedule-events-viewport" id="scheduleEventsViewport">
+                                    <div class="schedule-events-track" id="scheduleEventsTrack"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <aside class="sidebar">
+                <section class="panel discord-panel discord-feed-panel" id="discordFeedPanelOne"
+                    data-feed-id="feed-one">
+                    <div class="discord-feed-loading">Loading Discord feed...</div>
+                </section>
+            </aside>
+
+        </div>
+    </div>
+
+    <div class="utc-clock" id="utcClock">
+        <div class="utc-clock-extra-row">
+            <span class="utc-clock-extra-label">Your local time:</span>
+            <span class="utc-clock-extra-value" id="localClockValue">--</span>
+        </div>
+
+        <div class="utc-clock-extra-row">
+            <span class="utc-clock-extra-label">Your time difference from UTC:</span>
+            <span class="utc-clock-extra-value" id="utcOffsetValue">--</span>
+        </div>
+
+        <div class="utc-clock-divider"></div>
+
+        <div class="utc-clock-label">Current time UTC:</div>
+        <div class="utc-clock-value" id="utcClockValue">--</div>
+    </div>
+
+    <script src="events.js"></script>
+    <script src="discordFeed.js"></script>
+    <script src="script.js?v=4"></script>
+</body>
+
+</html>
