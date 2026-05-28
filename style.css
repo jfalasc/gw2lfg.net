@@ -15,10 +15,13 @@ body {
 }
 
 .page-shell {
-  --page-edge-padding: clamp(18px, 1.25vw, 24px);
-  --left-rail-width: clamp(280px, 18vw, 340px);
-  --left-rail-gap: clamp(18px, 1.8vw, 28px);
-  --main-left-nudge: clamp(12px, 1.4vw, 28px);
+  --page-edge-padding: clamp(18px, 1.25vw, 26px);
+  --left-rail-width: clamp(280px, 16vw, 360px);
+  --left-rail-gap: clamp(18px, 1.8vw, 32px);
+  --main-left-nudge: clamp(0px, 0.5vw, 14px);
+  --site-max-width: clamp(1280px, 72vw, 1680px);
+  --right-sidebar-width: clamp(280px, 15vw, 340px);
+  --site-column-gap: clamp(28px, 1.8vw, 42px);
 
   min-height: 100vh;
   padding: var(--page-edge-padding);
@@ -31,13 +34,13 @@ body {
 }
 
 .site-grid {
-  width: calc(100% - var(--main-left-nudge));
-  max-width: 1280px;
+  width: min(100%, var(--site-max-width));
+  max-width: var(--site-max-width);
   margin-left: var(--main-left-nudge);
   margin-right: auto;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 280px;
-  gap: 32px;
+  grid-template-columns: minmax(0, 1fr) var(--right-sidebar-width);
+  gap: var(--site-column-gap);
   align-items: start;
 }
 
@@ -838,12 +841,15 @@ body {
 }
 
 .schedule-content-shell {
+  --expanded-card-extra-space: clamp(150px, 12vw, 230px);
+
   min-width: 0;
   min-height: 0;
   display: grid;
   grid-template-rows: auto auto;
   row-gap: clamp(10px, 1.3vw, 16px);
   align-content: start;
+  overflow: visible;
 }
 
 /* schedule header */
@@ -908,14 +914,29 @@ body {
 /* schedule events */
 
 .schedule-events-viewport {
+  --schedule-scrollbar-space: 18px;
+
+  position: relative;
+  z-index: 5;
   min-width: 0;
   min-height: 0;
+
   overflow-x: auto;
   overflow-y: hidden;
-  padding-bottom: 10px;
+
+  padding-bottom: var(--schedule-scrollbar-space);
+  margin-bottom: 0;
+
   scrollbar-gutter: stable;
   scrollbar-width: auto;
-  scrollbar-color: rgba(60, 60, 60, 0.55) rgba(255, 255, 255, 0.35);
+  scrollbar-color: rgba(143, 211, 255, 0.85) rgba(255, 255, 255, 0.28);
+}
+
+.schedule-events-viewport:has(.schedule-event-card:hover),
+.schedule-events-viewport:has(.schedule-event-card:focus-visible),
+.schedule-events-viewport:has(.schedule-event-card:focus-within) {
+  padding-bottom: calc(var(--expanded-card-extra-space) + var(--schedule-scrollbar-space));
+  margin-bottom: calc(-1 * var(--expanded-card-extra-space));
 }
 
 .schedule-events-track {
@@ -926,10 +947,15 @@ body {
   gap: 14px 18px;
   width: max-content;
   align-content: start;
+  align-items: start;
+  position: relative;
+  z-index: 10;
+  overflow: visible;
 }
 
 .schedule-event-card {
   width: 100%;
+  align-self: start;
   min-height: 86px;
   padding: 14px 16px;
   border-radius: 22px;
@@ -1012,7 +1038,7 @@ body {
 .schedule-event-card:hover .schedule-event-details,
 .schedule-event-card:focus-visible .schedule-event-details,
 .schedule-event-card:focus-within .schedule-event-details {
-  max-height: 240px;
+  max-height: 360px;
   opacity: 1;
   margin-top: 12px;
   padding-top: 12px;
@@ -1062,17 +1088,42 @@ body {
 }
 
 .schedule-events-viewport::-webkit-scrollbar {
-  height: 12px;
+  height: 14px;
 }
 
 .schedule-events-viewport::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.35);
   border-radius: 999px;
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.46) 0%,
+      rgba(207, 226, 235, 0.32) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.35),
+    inset 0 -1px 2px rgba(16, 32, 44, 0.12);
 }
 
 .schedule-events-viewport::-webkit-scrollbar-thumb {
-  background: rgba(60, 60, 60, 0.55);
   border-radius: 999px;
+  border: 3px solid rgba(232, 241, 248, 0.72);
+  background:
+    linear-gradient(90deg,
+      rgba(55, 169, 244, 0.95) 0%,
+      rgba(101, 200, 178, 0.9) 52%,
+      rgba(94, 116, 184, 0.95) 100%);
+  background-clip: padding-box;
+  box-shadow:
+    0 0 10px rgba(143, 211, 255, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.schedule-events-viewport::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(90deg,
+      rgba(91, 194, 255, 1) 0%,
+      rgba(126, 222, 199, 0.98) 52%,
+      rgba(117, 141, 211, 1) 100%);
+  background-clip: padding-box;
 }
 
 .sr-only {
@@ -1087,7 +1138,28 @@ body {
   border: 0;
 }
 
-/* ---------- Sidebar ---------- */
+.schedule-frame,
+.schedule-safe-area,
+.schedule-events-track {
+  overflow: visible;
+}
+
+.schedule-events-track {
+  position: relative;
+  z-index: 10;
+}
+
+.schedule-event-card {
+  position: relative;
+  z-index: 1;
+}
+
+.schedule-event-card:hover,
+.schedule-event-card:focus-visible,
+.schedule-event-card:focus-within {
+  z-index: 30;
+  overflow: visible;
+}
 
 /* ---------- Sidebar / Discord feeds ---------- */
 
@@ -1361,7 +1433,7 @@ body {
 
 /* ---------- Responsive ---------- */
 
-@media (max-width: 1320px) {
+@media (max-width: 1500px) {
   .page-shell {
     display: block;
     padding: 24px;

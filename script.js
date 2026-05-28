@@ -929,6 +929,7 @@ async function loadDiscordFeedsFromJson() {
 function formatCurrentUtcDateTime(referenceDate = new Date()) {
   const datePart = referenceDate.toLocaleDateString("en-US", {
     timeZone: "UTC",
+    weekday: "long",
     month: "short",
     day: "numeric",
     year: "numeric"
@@ -947,6 +948,7 @@ function formatCurrentUtcDateTime(referenceDate = new Date()) {
 
 function formatCurrentLocalTime(referenceDate = new Date()) {
   const datePart = referenceDate.toLocaleDateString("en-US", {
+    weekday: "long",
     month: "short",
     day: "numeric",
     year: "numeric"
