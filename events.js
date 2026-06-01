@@ -3,7 +3,7 @@ const events = [
     name: "HoT Meta Train",
     region: "NA",
     username: "GoodJudy.7238",
-    description: "Hosted by Unchained Legacy [LEG]! Tangled Depths -> Auric Basin -> Dragon's Stand -> Auric Basin -> Verdant Brink",
+    description: "Hosted by [LEG]! Tangled Depths -> Auric Basin -> Dragon's Stand -> Auric Basin -> Verdant Brink",
     recurring: true,
     schedule: [
       { day: "Monday", time: "02:00" },
@@ -15,7 +15,7 @@ const events = [
     name: "Gyala Delve",
     region: "NA",
     username: "Ruinandshotel.9278",
-    description: "Hosted by Jade Maw Brotherhood [JMAW]",
+    description: "Hosted by [JMAW]!",
     recurring: true,
     schedule: [
       { day: "Tuesday", time: "02:30" },
@@ -27,7 +27,7 @@ const events = [
     name: "Convergence CMs",
     region: "NA",
     username: "SunMatrix.4168",
-    description: "Hosted by Convergence Corp",
+    description: "Hosted by Convergence Corp!",
     recurring: true,
     schedule: [
       { day: "Tuesday", time: "01:00" },
@@ -38,7 +38,7 @@ const events = [
     name: "Convergence CMs",
     region: "NA",
     username: "LilyVelour.8395",
-    description: "Hosted by Cabaret Velour [LILY]",
+    description: "Hosted by [LILY]!",
     recurring: true,
     schedule: [
       { day: "Wednesday", time: "01:00" },
@@ -49,7 +49,7 @@ const events = [
     name: "SotO Meta Train",
     region: "NA",
     username: "LilyVelour.8395",
-    description: "Hosted by Cabaret Velour [LILY]! Skywatch > Amnytas > Nayos",
+    description: "Hosted by [LILY]! Skywatch > Amnytas > Nayos",
     recurring: true,
     schedule: [
       { day: "Wednesday", time: "20:30" },
@@ -59,7 +59,7 @@ const events = [
     name: "SotO Convergence CMs",
     region: "NA",
     username: "MarshAll.3528",
-    description: "Hosted by Firebranders [FB]",
+    description: "Hosted by [FB]!",
     recurring: true,
     schedule: [
       { day: "Sunday", time: "02:00" },
@@ -69,7 +69,7 @@ const events = [
     name: "World Tour Meta Train",
     region: "NA",
     username: "MarshAll.3528",
-    description: "Hosted by Firebranders [FB]! HoT -> PoF -> S4 -> S5 -> EoD -> SotO -> JW",
+    description: "Hosted by [FB]! HoT -> PoF -> S4 -> S5 -> EoD -> SotO -> JW",
     recurring: true,
     schedule: [
       { day: "Monday", time: "02:00" },
@@ -79,7 +79,7 @@ const events = [
     name: "EoD Meta Train",
     region: "NA",
     username: "MarshAll.3528",
-    description: "Hosted by Firebranders [FB]! Seitung Province -> Kaineng City -> Echovald Wilds -> Dragon's End",
+    description: "Hosted by [FB]! Seitung Province -> Kaineng City -> Echovald Wilds -> Dragon's End",
     recurring: true,
     schedule: [
       { day: "Tuesday", time: "03:30" },
@@ -89,7 +89,7 @@ const events = [
     name: "S4 Meta Train",
     region: "NA",
     username: "MarshAll.3528",
-    description: "Hosted by Firebranders [FB]! Istan -> Jahai/Sandswept -> Istan -> Thunderhead -> Jahai -> Jahai/Sandswept > Thunderhead -> Kourna/Jahai/Sandswept",
+    description: "Hosted by [FB]! Istan -> Jahai/Sandswept -> Istan -> Thunderhead -> Jahai -> Jahai/Sandswept > Thunderhead -> Kourna/Jahai/Sandswept",
     recurring: true,
     schedule: [
       { day: "Saturday", time: "01:45" },
@@ -128,8 +128,8 @@ const events = [
   {
     name: "Dragon's End",
     region: "NA",
-    username: "Shiv Deeviant.8072.3574",
-    description: "Hosted by [DBJC]",
+    username: "Shiv Deeviant.8072",
+    description: "Hosted by [DBJC]!",
     recurring: true,
     schedule: [
       { day: "Monday", time: "22:00" },
@@ -143,7 +143,7 @@ const events = [
     name: "JW Convergence CMs",
     region: "NA",
     username: "Mr Paul.8247",
-    description: "Hosted by Silverwastes Anonymous [SAS]",
+    description: "Hosted by [SAS]!",
     recurring: true,
     schedule: [
       { day: "Monday", time: "22:00" },
@@ -153,7 +153,7 @@ const events = [
     name: "SotO Convergence CMs",
     region: "NA",
     username: "Mr Paul.8247",
-    description: "Hosted by Silverwastes Anonymous [SAS]",
+    description: "Hosted by [SAS]!",
     recurring: true,
     schedule: [
       { day: "Thursday", time: "20:00" },
@@ -163,7 +163,7 @@ const events = [
     name: "PoF/S4 Bounties",
     region: "NA",
     username: "Hempia.5981",
-    description: "Hosted by [SIN]",
+    description: "Hosted by [SIN]!",
     recurring: true,
     schedule: [
       { day: "Wednesday", time: "23:00" },
@@ -173,7 +173,7 @@ const events = [
     name: "HoT HP Train",
     region: "NA",
     username: "Hempia.5981",
-    description: "Hosted by [SIN]",
+    description: "Hosted by [SIN]!",
     recurring: true,
     schedule: [
       { day: "Saturday", time: "18:00" },
@@ -183,7 +183,7 @@ const events = [
     name: "Silverwastes RIBA Farm",
     region: "NA",
     username: "EverCursed.9084",
-    description: "Hosted by [Sw]",
+    description: "Hosted by [Sw]!",
     recurring: true,
     schedule: [
       { day: "Sunday", time: "23:30" },
@@ -196,13 +196,73 @@ const events = [
     ]
   },
   {
+    name: "Casino Blitz",
+    region: "NA",
+    username: "grace.3689",
+    description: "Crystal Oasis pinata meta hosted by [MEAT]!",
+    recurring: true,
+    schedule: [
+      { day: "Sunday", time: "00:00" },
+      { day: "Monday", time: "00:00" },
+      { day: "Tuesday", time: "00:00" },
+      { day: "Wednesday", time: "00:00" },
+      { day: "Thursday", time: "00:00" },
+      { day: "Friday", time: "00:00" },
+      { day: "Saturday", time: "00:00" },
+    ]
+  },
+  {
+    name: "Bava Nisos Farm and Meta",
+    region: "NA",
+    username: "Sylphonete.7583",
+    description: "Bava Nisos farm train before reset, then meta after reset",
+    recurring: true,
+    schedule: [
+      { day: "Sunday", time: "23:20" },
+      { day: "Monday", time: "23:20" },
+      { day: "Tuesday", time: "23:20" },
+      { day: "Wednesday", time: "23:20" },
+      { day: "Thursday", time: "23:20" },
+      { day: "Friday", time: "23:20" },
+      { day: "Saturday", time: "23:20" },
+    ]
+  },
+  {
     name: "PoF Meta Train",
     region: "NA",
     username: "OverRealm.3542",
-    description: "Hosted by [AO]",
+    description: "Hosted by [AO]!",
     recurring: true,
     schedule: [
       { day: "Saturday", time: "03:30" },
+    ]
+  },
+  {
+    name: "HoT Meta Train",
+    region: "NA",
+    username: "Shazilee.1098",
+    description: "Hosted by [SHAZ]! Dragon's Stand and Auric Basin",
+    recurring: true,
+    schedule: [
+      { day: "Wednesday", time: "03:00" },
+      { day: "Saturday", time: "03:00" },
+      { day: "Sunday", time: "03:00" },
+    ]
+  },
+  {
+    name: "Triple Trouble",
+    region: "NA",
+    username: "Wolfspear.7180",
+    description: "Hosted by [NOPE]!",
+    recurring: true,
+    schedule: [
+      { day: "Sunday", time: "20:00" },
+      { day: "Monday", time: "20:00" },
+      { day: "Tuesday", time: "20:00" },
+      { day: "Wednesday", time: "20:00" },
+      { day: "Thursday", time: "20:00" },
+      { day: "Friday", time: "20:00" },
+      { day: "Saturday", time: "20:00" },
     ]
   },
   {

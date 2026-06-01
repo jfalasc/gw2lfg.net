@@ -1,8 +1,4 @@
-console.log("GW2 LFG scaffold loaded.");
-
-if (typeof events !== "undefined") {
-  console.log(events);
-} else {
+if (typeof events === "undefined" || !Array.isArray(events)) {
   console.warn("events.js did not load or 'events' is undefined.");
 }
 
@@ -35,6 +31,7 @@ const selectedRegionStorageKey = "gw2LfgSelectedRegion";
 
 let selectedEventRegion = getInitialEventRegion();
 let selectedScheduleDay = getCurrentUtcDayName();
+let lastScheduleDialogTrigger = null;
 
 function getCurrentUtcDayName() {
   return utcDayNames[new Date().getUTCDay()];
@@ -91,11 +88,10 @@ function formatTimelineTimeLabel(date) {
   });
 }
 
-function formatTimelineDateLabel(date) {
+function formatTimelineWeekdayLabel(date) {
   return date.toLocaleDateString("en-US", {
     timeZone: "UTC",
-    month: "short",
-    day: "numeric"
+    weekday: "short"
   });
 }
 
@@ -266,6 +262,7 @@ function getEventsForScheduleDay(dayName) {
             username: event.username || event.host || "Unknown player",
             description: event.description || "",
             time: entry.time,
+            startsAt: parseUtcDateTime(targetDateKey, entry.time),
             recurring: true
           });
         }
@@ -279,6 +276,7 @@ function getEventsForScheduleDay(dayName) {
         username: event.username || event.host || "Unknown player",
         description: event.description || "",
         time: event.time,
+        startsAt: parseUtcDateTime(event.date, event.time),
         recurring: false
       });
     }
@@ -295,6 +293,213 @@ function getEventsForScheduleDay(dayName) {
 
 function formatScheduleTime(time24) {
   return `${time24} UTC`;
+}
+
+function formatScheduleUtcDateTime(utcDate, fallbackTime) {
+  if (!(utcDate instanceof Date) || Number.isNaN(utcDate.getTime())) {
+    return formatScheduleTime(fallbackTime);
+  }
+
+  const datePart = utcDate.toLocaleDateString("en-US", {
+    timeZone: "UTC",
+    weekday: "short",
+    month: "short",
+    day: "numeric"
+  });
+
+  const timePart = utcDate.toLocaleTimeString("en-US", {
+    timeZone: "UTC",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  });
+
+  return `${datePart} — ${timePart} UTC`;
+}
+
+function formatScheduleLocalDateTime(utcDate) {
+  if (!(utcDate instanceof Date) || Number.isNaN(utcDate.getTime())) {
+    return "Local time unavailable";
+  }
+
+  const datePart = utcDate.toLocaleDateString("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric"
+  });
+
+  const timePart = utcDate.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+    timeZoneName: "short"
+  });
+
+  return `${datePart} — ${timePart}`;
+}
+
+function getScheduleEventDetailsElements() {
+  return {
+    panel: document.getElementById("scheduleEventDetailsPanel"),
+    closeButton: document.getElementById("scheduleEventDetailsClose"),
+    title: document.getElementById("scheduleEventDetailsTitle"),
+    utcTime: document.getElementById("scheduleEventDetailsUtcTime"),
+    localTime: document.getElementById("scheduleEventDetailsLocalTime"),
+    region: document.getElementById("scheduleEventDetailsRegion"),
+    poster: document.getElementById("scheduleEventDetailsPoster"),
+    description: document.getElementById("scheduleEventDetailsDescription")
+  };
+}
+
+function clearSelectedScheduleCards() {
+  document.querySelectorAll(".schedule-event-card.is-selected").forEach((card) => {
+    card.classList.remove("is-selected");
+    card.setAttribute("aria-pressed", "false");
+    card.setAttribute("aria-expanded", "false");
+  });
+}
+
+function positionScheduleEventDetailsPanel(triggerCard) {
+  const detailsElements = getScheduleEventDetailsElements();
+
+  if (!detailsElements.panel || detailsElements.panel.hidden) {
+    return;
+  }
+
+  if (!triggerCard || window.innerWidth <= 700) {
+    detailsElements.panel.style.left = "";
+    detailsElements.panel.style.top = "";
+    detailsElements.panel.style.right = "";
+    detailsElements.panel.style.bottom = "";
+    return;
+  }
+
+  const gap = 14;
+  const viewportPadding = 16;
+  const cardRect = triggerCard.getBoundingClientRect();
+  const panelRect = detailsElements.panel.getBoundingClientRect();
+
+  let left = cardRect.right + gap;
+
+  if (left + panelRect.width > window.innerWidth - viewportPadding) {
+    left = cardRect.left - panelRect.width - gap;
+  }
+
+  left = Math.max(
+    viewportPadding,
+    Math.min(left, window.innerWidth - panelRect.width - viewportPadding)
+  );
+
+  let top = cardRect.top + (cardRect.height - panelRect.height) / 2;
+
+  top = Math.max(
+    viewportPadding,
+    Math.min(top, window.innerHeight - panelRect.height - viewportPadding)
+  );
+
+  detailsElements.panel.style.left = `${left}px`;
+  detailsElements.panel.style.top = `${top}px`;
+  detailsElements.panel.style.right = "auto";
+  detailsElements.panel.style.bottom = "auto";
+}
+
+function repositionOpenScheduleEventDetailsPanel() {
+  const detailsElements = getScheduleEventDetailsElements();
+
+  if (
+    detailsElements.panel &&
+    !detailsElements.panel.hidden &&
+    lastScheduleDialogTrigger &&
+    document.body.contains(lastScheduleDialogTrigger)
+  ) {
+    positionScheduleEventDetailsPanel(lastScheduleDialogTrigger);
+  }
+}
+
+function openScheduleEventDetails(scheduleEvent, triggerCard) {
+  const detailsElements = getScheduleEventDetailsElements();
+
+  if (
+    !detailsElements.panel ||
+    !detailsElements.title ||
+    !detailsElements.utcTime ||
+    !detailsElements.localTime ||
+    !detailsElements.region ||
+    !detailsElements.poster ||
+    !detailsElements.description
+  ) {
+    return;
+  }
+
+  clearSelectedScheduleCards();
+
+  if (triggerCard) {
+    triggerCard.classList.add("is-selected");
+    triggerCard.setAttribute("aria-pressed", "true");
+    triggerCard.setAttribute("aria-expanded", "true");
+    lastScheduleDialogTrigger = triggerCard;
+  }
+
+  detailsElements.title.textContent = scheduleEvent.name || "Event details";
+  detailsElements.utcTime.textContent = formatScheduleUtcDateTime(
+    scheduleEvent.startsAt,
+    scheduleEvent.time
+  );
+  detailsElements.localTime.textContent = formatScheduleLocalDateTime(scheduleEvent.startsAt);
+  detailsElements.region.textContent = scheduleEvent.region || "Region TBD";
+  detailsElements.poster.textContent = scheduleEvent.username || "Unknown player";
+  detailsElements.description.textContent =
+    scheduleEvent.description || "No additional details yet.";
+
+  detailsElements.panel.hidden = false;
+
+  requestAnimationFrame(() => {
+    positionScheduleEventDetailsPanel(triggerCard);
+  });
+}
+
+function closeScheduleEventDetails(restoreFocus = true) {
+  const detailsElements = getScheduleEventDetailsElements();
+
+  if (!detailsElements.panel || detailsElements.panel.hidden) {
+    return;
+  }
+
+  detailsElements.panel.hidden = true;
+  clearSelectedScheduleCards();
+
+  if (
+    restoreFocus &&
+    lastScheduleDialogTrigger &&
+    document.body.contains(lastScheduleDialogTrigger)
+  ) {
+    lastScheduleDialogTrigger.focus();
+  }
+
+  lastScheduleDialogTrigger = null;
+}
+
+function initializeScheduleEventDetails() {
+  const detailsElements = getScheduleEventDetailsElements();
+
+  if (!detailsElements.panel) {
+    return;
+  }
+
+  if (detailsElements.closeButton) {
+    detailsElements.closeButton.addEventListener("click", () => {
+      closeScheduleEventDetails();
+    });
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeScheduleEventDetails();
+    }
+  });
+
+  window.addEventListener("resize", repositionOpenScheduleEventDetailsPanel);
+  window.addEventListener("scroll", repositionOpenScheduleEventDetailsPanel, true);
 }
 
 function renderScheduleDayButtons() {
@@ -354,6 +559,8 @@ function renderScheduleEvents() {
     return;
   }
 
+  closeScheduleEventDetails(false);
+
   const scheduleResult = getEventsForScheduleDay(selectedScheduleDay);
   const targetDate = scheduleResult.targetDate;
   const dayEvents = scheduleResult.events;
@@ -382,19 +589,17 @@ function renderScheduleEvents() {
     const summary = document.createElement("div");
     const time = document.createElement("div");
     const name = document.createElement("h4");
-    const details = document.createElement("div");
-
-    const region = document.createElement("p");
-    const regionLabel = document.createElement("strong");
-
-    const postedBy = document.createElement("p");
-    const postedByLabel = document.createElement("strong");
-
-    const description = document.createElement("p");
-    const descriptionLabel = document.createElement("strong");
 
     card.className = "schedule-event-card";
     card.setAttribute("tabindex", "0");
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-pressed", "false");
+    card.setAttribute("aria-expanded", "false");
+    card.setAttribute("aria-haspopup", "dialog");
+    card.setAttribute(
+      "aria-label",
+      `View details for ${event.name} at ${formatScheduleTime(event.time)}`
+    );
 
     summary.className = "schedule-event-summary";
 
@@ -404,23 +609,20 @@ function renderScheduleEvents() {
     name.className = "schedule-event-name";
     name.textContent = event.name;
 
-    details.className = "schedule-event-details";
-
-    region.className = "schedule-event-region";
-    regionLabel.textContent = "Region:";
-    region.append(regionLabel, ` ${event.region || "Region TBD"}`);
-
-    postedBy.className = "schedule-event-poster";
-    postedByLabel.textContent = "Posted by:";
-    postedBy.append(postedByLabel, ` ${event.username || "Unknown player"}`);
-
-    description.className = "schedule-event-description";
-    descriptionLabel.textContent = "Description:";
-    description.append(descriptionLabel, ` ${event.description || "No additional details yet."}`);
-
     summary.append(time, name);
-    details.append(region, postedBy, description);
-    card.append(summary, details);
+    card.append(summary);
+
+    card.addEventListener("click", () => {
+      openScheduleEventDetails(event, card);
+    });
+
+    card.addEventListener("keydown", (keyboardEvent) => {
+      if (keyboardEvent.key === "Enter" || keyboardEvent.key === " ") {
+        keyboardEvent.preventDefault();
+        openScheduleEventDetails(event, card);
+      }
+    });
+
     track.appendChild(card);
   });
 }
@@ -556,16 +758,21 @@ function renderTimelineLabels(referenceDate = new Date()) {
     main.className = "timeline-label-main";
     sub.className = "timeline-label-sub";
 
+    const weekdayLabel = formatTimelineWeekdayLabel(labelDate);
+    const timeLabel = formatTimelineTimeLabel(labelDate);
+
     if (offset === 0) {
       main.textContent = "Now";
-      sub.textContent = `${formatTimelineTimeLabel(labelDate)} UTC`;
-    } else if (offset === 24) {
-      main.textContent = "+24h";
-      sub.textContent = `${formatTimelineTimeLabel(labelDate)} UTC`;
     } else {
-      main.textContent = `${formatTimelineTimeLabel(labelDate)} UTC`;
-      sub.textContent = formatTimelineDateLabel(labelDate);
+      main.textContent = `+${offset}h`;
     }
+
+    sub.textContent = `${weekdayLabel} ${timeLabel} UTC`;
+
+    label.setAttribute(
+      "aria-label",
+      `${offset === 0 ? "Now" : `${offset} hours from now`}: ${weekdayLabel} ${timeLabel} UTC`
+    );
 
     label.append(main, sub);
     labelsContainer.appendChild(label);
@@ -725,8 +932,6 @@ const discordMessageLimit = 5;
 const discordFeedRefreshMilliseconds = 30 * 1000;
 const discordFeedJsonUrl = "https://gw2-lfg-bot-production.up.railway.app/discordFeed.json";
 
-let discordFeedsLastCheckedAt = null;
-
 let currentDiscordFeeds =
   typeof discordFeeds !== "undefined" && Array.isArray(discordFeeds)
     ? discordFeeds
@@ -742,21 +947,6 @@ function getDiscordFeedSource() {
 
 function getDiscordFeedById(feedId) {
   return getDiscordFeedSource().find((feed) => feed.id === feedId);
-}
-
-function formatDiscordLastChecked(date) {
-  if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
-    return "Live refresh pending";
-  }
-
-  const timePart = date.toLocaleTimeString("en-US", {
-    timeZone: "UTC",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false
-  });
-
-  return `Last checked: ${timePart} UTC`;
 }
 
 function formatDiscordTimestamp(timestamp) {
@@ -841,9 +1031,6 @@ function renderDiscordFeedPanel(panel, feed) {
   const titleRow = document.createElement("div");
   const title = document.createElement("h2");
   const badge = document.createElement("span");
-  const meta = document.createElement("div");
-  const status = document.createElement("div");
-  const description = document.createElement("p");
   const messageList = document.createElement("div");
 
   header.className = "discord-feed-header";
@@ -856,19 +1043,10 @@ function renderDiscordFeedPanel(panel, feed) {
   badge.className = "discord-live-badge";
   badge.textContent = "Live";
 
-  meta.className = "discord-feed-meta";
-  meta.textContent = `${feed.serverName || "Discord"} · ${feed.channelName || "#channel"}`;
-
-  status.className = "discord-feed-status";
-  status.textContent = formatDiscordLastChecked(discordFeedsLastCheckedAt);
-
-  description.className = "discord-feed-description";
-  description.textContent = feed.description || "Recent group-finder posts from Discord.";
-
   messageList.className = "discord-feed-messages";
 
   titleRow.append(title, badge);
-  header.append(titleRow, meta, status, description);
+  header.appendChild(titleRow);
 
   const messages = Array.isArray(feed.messages)
     ? feed.messages.slice(0, discordMessageLimit)
@@ -915,12 +1093,12 @@ async function loadDiscordFeedsFromJson() {
     }
 
     currentDiscordFeeds = jsonFeedData;
-    discordFeedsLastCheckedAt = new Date();
 
     renderDiscordFeeds();
   } catch (error) {
     console.warn("Using existing Discord feed data because JSON refresh failed.");
     console.warn(error);
+    renderDiscordFeeds();
   }
 }
 
@@ -931,15 +1109,13 @@ function formatCurrentUtcDateTime(referenceDate = new Date()) {
     timeZone: "UTC",
     weekday: "long",
     month: "short",
-    day: "numeric",
-    year: "numeric"
+    day: "numeric"
   });
 
   const timePart = referenceDate.toLocaleTimeString("en-US", {
     timeZone: "UTC",
     hour: "2-digit",
     minute: "2-digit",
-    second: "2-digit",
     hour12: false
   });
 
@@ -950,14 +1126,12 @@ function formatCurrentLocalTime(referenceDate = new Date()) {
   const datePart = referenceDate.toLocaleDateString("en-US", {
     weekday: "long",
     month: "short",
-    day: "numeric",
-    year: "numeric"
+    day: "numeric"
   });
 
   const timePart = referenceDate.toLocaleTimeString("en-US", {
     hour: "2-digit",
     minute: "2-digit",
-    second: "2-digit",
     hour12: false,
     timeZoneName: "short"
   });
@@ -1001,9 +1175,9 @@ function updateUtcClock() {
 
 function initializePage() {
   initializeRegionToggle();
+  initializeScheduleEventDetails();
   renderSchedule();
   renderTimeline();
-  renderDiscordFeeds();
   loadDiscordFeedsFromJson();
   updateUtcClock();
 

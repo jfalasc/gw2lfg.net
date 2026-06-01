@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GW2 LFG</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?v=8" />
     <link rel="icon" type="image/png" href="Web Art/favicon.ico" />
 </head>
 
@@ -19,13 +19,17 @@
 
             <section class="about-blurb" aria-labelledby="aboutBlurbTitle">
                 <h2 id="aboutBlurbTitle">About GW2 LFG</h2>
+
                 <p>
-                    Welcome to GW2 LFG! This website is meant to help players organize for group content in Guild Wars
-                    2.<br></br>
+                    Welcome! This website is meant to help players organize for group content in Guild Wars 2
+                </p>
 
-                    To submit an event, please join the Discord server: https://discord.gg/3rgzdfnsgM<br></br>
+                <p>
+                    To submit an event, please join the Discord server: https://discord.gg/3rgzdfnsgM
+                </p>
 
-                    website by: GoodJudy.7238 (NA server)
+                <p>
+                    Website by: GoodJudy.7238 (NA server)
                 </p>
             </section>
         </div>
@@ -34,11 +38,16 @@
 
             <main class="main-column">
                 <header class="top-nav">
-                    <a href="https://en-forum.guildwars2.com/forum/30-looking-for-guild/" class="nav-button" target="_blank" rel="noopener noreferrer">ArenaNet Guild Forums</a>
-                    <a href="https://snowcrows.com/groups" class="nav-button" target="_blank" rel="noopener noreferrer">SnowCrows Group Finder</a>
-                    <a href="https://convergencecorp.net/" class="nav-button" target="_blank" rel="noopener noreferrer">Convergence Corp</a>
-                    <a href="https://gw2mists.com/en/guilds" class="nav-button" target="_blank" rel="noopener noreferrer">WvW Guild Hub</a>
-                    <a href="https://gw2rp.carrd.co/" class="nav-button" target="_blank" rel="noopener noreferrer">RP Guild Hub</a>
+                    <a href="https://en-forum.guildwars2.com/forum/30-looking-for-guild/" class="nav-button"
+                        target="_blank" rel="noopener noreferrer">ArenaNet Guild Forums</a>
+                    <a href="https://snowcrows.com/groups" class="nav-button" target="_blank"
+                        rel="noopener noreferrer">SnowCrows Group Finder</a>
+                    <a href="https://convergencecorp.net/" class="nav-button" target="_blank"
+                        rel="noopener noreferrer">Convergence Corp</a>
+                    <a href="https://gw2mists.com/en/guilds" class="nav-button" target="_blank"
+                        rel="noopener noreferrer">WvW Guild Hub</a>
+                    <a href="https://gw2rp.carrd.co/" class="nav-button" target="_blank" rel="noopener noreferrer">RP
+                        Guild Hub</a>
                 </header>
 
                 <section class="timeline-section" aria-labelledby="timelineTitle">
@@ -77,6 +86,8 @@
                                         </div>
                                     </div>
 
+                                    <div class="schedule-click-tip">Click an event to view details!</div>
+
                                     <span id="scheduleSelectedDayCount">0 events</span>
                                 </div>
                                 <div class="schedule-events-viewport" id="scheduleEventsViewport">
@@ -98,6 +109,41 @@
         </div>
     </div>
 
+    <aside class="schedule-event-popover" id="scheduleEventDetailsPanel" role="dialog" aria-modal="false"
+        aria-labelledby="scheduleEventDetailsTitle" aria-describedby="scheduleEventDetailsDescription" hidden>
+        <button type="button" class="schedule-event-popover-close" id="scheduleEventDetailsClose"
+            aria-label="Close event details">×</button>
+
+        <div class="schedule-event-popover-kicker">Selected event</div>
+        <h2 id="scheduleEventDetailsTitle">Event details</h2>
+
+        <div class="schedule-event-popover-time-grid" aria-label="Event times">
+            <p>
+                <span class="schedule-event-popover-label">UTC time</span>
+                <span class="schedule-event-popover-value" id="scheduleEventDetailsUtcTime">-- UTC</span>
+            </p>
+            <p>
+                <span class="schedule-event-popover-label">Your time</span>
+                <span class="schedule-event-popover-value" id="scheduleEventDetailsLocalTime">--</span>
+            </p>
+        </div>
+
+        <div class="schedule-event-popover-meta">
+            <p>
+                <strong>Region:</strong>
+                <span id="scheduleEventDetailsRegion">--</span>
+            </p>
+            <p>
+                <strong>Posted by:</strong>
+                <span id="scheduleEventDetailsPoster">--</span>
+            </p>
+        </div>
+
+        <p class="schedule-event-popover-description" id="scheduleEventDetailsDescription">
+            Select an event to see details.
+        </p>
+    </aside>
+
     <div class="utc-clock" id="utcClock">
         <div class="utc-clock-extra-row">
             <span class="utc-clock-extra-label">Your local time:</span>
@@ -115,9 +161,8 @@
         <div class="utc-clock-value" id="utcClockValue">--</div>
     </div>
 
-    <script src="events.js"></script>
-    <script src="discordFeed.js"></script>
-    <script src="script.js?v=4"></script>
+    <script src="events.js?v=8"></script>
+    <script src="script.js?v=8"></script>
 </body>
 
 </html>
