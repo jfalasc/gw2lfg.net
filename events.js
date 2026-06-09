@@ -266,6 +266,88 @@ const events = [
     ]
   },
   {
+    name: "Triple Trouble and DBS",
+    region: "NA",
+    username: "Azhr.7369",
+    description: "Hosted by [DCAP]! Triple Trouble and Death-Branded Shatterer",
+    recurring: true,
+    schedule: [
+      { day: "Sunday", time: "12:00" },
+      { day: "Monday", time: "12:00" },
+      { day: "Tuesday", time: "12:00" },
+      { day: "Wednesday", time: "12:00" },
+      { day: "Thursday", time: "12:00" },
+      { day: "Friday", time: "12:00" },
+      { day: "Saturday", time: "12:00" },
+    ]
+  },
+  {
+    name: "SotO and JW Convergence CMs",
+    region: "NA",
+    username: "darens.2547",
+    description: "Hosted by [ZERO]!",
+    recurring: true,
+    schedule: [
+      { day: "Monday", time: "14:00" },
+    ]
+  },
+  {
+    name: "Dragon's End and Dragonstorm",
+    region: "NA",
+    username: "darens.2547",
+    description: "Hosted by [Hs]!",
+    recurring: true,
+    schedule: [
+      { day: "Sunday", time: "02:30" },
+      { day: "Monday", time: "02:30" },
+      { day: "Tuesday", time: "02:30" },
+      { day: "Wednesday", time: "02:30" },
+      { day: "Thursday", time: "02:30" },
+      { day: "Friday", time: "02:30" },
+      { day: "Saturday", time: "02:30" },
+    ]
+  },
+  {
+    name: "World Tour Meta Train",
+    region: "NA",
+    username: "darens.2547",
+    description: "Hosted by [ZERO]!",
+    recurring: true,
+    schedule: [
+      { day: "Thursday", time: "15:00" },
+    ]
+  },
+  {
+    name: "Griffon Flight Training",
+    region: "NA",
+    username: "Thy Weeping Willow.6851",
+    description: "Hosted by [Wing]! Learn how to get the most out of your griffon!",
+    recurring: true,
+    schedule: [
+      { day: "Sunday", time: "19:30" },
+    ]
+  },
+  {
+    name: "Griffon Flight Training",
+    region: "NA",
+    username: "Wing Comm Pengu",
+    description: "Hosted by [Wing]! Learn how to get the most out of your griffon!",
+    recurring: true,
+    schedule: [
+      { day: "Monday", time: "18:30" },
+    ]
+  },
+  {
+    name: "Griffon Flight Training",
+    region: "EU",
+    username: "Penguwing",
+    description: "Hosted by [Wing]! Learn how to get the most out of your griffon!",
+    recurring: true,
+    schedule: [
+      { day: "Monday", time: "18:30" },
+    ]
+  },
+  {
     name: "Triple Trouble",
     region: "EU",
     username: "Tanylyla.6397",
@@ -294,6 +376,26 @@ const events = [
       { day: "Thursday", time: "08:00" },
       { day: "Friday", time: "08:00" },
       { day: "Saturday", time: "08:00" },
+    ]
+  },
+  {
+    name: "Weekly Rifts",
+    region: "EU",
+    username: "Platanium.4532",
+    description: "Hosted by [Hs]!",
+    recurring: true,
+    schedule: [
+      { day: "Tuesday", time: "17:30" },
+    ]
+  },
+  {
+    name: "EoD Meta Train",
+    region: "EU",
+    username: "Platanium.4532",
+    description: "Hosted by [Hs]! Seitung Province -> Kaineng City -> Echovald Forest -> Dragon's End -> Echovald Forest -> Gyala Delve",
+    recurring: true,
+    schedule: [
+      { day: "Sunday", time: "17:30" },
     ]
   },
 ];
