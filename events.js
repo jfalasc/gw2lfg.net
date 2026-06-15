@@ -234,7 +234,7 @@ const events = [
     description: "Hosted by [AO]!",
     recurring: true,
     schedule: [
-      { day: "Saturday", time: "03:30" },
+      { day: "Saturday", time: "01:30" },
     ]
   },
   {
@@ -256,20 +256,20 @@ const events = [
     description: "Hosted by [NOPE]!",
     recurring: true,
     schedule: [
-      { day: "Sunday", time: "20:00" },
-      { day: "Monday", time: "20:00" },
-      { day: "Tuesday", time: "20:00" },
-      { day: "Wednesday", time: "20:00" },
-      { day: "Thursday", time: "20:00" },
-      { day: "Friday", time: "20:00" },
-      { day: "Saturday", time: "20:00" },
+      { day: "Sunday", time: "19:30" },
+      { day: "Monday", time: "19:30" },
+      { day: "Tuesday", time: "19:30" },
+      { day: "Wednesday", time: "19:30" },
+      { day: "Thursday", time: "19:30" },
+      { day: "Friday", time: "19:30" },
+      { day: "Saturday", time: "19:30" },
     ]
   },
   {
-    name: "Triple Trouble and DBS",
+    name: "Triple Trouble",
     region: "NA",
-    username: "Azhr.7369",
-    description: "Hosted by [DCAP]! Triple Trouble and Death-Branded Shatterer",
+    username: "Dark Raven.2160",
+    description: "Hosted by [DCAP]!",
     recurring: true,
     schedule: [
       { day: "Sunday", time: "12:00" },
@@ -279,6 +279,46 @@ const events = [
       { day: "Thursday", time: "12:00" },
       { day: "Friday", time: "12:00" },
       { day: "Saturday", time: "12:00" },
+    ]
+  },
+  {
+    name: "Twisted Marionette",
+    region: "NA",
+    username: "Dark Raven.2160",
+    description: "Hosted by [DCAP]!",
+    recurring: true,
+    schedule: [
+      { day: "Thursday", time: "13:00" },
+    ]
+  },
+  {
+    name: "Gyala Delve",
+    region: "NA",
+    username: "Dark Raven.2160",
+    description: "Hosted by [DCAP]!",
+    recurring: true,
+    schedule: [
+      { day: "Friday", time: "08:00" },
+    ]
+  },
+  {
+    name: "Starlit Weald Rifts and Meta",
+    region: "NA",
+    username: "Dark Raven.2160",
+    description: "Hosted by [DCAP]!",
+    recurring: true,
+    schedule: [
+      { day: "Sunday", time: "14:00" },
+    ]
+  },
+  {
+    name: "Battle for Lion's Arch",
+    region: "NA",
+    username: "Dark Raven.2160",
+    description: "Hosted by [DCAP]!",
+    recurring: true,
+    schedule: [
+      { day: "Monday", time: "13:00" },
     ]
   },
   {
@@ -292,7 +332,7 @@ const events = [
     ]
   },
   {
-    name: "Dragon's End and Dragonstorm",
+    name: "Dragon's End",
     region: "NA",
     username: "darens.2547",
     description: "Hosted by [Hs]!",
@@ -330,7 +370,7 @@ const events = [
   {
     name: "Griffon Flight Training",
     region: "NA",
-    username: "Wing Comm Pengu",
+    username: "Thy Weeping Willow.6851",
     description: "Hosted by [Wing]! Learn how to get the most out of your griffon!",
     recurring: true,
     schedule: [
@@ -338,9 +378,41 @@ const events = [
     ]
   },
   {
+    name: "Triple Trouble",
+    region: "NA",
+    username: "CasFamGaming.9843",
+    description: "Hosted by [WHAM]!",
+    recurring: true,
+    schedule: [
+      { day: "Sunday", time: "03:30" },
+      { day: "Monday", time: "03:30" },
+      { day: "Tuesday", time: "03:30" },
+      { day: "Wednesday", time: "03:30" },
+      { day: "Thursday", time: "03:30" },
+      { day: "Friday", time: "03:30" },
+      { day: "Saturday", time: "03:30" },
+    ]
+  },
+  {
+    name: "Triple Trouble",
+    region: "NA",
+    username: "Dampevamp.6035",
+    description: "Hosted by [RNT]!",
+    recurring: true,
+    schedule: [
+      { day: "Sunday", time: "07:30" },
+      { day: "Monday", time: "07:30" },
+      { day: "Tuesday", time: "07:30" },
+      { day: "Wednesday", time: "07:30" },
+      { day: "Thursday", time: "07:30" },
+      { day: "Friday", time: "07:30" },
+      { day: "Saturday", time: "07:30" },
+    ]
+  },
+  {
     name: "Griffon Flight Training",
     region: "EU",
-    username: "Penguwing",
+    username: "Thy Weeping Willow.6851",
     description: "Hosted by [Wing]! Learn how to get the most out of your griffon!",
     recurring: true,
     schedule: [
