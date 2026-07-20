@@ -63,7 +63,16 @@ body {
   gap: 28px;
 }
 
-.region-toggle {
+.site-preference-toggles {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.region-toggle,
+.time-display-toggle {
   position: fixed;
   top: 24px;
   left: 24px;
@@ -83,7 +92,8 @@ body {
   backdrop-filter: blur(6px);
 }
 
-.region-toggle-button {
+.region-toggle-button,
+.time-display-toggle-button {
   appearance: none;
   min-width: 48px;
   min-height: 38px;
@@ -112,7 +122,12 @@ body {
     color 0.15s ease;
 }
 
-.region-toggle-button:hover {
+.time-display-toggle-button {
+  min-width: 68px;
+}
+
+.region-toggle-button:hover,
+.time-display-toggle-button:hover {
   transform: translateY(-1px);
   box-shadow:
     0 11px 18px rgba(0, 0, 0, 0.18),
@@ -121,12 +136,14 @@ body {
     inset 0 -7px 12px rgba(16, 32, 44, 0.08);
 }
 
-.region-toggle-button:focus-visible {
+.region-toggle-button:focus-visible,
+.time-display-toggle-button:focus-visible {
   outline: 3px solid rgba(143, 211, 255, 0.9);
   outline-offset: 3px;
 }
 
-.region-toggle-button.active {
+.region-toggle-button.active,
+.time-display-toggle-button.active {
   color: #ffffff;
   background:
     linear-gradient(180deg,
@@ -154,7 +171,8 @@ body {
   align-items: flex-start;
 }
 
-.corner-info-stack .region-toggle {
+.corner-info-stack .region-toggle,
+.corner-info-stack .time-display-toggle {
   position: static;
   margin: 0;
 }
@@ -1134,9 +1152,10 @@ body {
   font-family: "Segoe UI", Tahoma, sans-serif;
   font-size: clamp(0.74rem, 0.78vw, 0.84rem);
   font-weight: 900;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .schedule-event-name {
@@ -1482,6 +1501,10 @@ body {
     align-items: center;
   }
 
+  .site-preference-toggles {
+    justify-content: center;
+  }
+
   .about-blurb {
     max-height: none;
   }
@@ -1508,7 +1531,8 @@ body {
     flex: 1 1 260px;
   }
 
-  .region-toggle {
+  .region-toggle,
+  .time-display-toggle {
     position: static;
     width: fit-content;
     margin: 0;
@@ -1611,6 +1635,10 @@ body {
     margin-bottom: 16px;
   }
 
+  .site-preference-toggles {
+    justify-content: center;
+  }
+
   .about-blurb {
     padding: 16px 18px 18px;
   }
@@ -1648,6 +1676,11 @@ body {
     height: 24px;
     margin: 0 12px 8px;
     font-size: 0.68rem;
+  }
+
+  .timeline-label-sub {
+    font-size: 0.66em;
+    letter-spacing: -0.01em;
   }
 
   .timeline-bar-wrapper {
@@ -1854,7 +1887,7 @@ body {
 
 .schedule-event-popover-time-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 10px;
   margin-bottom: 14px;
 }

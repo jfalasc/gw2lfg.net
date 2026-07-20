@@ -2,7 +2,7 @@ const events = [
   {
     name: "HoT Meta Train",
     region: "NA",
-    username: "GoodJudy.7238",
+    username: "Lamshire.3058",
     description: "Hosted by [LEG]! Tangled Depths -> Auric Basin -> Dragon's Stand -> Auric Basin -> Verdant Brink",
     recurring: true,
     schedule: [
@@ -18,9 +18,9 @@ const events = [
     description: "Hosted by [JMAW]!",
     recurring: true,
     schedule: [
-      { day: "Tuesday", time: "02:30" },
-      { day: "Thursday", time: "02:30" },
-      { day: "Saturday", time: "02:30" }
+      { day: "Tuesday", time: "01:30" },
+      { day: "Thursday", time: "01:30" },
+      { day: "Saturday", time: "01:30" }
     ]
   },
   {
@@ -41,8 +41,8 @@ const events = [
     description: "Hosted by [LILY]!",
     recurring: true,
     schedule: [
-      { day: "Wednesday", time: "01:00" },
-      { day: "Saturday", time: "21:00" },
+      { day: "Tuesday", time: "23:30" },
+      { day: "Saturday", time: "20:30" },
     ]
   },
   {
@@ -62,14 +62,14 @@ const events = [
     description: "Hosted by [FB]!",
     recurring: true,
     schedule: [
-      { day: "Sunday", time: "02:00" },
+      { day: "Sunday", time: "01:50" },
     ]
   },
   {
     name: "World Tour Meta Train",
     region: "NA",
     username: "MarshAll.3528",
-    description: "Hosted by [FB]! HoT -> PoF -> S4 -> S5 -> EoD -> SotO -> JW",
+    description: "Hosted by [FB]! Metas from every expansion",
     recurring: true,
     schedule: [
       { day: "Monday", time: "02:00" },
@@ -89,7 +89,7 @@ const events = [
     name: "S4 Meta Train",
     region: "NA",
     username: "MarshAll.3528",
-    description: "Hosted by [FB]! Istan -> Jahai/Sandswept -> Istan -> Thunderhead -> Jahai -> Jahai/Sandswept > Thunderhead -> Kourna/Jahai/Sandswept",
+    description: "Hosted by [FB]! Every season 4 meta",
     recurring: true,
     schedule: [
       { day: "Saturday", time: "01:45" },
@@ -160,17 +160,7 @@ const events = [
     ]
   },
   {
-    name: "PoF/S4 Bounties",
-    region: "NA",
-    username: "Hempia.5981",
-    description: "Hosted by [SIN]!",
-    recurring: true,
-    schedule: [
-      { day: "Wednesday", time: "23:00" },
-    ]
-  },
-  {
-    name: "HoT HP Train",
+    name: "Hero Point Train",
     region: "NA",
     username: "Hempia.5981",
     description: "Hosted by [SIN]!",
@@ -212,7 +202,7 @@ const events = [
     ]
   },
   {
-    name: "Bava Nisos Farm and Meta",
+    name: "Bava Nisos Farm & Meta",
     region: "NA",
     username: "Sylphonete.7583",
     description: "Bava Nisos farm train before reset, then meta after reset",
@@ -241,7 +231,7 @@ const events = [
     name: "HoT Meta Train",
     region: "NA",
     username: "Shazilee.1098",
-    description: "Hosted by [SHAZ]! Dragon's Stand and Auric Basin",
+    description: "Hosted by [SHAZ]! Dragon's Stand & Auric Basin",
     recurring: true,
     schedule: [
       { day: "Wednesday", time: "03:00" },
@@ -302,16 +292,6 @@ const events = [
     ]
   },
   {
-    name: "Starlit Weald Rifts and Meta",
-    region: "NA",
-    username: "Dark Raven.2160",
-    description: "Hosted by [DCAP]!",
-    recurring: true,
-    schedule: [
-      { day: "Sunday", time: "14:00" },
-    ]
-  },
-  {
     name: "Battle for Lion's Arch",
     region: "NA",
     username: "Dark Raven.2160",
@@ -322,7 +302,17 @@ const events = [
     ]
   },
   {
-    name: "SotO and JW Convergence CMs",
+    name: "Dragonstorm & Dragon's Stand",
+    region: "NA",
+    username: "Dark Raven.2160",
+    description: "Hosted by [DCAP]!",
+    recurring: true,
+    schedule: [
+      { day: "Tuesday", time: "13:00" },
+    ]
+  },
+  {
+    name: "SotO & JW Convergence CMs",
     region: "NA",
     username: "darens.2547",
     description: "Hosted by [ZERO]!",
@@ -332,9 +322,9 @@ const events = [
     ]
   },
   {
-    name: "Dragon's End",
+    name: "Dragon's End & Dragonstorm",
     region: "NA",
-    username: "darens.2547",
+    username: "sim.1203",
     description: "Hosted by [Hs]!",
     recurring: true,
     schedule: [
@@ -407,6 +397,48 @@ const events = [
       { day: "Thursday", time: "07:30" },
       { day: "Friday", time: "07:30" },
       { day: "Saturday", time: "07:30" },
+    ]
+  },
+  {
+    name: "Convergence CMs",
+    region: "NA",
+    username: "calmerthanu.8375",
+    description: "Hosted by [WILT]!",
+    recurring: true,
+    schedule: [
+      { day: "Wednesday", time: "01:00" },
+      { day: "Thursday", time: "01:00" },
+    ]
+  },
+  {
+    name: "Convergence CMs",
+    region: "NA",
+    username: "SoBread.5628",
+    description: "Hosted by [COFE]!",
+    recurring: true,
+    schedule: [
+      { day: "Wednesday", time: "05:00" },
+      { day: "Friday", time: "05:00" },
+    ]
+  },
+  {
+    name: "JW Convergence CMs",
+    region: "NA",
+    username: "Ohnage.1638",
+    description: "Hosted by [uLT]!",
+    recurring: true,
+    schedule: [
+      { day: "Saturday", time: "20:00" },
+    ]
+  },
+  {
+    name: "SotO Convergence CMs",
+    region: "NA",
+    username: "Ohnage.1638",
+    description: "Hosted by [uLT]!",
+    recurring: true,
+    schedule: [
+      { day: "Sunday", time: "17:00" },
     ]
   },
   {

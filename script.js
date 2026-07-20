@@ -29,12 +29,19 @@ const timelineRefreshMilliseconds = 60 * 1000;
 const eventRegions = ["NA", "EU"];
 const selectedRegionStorageKey = "gw2LfgSelectedRegion";
 
+const timeDisplayModes = ["local", "utc"];
+const selectedTimeDisplayModeStorageKey = "gw2LfgTimeDisplayMode";
+
 let selectedEventRegion = getInitialEventRegion();
-let selectedScheduleDay = getCurrentUtcDayName();
+let selectedTimeDisplayMode = getInitialTimeDisplayMode();
+let selectedScheduleDay = getCurrentDisplayDayName();
+let scheduleFollowsCurrentDay = true;
 let lastScheduleDialogTrigger = null;
 
-function getCurrentUtcDayName() {
-  return utcDayNames[new Date().getUTCDay()];
+/* ---------- Shared date and time helpers ---------- */
+
+function isValidDate(date) {
+  return date instanceof Date && !Number.isNaN(date.getTime());
 }
 
 function getUtcStartOfToday(referenceDate = new Date()) {
@@ -45,21 +52,59 @@ function getUtcStartOfToday(referenceDate = new Date()) {
   ));
 }
 
-function getNextOccurrenceOfDay(dayName) {
-  const todayUtc = getUtcStartOfToday();
-  const currentDayIndex = todayUtc.getUTCDay();
+function getDisplayDayIndex(date) {
+  if (!isValidDate(date)) {
+    return 0;
+  }
+
+  return selectedTimeDisplayMode === "utc"
+    ? date.getUTCDay()
+    : date.getDay();
+}
+
+function getCurrentDisplayDayName(referenceDate = new Date()) {
+  return utcDayNames[getDisplayDayIndex(referenceDate)];
+}
+
+function getStartOfDisplayDay(referenceDate = new Date()) {
+  if (selectedTimeDisplayMode === "utc") {
+    return new Date(Date.UTC(
+      referenceDate.getUTCFullYear(),
+      referenceDate.getUTCMonth(),
+      referenceDate.getUTCDate()
+    ));
+  }
+
+  return new Date(
+    referenceDate.getFullYear(),
+    referenceDate.getMonth(),
+    referenceDate.getDate()
+  );
+}
+
+function addDisplayDays(referenceDate, amount) {
+  const result = new Date(referenceDate);
+
+  if (selectedTimeDisplayMode === "utc") {
+    result.setUTCDate(result.getUTCDate() + amount);
+  } else {
+    result.setDate(result.getDate() + amount);
+  }
+
+  return result;
+}
+
+function getNextOccurrenceOfDisplayDay(dayName, referenceDate = new Date()) {
+  const todayStart = getStartOfDisplayDay(referenceDate);
+  const currentDayIndex = getDisplayDayIndex(todayStart);
   const targetDayIndex = utcDayNames.indexOf(dayName);
 
   if (targetDayIndex === -1) {
-    return todayUtc;
+    return todayStart;
   }
 
   const daysUntilTarget = (targetDayIndex - currentDayIndex + 7) % 7;
-
-  const targetDate = new Date(todayUtc);
-  targetDate.setUTCDate(todayUtc.getUTCDate() + daysUntilTarget);
-
-  return targetDate;
+  return addDisplayDays(todayStart, daysUntilTarget);
 }
 
 function formatUtcDateKey(date) {
@@ -70,30 +115,128 @@ function formatUtcDateKey(date) {
   return `${year}-${month}-${day}`;
 }
 
-function formatUtcDateLabel(date) {
-  return date.toLocaleDateString("en-US", {
-    timeZone: "UTC",
+function getTimeDisplayModeLabel() {
+  return selectedTimeDisplayMode === "utc" ? "UTC" : "Local time";
+}
+
+function getTimeDisplayModeTitle() {
+  return selectedTimeDisplayMode === "utc" ? "UTC" : "Local Time";
+}
+
+function getDisplayDateOptions(options = {}) {
+  if (selectedTimeDisplayMode === "utc") {
+    return {
+      ...options,
+      timeZone: "UTC"
+    };
+  }
+
+  return { ...options };
+}
+
+function formatDisplayDateLabel(date) {
+  if (!isValidDate(date)) {
+    return "Date unavailable";
+  }
+
+  return date.toLocaleDateString("en-US", getDisplayDateOptions({
     month: "short",
     day: "numeric",
     year: "numeric"
-  });
+  }));
 }
 
-function formatTimelineTimeLabel(date) {
-  return date.toLocaleTimeString("en-US", {
-    timeZone: "UTC",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false
-  });
-}
+function formatDisplayWeekday(date) {
+  if (!isValidDate(date)) {
+    return "";
+  }
 
-function formatTimelineWeekdayLabel(date) {
-  return date.toLocaleDateString("en-US", {
-    timeZone: "UTC",
+  return date.toLocaleDateString("en-US", getDisplayDateOptions({
     weekday: "short"
-  });
+  }));
 }
+
+function formatDisplayTime(date, includeZone = true) {
+  if (!isValidDate(date)) {
+    return "Time unavailable";
+  }
+
+  const options = {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true
+  };
+
+  if (selectedTimeDisplayMode === "utc") {
+    options.timeZone = "UTC";
+  } else if (includeZone) {
+    options.timeZoneName = "short";
+  }
+
+  const formattedTime = date.toLocaleTimeString("en-US", options);
+
+  if (selectedTimeDisplayMode === "utc" && includeZone) {
+    return `${formattedTime} UTC`;
+  }
+
+  return formattedTime;
+}
+
+function formatDisplayDateTime(date, includeYear = false) {
+  if (!isValidDate(date)) {
+    return "Time unavailable";
+  }
+
+  const dateOptions = {
+    weekday: "short",
+    month: "short",
+    day: "numeric"
+  };
+
+  if (includeYear) {
+    dateOptions.year = "numeric";
+  }
+
+  const datePart = date.toLocaleDateString(
+    "en-US",
+    getDisplayDateOptions(dateOptions)
+  );
+
+  return `${datePart} — ${formatDisplayTime(date, true)}`;
+}
+
+function formatCurrentDisplayDateTime(referenceDate = new Date()) {
+  if (!isValidDate(referenceDate)) {
+    return "Time unavailable";
+  }
+
+  const datePart = referenceDate.toLocaleDateString(
+    "en-US",
+    getDisplayDateOptions({
+      weekday: "long",
+      month: "short",
+      day: "numeric"
+    })
+  );
+
+  return `${datePart} — ${formatDisplayTime(referenceDate, true)}`;
+}
+
+function formatUtcOffset(referenceDate = new Date()) {
+  const offsetMinutes = -referenceDate.getTimezoneOffset();
+  const sign = offsetMinutes >= 0 ? "+" : "-";
+  const absoluteOffsetMinutes = Math.abs(offsetMinutes);
+  const hours = Math.floor(absoluteOffsetMinutes / 60);
+  const minutes = absoluteOffsetMinutes % 60;
+
+  if (minutes === 0) {
+    return `${sign}${hours} hour${hours === 1 ? "" : "s"}`;
+  }
+
+  return `${sign}${hours}:${String(minutes).padStart(2, "0")} hours`;
+}
+
+/* ---------- Region preference ---------- */
 
 function normalizeRegion(region) {
   if (typeof region !== "string") {
@@ -182,6 +325,106 @@ function initializeRegionToggle() {
   renderRegionToggle();
 }
 
+/* ---------- Time display preference ---------- */
+
+function normalizeTimeDisplayMode(mode) {
+  if (typeof mode !== "string") {
+    return "";
+  }
+
+  return mode.trim().toLowerCase();
+}
+
+function getInitialTimeDisplayMode() {
+  try {
+    const storedMode = normalizeTimeDisplayMode(
+      localStorage.getItem(selectedTimeDisplayModeStorageKey)
+    );
+
+    if (timeDisplayModes.includes(storedMode)) {
+      return storedMode;
+    }
+  } catch (error) {
+    console.warn("Could not read saved time display preference.");
+    console.warn(error);
+  }
+
+  return "local";
+}
+
+function saveSelectedTimeDisplayMode(mode) {
+  try {
+    localStorage.setItem(selectedTimeDisplayModeStorageKey, mode);
+  } catch (error) {
+    console.warn("Could not save time display preference.");
+    console.warn(error);
+  }
+}
+
+function setSelectedTimeDisplayMode(mode) {
+  const normalizedMode = normalizeTimeDisplayMode(mode);
+
+  if (!timeDisplayModes.includes(normalizedMode)) {
+    return;
+  }
+
+  if (normalizedMode === selectedTimeDisplayMode) {
+    return;
+  }
+
+  selectedTimeDisplayMode = normalizedMode;
+
+  if (scheduleFollowsCurrentDay) {
+    selectedScheduleDay = getCurrentDisplayDayName();
+  }
+
+  saveSelectedTimeDisplayMode(selectedTimeDisplayMode);
+
+  renderTimeDisplayToggle();
+  renderSchedule();
+  renderTimeline();
+  renderDiscordFeeds();
+  updateDisplayClock();
+}
+
+function renderTimeDisplayToggle() {
+  const timeDisplayToggle = document.getElementById("timeDisplayToggle");
+
+  if (!timeDisplayToggle) {
+    return;
+  }
+
+  const buttons = timeDisplayToggle.querySelectorAll("[data-time-display-mode]");
+
+  buttons.forEach((button) => {
+    const buttonMode = normalizeTimeDisplayMode(button.dataset.timeDisplayMode);
+    const isActive = buttonMode === selectedTimeDisplayMode;
+
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
+function initializeTimeDisplayToggle() {
+  const timeDisplayToggle = document.getElementById("timeDisplayToggle");
+
+  if (!timeDisplayToggle) {
+    return;
+  }
+
+  const buttons = timeDisplayToggle.querySelectorAll("[data-time-display-mode]");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setSelectedTimeDisplayMode(button.dataset.timeDisplayMode);
+    });
+  });
+
+  renderTimeDisplayToggle();
+}
+
+/* ---------- Event data ---------- */
+
 function getEventSource() {
   if (typeof events === "undefined" || !Array.isArray(events)) {
     return [];
@@ -245,97 +488,113 @@ function parseUtcDateTime(dateKey, time24) {
   ));
 }
 
-/* ---------- Schedule ---------- */
+function getRecurringOccurrenceDate(entry, referenceDate) {
+  if (!entry || typeof entry.day !== "string" || typeof entry.time !== "string") {
+    return null;
+  }
 
-function getEventsForScheduleDay(dayName) {
-  const targetDate = getNextOccurrenceOfDay(dayName);
-  const targetDateKey = formatUtcDateKey(targetDate);
-  const matches = [];
+  const targetDayIndex = utcDayNames.indexOf(entry.day);
+  const timeParts = parseTimeParts(entry.time);
+
+  if (targetDayIndex === -1 || !timeParts) {
+    return null;
+  }
+
+  const todayUtc = getUtcStartOfToday(referenceDate);
+  const currentDayIndex = todayUtc.getUTCDay();
+  const daysUntilTarget = (targetDayIndex - currentDayIndex + 7) % 7;
+
+  const occurrenceDate = new Date(todayUtc);
+  occurrenceDate.setUTCDate(todayUtc.getUTCDate() + daysUntilTarget);
+  occurrenceDate.setUTCHours(timeParts.hours, timeParts.minutes, 0, 0);
+
+  if (occurrenceDate < referenceDate) {
+    occurrenceDate.setUTCDate(occurrenceDate.getUTCDate() + 7);
+  }
+
+  return occurrenceDate;
+}
+
+function createEventOccurrence(event, startsAt, sourceTime, recurring) {
+  return {
+    name: event.name,
+    region: event.region || "Region TBD",
+    username: event.username || event.host || "Unknown player",
+    description: event.description || "",
+    time: sourceTime,
+    date: formatUtcDateKey(startsAt),
+    startsAt,
+    recurring
+  };
+}
+
+function getEventOccurrencesInRange(
+  windowStart,
+  windowEnd,
+  { includeWindowEnd = false } = {}
+) {
+  if (!isValidDate(windowStart) || !isValidDate(windowEnd)) {
+    return [];
+  }
+
+  if (windowEnd < windowStart) {
+    return [];
+  }
+
+  const occurrences = [];
+
+  function isInRange(date) {
+    if (!isValidDate(date)) {
+      return false;
+    }
+
+    return date >= windowStart && (
+      includeWindowEnd
+        ? date <= windowEnd
+        : date < windowEnd
+    );
+  }
 
   getEventSource().forEach((event) => {
     if (event.recurring === true && Array.isArray(event.schedule)) {
       event.schedule.forEach((entry) => {
-        if (entry.day === dayName) {
-          matches.push({
-            name: event.name,
-            region: event.region || "Region TBD",
-            username: event.username || event.host || "Unknown player",
-            description: event.description || "",
-            time: entry.time,
-            startsAt: parseUtcDateTime(targetDateKey, entry.time),
-            recurring: true
-          });
+        const startsAt = getRecurringOccurrenceDate(entry, windowStart);
+
+        if (isInRange(startsAt)) {
+          occurrences.push(
+            createEventOccurrence(event, startsAt, entry.time, true)
+          );
         }
       });
     }
 
-    if (event.recurring === false && event.date === targetDateKey) {
-      matches.push({
-        name: event.name,
-        region: event.region || "Region TBD",
-        username: event.username || event.host || "Unknown player",
-        description: event.description || "",
-        time: event.time,
-        startsAt: parseUtcDateTime(event.date, event.time),
-        recurring: false
-      });
+    if (event.recurring === false) {
+      const startsAt = parseUtcDateTime(event.date, event.time);
+
+      if (isInRange(startsAt)) {
+        occurrences.push(
+          createEventOccurrence(event, startsAt, event.time, false)
+        );
+      }
     }
   });
 
-  matches.sort((a, b) => a.time.localeCompare(b.time));
+  occurrences.sort((a, b) => a.startsAt - b.startsAt);
+
+  return occurrences;
+}
+
+/* ---------- Schedule ---------- */
+
+function getEventsForScheduleDay(dayName, referenceDate = new Date()) {
+  const targetDate = getNextOccurrenceOfDisplayDay(dayName, referenceDate);
+  const windowEnd = addDisplayDays(targetDate, 1);
 
   return {
     targetDate,
-    targetDateKey,
-    events: matches
+    windowEnd,
+    events: getEventOccurrencesInRange(targetDate, windowEnd)
   };
-}
-
-function formatScheduleTime(time24) {
-  return `${time24} UTC`;
-}
-
-function formatScheduleUtcDateTime(utcDate, fallbackTime) {
-  if (!(utcDate instanceof Date) || Number.isNaN(utcDate.getTime())) {
-    return formatScheduleTime(fallbackTime);
-  }
-
-  const datePart = utcDate.toLocaleDateString("en-US", {
-    timeZone: "UTC",
-    weekday: "short",
-    month: "short",
-    day: "numeric"
-  });
-
-  const timePart = utcDate.toLocaleTimeString("en-US", {
-    timeZone: "UTC",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false
-  });
-
-  return `${datePart} — ${timePart} UTC`;
-}
-
-function formatScheduleLocalDateTime(utcDate) {
-  if (!(utcDate instanceof Date) || Number.isNaN(utcDate.getTime())) {
-    return "Local time unavailable";
-  }
-
-  const datePart = utcDate.toLocaleDateString("en-US", {
-    weekday: "short",
-    month: "short",
-    day: "numeric"
-  });
-
-  const timePart = utcDate.toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-    timeZoneName: "short"
-  });
-
-  return `${datePart} — ${timePart}`;
 }
 
 function getScheduleEventDetailsElements() {
@@ -343,8 +602,8 @@ function getScheduleEventDetailsElements() {
     panel: document.getElementById("scheduleEventDetailsPanel"),
     closeButton: document.getElementById("scheduleEventDetailsClose"),
     title: document.getElementById("scheduleEventDetailsTitle"),
-    utcTime: document.getElementById("scheduleEventDetailsUtcTime"),
-    localTime: document.getElementById("scheduleEventDetailsLocalTime"),
+    timeLabel: document.getElementById("scheduleEventDetailsTimeLabel"),
+    time: document.getElementById("scheduleEventDetailsTime"),
     region: document.getElementById("scheduleEventDetailsRegion"),
     poster: document.getElementById("scheduleEventDetailsPoster"),
     description: document.getElementById("scheduleEventDetailsDescription")
@@ -422,8 +681,8 @@ function openScheduleEventDetails(scheduleEvent, triggerCard) {
   if (
     !detailsElements.panel ||
     !detailsElements.title ||
-    !detailsElements.utcTime ||
-    !detailsElements.localTime ||
+    !detailsElements.timeLabel ||
+    !detailsElements.time ||
     !detailsElements.region ||
     !detailsElements.poster ||
     !detailsElements.description
@@ -441,11 +700,9 @@ function openScheduleEventDetails(scheduleEvent, triggerCard) {
   }
 
   detailsElements.title.textContent = scheduleEvent.name || "Event details";
-  detailsElements.utcTime.textContent = formatScheduleUtcDateTime(
-    scheduleEvent.startsAt,
-    scheduleEvent.time
-  );
-  detailsElements.localTime.textContent = formatScheduleLocalDateTime(scheduleEvent.startsAt);
+  detailsElements.timeLabel.textContent =
+    selectedTimeDisplayMode === "utc" ? "UTC time" : "Local time";
+  detailsElements.time.textContent = formatDisplayDateTime(scheduleEvent.startsAt);
   detailsElements.region.textContent = scheduleEvent.region || "Region TBD";
   detailsElements.poster.textContent = scheduleEvent.username || "Unknown player";
   detailsElements.description.textContent =
@@ -528,7 +785,10 @@ function renderScheduleDayButtons() {
     button.type = "button";
     button.className = "schedule-day-button";
     button.classList.add(dayClassMap[day]);
-    button.setAttribute("aria-label", `Show ${day} events`);
+    button.setAttribute(
+      "aria-label",
+      `Show ${day} events in ${getTimeDisplayModeLabel()}`
+    );
 
     screenReaderText.className = "sr-only";
     screenReaderText.textContent = day;
@@ -541,6 +801,7 @@ function renderScheduleDayButtons() {
 
     button.addEventListener("click", () => {
       selectedScheduleDay = day;
+      scheduleFollowsCurrentDay = day === getCurrentDisplayDayName();
       renderSchedule();
     });
 
@@ -548,7 +809,7 @@ function renderScheduleDayButtons() {
   });
 }
 
-function renderScheduleEvents() {
+function renderScheduleEvents(referenceDate = new Date()) {
   const selectedDayLabel = document.getElementById("scheduleSelectedDay");
   const selectedDateLabel = document.getElementById("scheduleSelectedDate");
   const selectedDayCount = document.getElementById("scheduleSelectedDayCount");
@@ -561,17 +822,22 @@ function renderScheduleEvents() {
 
   closeScheduleEventDetails(false);
 
-  const scheduleResult = getEventsForScheduleDay(selectedScheduleDay);
+  const scheduleResult = getEventsForScheduleDay(
+    selectedScheduleDay,
+    referenceDate
+  );
   const targetDate = scheduleResult.targetDate;
   const dayEvents = scheduleResult.events;
 
   selectedDayLabel.textContent = selectedScheduleDay;
 
   if (selectedDateLabel) {
-    selectedDateLabel.textContent = formatUtcDateLabel(targetDate);
+    selectedDateLabel.textContent =
+      `${formatDisplayDateLabel(targetDate)} · ${getTimeDisplayModeTitle()}`;
   }
 
-  selectedDayCount.textContent = `${dayEvents.length} event${dayEvents.length === 1 ? "" : "s"}`;
+  selectedDayCount.textContent =
+    `${dayEvents.length} event${dayEvents.length === 1 ? "" : "s"}`;
 
   track.replaceChildren();
   viewport.scrollLeft = 0;
@@ -579,7 +845,9 @@ function renderScheduleEvents() {
   if (dayEvents.length === 0) {
     const emptyState = document.createElement("div");
     emptyState.className = "schedule-empty-state";
-    emptyState.textContent = `No ${selectedEventRegion} events scheduled for ${selectedScheduleDay} (${formatUtcDateLabel(targetDate)}).`;
+    emptyState.textContent =
+      `No ${selectedEventRegion} events scheduled for ${selectedScheduleDay} ` +
+      `(${formatDisplayDateLabel(targetDate)}, ${getTimeDisplayModeLabel()}).`;
     track.appendChild(emptyState);
     return;
   }
@@ -589,6 +857,7 @@ function renderScheduleEvents() {
     const summary = document.createElement("div");
     const time = document.createElement("div");
     const name = document.createElement("h4");
+    const formattedTime = formatDisplayTime(event.startsAt, true);
 
     card.className = "schedule-event-card";
     card.setAttribute("tabindex", "0");
@@ -598,13 +867,13 @@ function renderScheduleEvents() {
     card.setAttribute("aria-haspopup", "dialog");
     card.setAttribute(
       "aria-label",
-      `View details for ${event.name} at ${formatScheduleTime(event.time)}`
+      `View details for ${event.name} at ${formatDisplayDateTime(event.startsAt)}`
     );
 
     summary.className = "schedule-event-summary";
 
     time.className = "schedule-event-time";
-    time.textContent = formatScheduleTime(event.time);
+    time.textContent = formattedTime;
 
     name.className = "schedule-event-name";
     name.textContent = event.name;
@@ -627,94 +896,25 @@ function renderScheduleEvents() {
   });
 }
 
-function renderSchedule() {
+function renderSchedule(referenceDate = new Date()) {
+  if (scheduleFollowsCurrentDay) {
+    selectedScheduleDay = getCurrentDisplayDayName(referenceDate);
+  }
+
   renderScheduleDayButtons();
-  renderScheduleEvents();
+  renderScheduleEvents(referenceDate);
 }
 
 /* ---------- Timeline ---------- */
 
-function getRecurringOccurrenceDate(entry, referenceDate) {
-  if (!entry || typeof entry.day !== "string" || typeof entry.time !== "string") {
-    return null;
-  }
-
-  const targetDayIndex = utcDayNames.indexOf(entry.day);
-  const timeParts = parseTimeParts(entry.time);
-
-  if (targetDayIndex === -1 || !timeParts) {
-    return null;
-  }
-
-  const todayUtc = getUtcStartOfToday(referenceDate);
-  const currentDayIndex = todayUtc.getUTCDay();
-  const daysUntilTarget = (targetDayIndex - currentDayIndex + 7) % 7;
-
-  const occurrenceDate = new Date(todayUtc);
-  occurrenceDate.setUTCDate(todayUtc.getUTCDate() + daysUntilTarget);
-  occurrenceDate.setUTCHours(timeParts.hours, timeParts.minutes, 0, 0);
-
-  if (occurrenceDate < referenceDate) {
-    occurrenceDate.setUTCDate(occurrenceDate.getUTCDate() + 7);
-  }
-
-  return occurrenceDate;
-}
-
 function getTimelineOccurrences(referenceDate = new Date()) {
-  const windowStart = referenceDate;
-  const windowEnd = new Date(windowStart.getTime() + timelineWindowHours * 60 * 60 * 1000);
-  const occurrences = [];
+  const windowEnd = new Date(
+    referenceDate.getTime() + timelineWindowHours * 60 * 60 * 1000
+  );
 
-  getEventSource().forEach((event) => {
-    if (event.recurring === true && Array.isArray(event.schedule)) {
-      event.schedule.forEach((entry) => {
-        const occurrenceDate = getRecurringOccurrenceDate(entry, windowStart);
-
-        if (!occurrenceDate) {
-          return;
-        }
-
-        if (occurrenceDate >= windowStart && occurrenceDate <= windowEnd) {
-          occurrences.push({
-            name: event.name,
-            region: event.region || "Region TBD",
-            username: event.username || event.host || "Unknown player",
-            description: event.description || "",
-            time: entry.time,
-            date: formatUtcDateKey(occurrenceDate),
-            startsAt: occurrenceDate,
-            recurring: true
-          });
-        }
-      });
-    }
-
-    if (event.recurring === false) {
-      const occurrenceDate = parseUtcDateTime(event.date, event.time);
-
-      if (!occurrenceDate) {
-        return;
-      }
-
-      if (occurrenceDate >= windowStart && occurrenceDate <= windowEnd) {
-        occurrences.push({
-          name: event.name,
-          region: event.region || "Region TBD",
-          username: event.username || event.host || "Unknown player",
-          description: event.description || "",
-          time: event.time,
-          date: event.date,
-          startsAt: occurrenceDate,
-          recurring: false
-        });
-      }
-    }
+  return getEventOccurrencesInRange(referenceDate, windowEnd, {
+    includeWindowEnd: true
   });
-
-  occurrences.sort((a, b) => a.startsAt - b.startsAt);
-
-  return occurrences;
 }
 
 function groupTimelineOccurrences(occurrences) {
@@ -758,8 +958,8 @@ function renderTimelineLabels(referenceDate = new Date()) {
     main.className = "timeline-label-main";
     sub.className = "timeline-label-sub";
 
-    const weekdayLabel = formatTimelineWeekdayLabel(labelDate);
-    const timeLabel = formatTimelineTimeLabel(labelDate);
+    const weekdayLabel = formatDisplayWeekday(labelDate);
+    const timeLabel = formatDisplayTime(labelDate, false);
 
     if (offset === 0) {
       main.textContent = "Now";
@@ -767,11 +967,12 @@ function renderTimelineLabels(referenceDate = new Date()) {
       main.textContent = `+${offset}h`;
     }
 
-    sub.textContent = `${weekdayLabel} ${timeLabel} UTC`;
+    sub.textContent = `${weekdayLabel} ${timeLabel}`;
 
     label.setAttribute(
       "aria-label",
-      `${offset === 0 ? "Now" : `${offset} hours from now`}: ${weekdayLabel} ${timeLabel} UTC`
+      `${offset === 0 ? "Now" : `${offset} hours from now`}: ` +
+      `${formatDisplayDateTime(labelDate)}`
     );
 
     label.append(main, sub);
@@ -806,7 +1007,7 @@ function createTimelineTooltip(group) {
   tooltip.className = "timeline-pin-tooltip";
 
   timeLine.className = "timeline-tooltip-time";
-  timeLine.textContent = `${formatUtcDateLabel(group.startsAt)} — ${formatTimelineTimeLabel(group.startsAt)} UTC`;
+  timeLine.textContent = formatDisplayDateTime(group.startsAt, true);
   tooltip.appendChild(timeLine);
 
   group.events.forEach((event) => {
@@ -833,7 +1034,10 @@ function createTimelineTooltip(group) {
 
     eventPostedBy.className = "timeline-tooltip-meta";
     eventPostedByLabel.textContent = "Posted by:";
-    eventPostedBy.append(eventPostedByLabel, ` ${event.username || "Unknown player"}`);
+    eventPostedBy.append(
+      eventPostedByLabel,
+      ` ${event.username || "Unknown player"}`
+    );
 
     eventDescription.className = "timeline-tooltip-meta";
     eventDescriptionLabel.textContent = "Description:";
@@ -863,7 +1067,8 @@ function renderTimelinePins(referenceDate = new Date()) {
   pinsContainer.replaceChildren();
 
   if (emptyState) {
-    emptyState.textContent = `No ${selectedEventRegion} events scheduled in the next 24 hours.`;
+    emptyState.textContent =
+      `No ${selectedEventRegion} events scheduled in the next 24 hours.`;
     emptyState.hidden = groupedOccurrences.length !== 0;
   }
 
@@ -876,8 +1081,13 @@ function renderTimelinePins(referenceDate = new Date()) {
     const dot = document.createElement("span");
     const tooltip = createTimelineTooltip(group);
 
-    const hoursFromNow = (group.startsAt.getTime() - referenceDate.getTime()) / (60 * 60 * 1000);
-    const leftPercent = Math.max(0, Math.min(100, (hoursFromNow / timelineWindowHours) * 100));
+    const hoursFromNow =
+      (group.startsAt.getTime() - referenceDate.getTime()) /
+      (60 * 60 * 1000);
+    const leftPercent = Math.max(
+      0,
+      Math.min(100, (hoursFromNow / timelineWindowHours) * 100)
+    );
 
     pin.type = "button";
     pin.className = "timeline-pin";
@@ -893,7 +1103,10 @@ function renderTimelinePins(referenceDate = new Date()) {
 
     pin.setAttribute(
       "aria-label",
-      `${group.events.length === 1 ? group.events[0].name : `${group.events.length} events`} at ${formatTimelineTimeLabel(group.startsAt)} UTC on ${formatUtcDateLabel(group.startsAt)}`
+      `${group.events.length === 1
+        ? group.events[0].name
+        : `${group.events.length} events`} at ` +
+      `${formatDisplayDateTime(group.startsAt)}`
     );
 
     dot.className = "timeline-pin-dot";
@@ -912,12 +1125,19 @@ function renderTimelinePins(referenceDate = new Date()) {
 }
 
 function renderTimeline(referenceDate = new Date()) {
+  const timelineTitle = document.getElementById("timelineTitle");
   const timelineBar = document.getElementById("timelineBar");
+
+  if (timelineTitle) {
+    timelineTitle.textContent =
+      `Next 24 Hours — ${getTimeDisplayModeTitle()}`;
+  }
 
   if (timelineBar) {
     timelineBar.setAttribute(
       "aria-label",
-      `Upcoming ${selectedEventRegion} events in the next 24 hours`
+      `Upcoming ${selectedEventRegion} events in the next 24 hours, ` +
+      `shown in ${getTimeDisplayModeLabel()}`
     );
   }
 
@@ -930,7 +1150,8 @@ function renderTimeline(referenceDate = new Date()) {
 
 const discordMessageLimit = 5;
 const discordFeedRefreshMilliseconds = 30 * 1000;
-const discordFeedJsonUrl = "https://gw2-lfg-bot-production.up.railway.app/discordFeed.json";
+const discordFeedJsonUrl =
+  "https://gw2-lfg-bot-production.up.railway.app/discordFeed.json";
 
 let currentDiscordFeeds =
   typeof discordFeeds !== "undefined" && Array.isArray(discordFeeds)
@@ -956,24 +1177,19 @@ function formatDiscordTimestamp(timestamp) {
 
   const date = new Date(timestamp);
 
-  if (Number.isNaN(date.getTime())) {
+  if (!isValidDate(date)) {
     return "Time unavailable";
   }
 
-  const datePart = date.toLocaleDateString("en-US", {
-    timeZone: "UTC",
-    month: "short",
-    day: "numeric"
-  });
+  const datePart = date.toLocaleDateString(
+    "en-US",
+    getDisplayDateOptions({
+      month: "short",
+      day: "numeric"
+    })
+  );
 
-  const timePart = date.toLocaleTimeString("en-US", {
-    timeZone: "UTC",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false
-  });
-
-  return `${datePart} — ${timePart} UTC`;
+  return `${datePart} — ${formatDisplayTime(date, true)}`;
 }
 
 function createDiscordMessageCard(message) {
@@ -1102,86 +1318,48 @@ async function loadDiscordFeedsFromJson() {
   }
 }
 
-/* ---------- UTC clock ---------- */
+/* ---------- Display clock ---------- */
 
-function formatCurrentUtcDateTime(referenceDate = new Date()) {
-  const datePart = referenceDate.toLocaleDateString("en-US", {
-    timeZone: "UTC",
-    weekday: "long",
-    month: "short",
-    day: "numeric"
-  });
+function updateDisplayClock() {
+  const now = new Date();
+  const displayClockLabel = document.getElementById("displayClockLabel");
+  const displayClockValue = document.getElementById("displayClockValue");
+  const utcOffsetValue = document.getElementById("utcOffsetValue");
 
-  const timePart = referenceDate.toLocaleTimeString("en-US", {
-    timeZone: "UTC",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false
-  });
-
-  return `${datePart} — ${timePart} UTC`;
-}
-
-function formatCurrentLocalTime(referenceDate = new Date()) {
-  const datePart = referenceDate.toLocaleDateString("en-US", {
-    weekday: "long",
-    month: "short",
-    day: "numeric"
-  });
-
-  const timePart = referenceDate.toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-    timeZoneName: "short"
-  });
-
-  return `${datePart} — ${timePart}`;
-}
-
-function formatUtcOffset(referenceDate = new Date()) {
-  const offsetMinutes = -referenceDate.getTimezoneOffset();
-  const sign = offsetMinutes >= 0 ? "+" : "-";
-  const absoluteOffsetMinutes = Math.abs(offsetMinutes);
-  const hours = Math.floor(absoluteOffsetMinutes / 60);
-  const minutes = absoluteOffsetMinutes % 60;
-
-  if (minutes === 0) {
-    return `${sign}${hours} hour${hours === 1 ? "" : "s"}`;
+  if (displayClockLabel) {
+    displayClockLabel.textContent =
+      selectedTimeDisplayMode === "utc"
+        ? "Current UTC time:"
+        : "Current local time:";
   }
 
-  return `${sign}${hours}:${String(minutes).padStart(2, "0")} hours`;
-}
-
-function updateUtcClock() {
-  const now = new Date();
-
-  const localClockValue = document.getElementById("localClockValue");
-  const utcOffsetValue = document.getElementById("utcOffsetValue");
-  const utcClockValue = document.getElementById("utcClockValue");
-
-  if (localClockValue) {
-    localClockValue.textContent = formatCurrentLocalTime(now);
+  if (displayClockValue) {
+    displayClockValue.textContent = formatCurrentDisplayDateTime(now);
   }
 
   if (utcOffsetValue) {
     utcOffsetValue.textContent = formatUtcOffset(now);
   }
 
-  if (utcClockValue) {
-    utcClockValue.textContent = formatCurrentUtcDateTime(now);
+  if (
+    scheduleFollowsCurrentDay &&
+    selectedScheduleDay !== getCurrentDisplayDayName(now)
+  ) {
+    selectedScheduleDay = getCurrentDisplayDayName(now);
+    renderSchedule(now);
   }
 }
 
 function initializePage() {
   initializeRegionToggle();
+  initializeTimeDisplayToggle();
   initializeScheduleEventDetails();
   renderSchedule();
   renderTimeline();
   loadDiscordFeedsFromJson();
-  updateUtcClock();
+  updateDisplayClock();
 
-  setInterval(updateUtcClock, 1000);
+  setInterval(updateDisplayClock, 1000);
   setInterval(renderTimeline, timelineRefreshMilliseconds);
   setInterval(loadDiscordFeedsFromJson, discordFeedRefreshMilliseconds);
 }

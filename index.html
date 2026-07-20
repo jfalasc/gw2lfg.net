@@ -5,16 +5,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GW2 LFG</title>
-    <link rel="stylesheet" href="style.css?v=8" />
+    <link rel="stylesheet" href="style.css?v=9" />
     <link rel="icon" type="image/png" href="Web Art/favicon.ico" />
 </head>
 
 <body>
     <div class="page-shell">
         <div class="corner-info-stack">
-            <div class="region-toggle" id="regionToggle" role="group" aria-label="Choose event region">
-                <button type="button" class="region-toggle-button" data-region="NA" aria-pressed="true">NA</button>
-                <button type="button" class="region-toggle-button" data-region="EU" aria-pressed="false">EU</button>
+            <div class="site-preference-toggles">
+                <div class="region-toggle" id="regionToggle" role="group" aria-label="Choose event region">
+                    <button type="button" class="region-toggle-button" data-region="NA"
+                        aria-pressed="true">NA</button>
+                    <button type="button" class="region-toggle-button" data-region="EU"
+                        aria-pressed="false">EU</button>
+                </div>
+
+                <div class="time-display-toggle" id="timeDisplayToggle" role="group"
+                    aria-label="Choose displayed time zone">
+                    <button type="button" class="time-display-toggle-button active" data-time-display-mode="local"
+                        aria-pressed="true">Local</button>
+                    <button type="button" class="time-display-toggle-button" data-time-display-mode="utc"
+                        aria-pressed="false">UTC</button>
+                </div>
             </div>
 
             <section class="about-blurb" aria-labelledby="aboutBlurbTitle">
@@ -51,7 +63,7 @@
                 </header>
 
                 <section class="timeline-section" aria-labelledby="timelineTitle">
-                    <h2 class="section-title" id="timelineTitle">Next 24 Hours</h2>
+                    <h2 class="section-title" id="timelineTitle">Next 24 Hours — Local Time</h2>
 
                     <div class="timeline-card">
                         <div class="timeline-labels" id="timelineLabels" aria-hidden="true"></div>
@@ -117,14 +129,10 @@
         <div class="schedule-event-popover-kicker">Selected event</div>
         <h2 id="scheduleEventDetailsTitle">Event details</h2>
 
-        <div class="schedule-event-popover-time-grid" aria-label="Event times">
+        <div class="schedule-event-popover-time-grid" aria-label="Event time">
             <p>
-                <span class="schedule-event-popover-label">UTC time</span>
-                <span class="schedule-event-popover-value" id="scheduleEventDetailsUtcTime">-- UTC</span>
-            </p>
-            <p>
-                <span class="schedule-event-popover-label">Your time</span>
-                <span class="schedule-event-popover-value" id="scheduleEventDetailsLocalTime">--</span>
+                <span class="schedule-event-popover-label" id="scheduleEventDetailsTimeLabel">Local time</span>
+                <span class="schedule-event-popover-value" id="scheduleEventDetailsTime">--</span>
             </p>
         </div>
 
@@ -144,25 +152,20 @@
         </p>
     </aside>
 
-    <div class="utc-clock" id="utcClock">
-        <div class="utc-clock-extra-row">
-            <span class="utc-clock-extra-label">Your local time:</span>
-            <span class="utc-clock-extra-value" id="localClockValue">--</span>
-        </div>
-
-        <div class="utc-clock-extra-row">
-            <span class="utc-clock-extra-label">Your time difference from UTC:</span>
-            <span class="utc-clock-extra-value" id="utcOffsetValue">--</span>
-        </div>
+    <div class="utc-clock" id="displayClock">
+        <div class="utc-clock-label" id="displayClockLabel">Current local time:</div>
+        <div class="utc-clock-value" id="displayClockValue">--</div>
 
         <div class="utc-clock-divider"></div>
 
-        <div class="utc-clock-label">Current time UTC:</div>
-        <div class="utc-clock-value" id="utcClockValue">--</div>
+        <div class="utc-clock-extra-row">
+            <span class="utc-clock-extra-label">Your local time difference from UTC:</span>
+            <span class="utc-clock-extra-value" id="utcOffsetValue">--</span>
+        </div>
     </div>
 
     <script src="events.js?v=8"></script>
-    <script src="script.js?v=8"></script>
+    <script src="script.js?v=9"></script>
 </body>
 
 </html>
