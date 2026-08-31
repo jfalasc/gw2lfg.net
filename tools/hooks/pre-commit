@@ -1,0 +1,34 @@
+#!/bin/sh
+#
+# Rebuilds EVENTS.md whenever events.js is part of the commit, so the register
+# can never be committed out of step with the data it describes.
+#
+# Scoped to events.js on purpose: EVENTS.md embeds today's date and the "days
+# since verified" counters, so rebuilding it on every commit would rewrite it
+# on unrelated changes and fill the history with date churn.
+#
+# Install (once per clone):
+#     cp tools/hooks/pre-commit .git/hooks/pre-commit
+#     chmod +x .git/hooks/pre-commit
+#
+# Skip it for one commit with:  git commit --no-verify
+
+if ! git diff --cached --name-only | grep -q '^events\.js$'; then
+  exit 0
+fi
+
+if ! command -v node >/dev/null 2>&1; then
+  echo "pre-commit: node not found — skipping EVENTS.md rebuild." >&2
+  echo "pre-commit: run 'node tools/build-events-doc.js' yourself before pushing." >&2
+  exit 0
+fi
+
+echo "pre-commit: events.js changed, rebuilding EVENTS.md..."
+
+if ! node tools/build-events-doc.js; then
+  echo "pre-commit: EVENTS.md rebuild FAILED — commit aborted." >&2
+  echo "pre-commit: check events.js for a syntax error." >&2
+  exit 1
+fi
+
+git add EVENTS.md

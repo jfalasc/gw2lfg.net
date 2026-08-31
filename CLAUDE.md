@@ -53,6 +53,44 @@ Never edit `EVENTS.md` directly — the next generation overwrites it. It exists
 so a person can scan the schedule and see what needs re-checking; `events.js`
 is where changes are made.
 
+### Rebuilding the register
+
+One command, from the project root:
+
+```bash
+node tools/build-events-doc.js
+```
+
+`tools/hooks/pre-commit` runs it automatically whenever `events.js` is part of
+a commit, and stages the result. Install it once per clone:
+
+```bash
+cp tools/hooks/pre-commit .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+```
+
+The hook is deliberately scoped to `events.js`. `EVENTS.md` embeds today's
+date and the days-since-verified counters, so rebuilding on *every* commit
+would rewrite it during unrelated work and fill the history with date churn.
+
+The hook keeps the document in step with the data; it does not keep the dates
+fresh. Nothing fires if `events.js` is untouched, so a register left alone for
+months still shows months-old ages until someone rebuilds it by hand. Run the
+command occasionally for that.
+
+### How "Needs checking" is decided
+
+`staleAfterDays` at the top of the generator is the threshold — currently 90.
+An event is listed when `lastVerified` is `null`, unparseable, or that many
+days old or more.
+
+Two properties worth remembering:
+
+- The clock runs from `lastVerified`, not from when the entry was last edited.
+  Changing an event's time does not reset it; only setting the date does.
+- Staleness is evaluated at generation time, not continuously. An event that
+  crosses the threshold appears only at the next rebuild.
+
 ### Naming
 
 Name an event after the content, and do not append a redundant "Meta".
