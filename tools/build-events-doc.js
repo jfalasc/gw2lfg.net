@@ -118,10 +118,15 @@ function escapeCell(text) {
   return String(text == null ? "" : text).replace(/\|/g, "\\|").trim();
 }
 
+/* Guild tags are stored bare, so the brackets go on for display. */
+function formatGuild(event) {
+  return event.guild ? `\`[${escapeCell(event.guild)}]\`` : "—";
+}
+
 function buildRegionTable(events) {
   const lines = [
-    "| Event | Host | Runs (UTC) | Last verified |",
-    "| --- | --- | --- | --- |"
+    "| Event | Guild | Host | Runs (UTC) | Last verified |",
+    "| --- | --- | --- | --- | --- |"
   ];
 
   events
@@ -131,6 +136,7 @@ function buildRegionTable(events) {
     .forEach((event) => {
       lines.push(
         `| ${escapeCell(event.name)} ` +
+        `| ${formatGuild(event)} ` +
         `| ${escapeCell(event.username)} ` +
         `| ${formatSchedule(event.schedule)} ` +
         `| ${formatVerified(event)} |`
@@ -166,6 +172,7 @@ function buildByDay(events) {
     slots.forEach((slot) => {
       lines.push(
         `- \`${slot.time}\` **${slot.event.name}** ` +
+        (slot.event.guild ? `\`[${slot.event.guild}]\` ` : "") +
         `— ${slot.event.username} (${slot.event.region})`
       );
     });
@@ -220,8 +227,8 @@ function buildDocument(events) {
     lines.push("_Nothing outstanding — every event has been checked recently._", "");
   } else {
     lines.push(
-      "| Event | Host | Region | Runs (UTC) | Last verified |",
-      "| --- | --- | --- | --- | --- |"
+      "| Event | Guild | Host | Region | Runs (UTC) | Last verified |",
+      "| --- | --- | --- | --- | --- | --- |"
     );
 
     stale
@@ -230,6 +237,7 @@ function buildDocument(events) {
       .forEach((event) => {
         lines.push(
           `| ${escapeCell(event.name)} ` +
+          `| ${formatGuild(event)} ` +
           `| ${escapeCell(event.username)} ` +
           `| ${escapeCell(event.region)} ` +
           `| ${formatSchedule(event.schedule)} ` +

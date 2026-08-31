@@ -38,7 +38,9 @@ fails, the panel says so and keeps the last good data it had this session.
 ## Adding or changing an event
 
 1. Edit `events.js`. Times are UTC. Set `lastVerified` to today's date in
-   `YYYY-MM-DD` form, or `null` if it has not been checked.
+   `YYYY-MM-DD` form, or `null` if it has not been checked. Set `guild` to the
+   guild tag with no brackets (`"LEG"`, not `"[LEG]"`), or `null` when the
+   event is not run by a guild — the document adds the brackets.
 2. Regenerate the document:
 
    ```bash
@@ -58,6 +60,7 @@ An event's shape:
   name: "HoT Meta Train",
   region: "NA",                 // "NA" or "EU"
   username: "Lamshire.3058",    // the GW2 account hosting it
+  guild: "LEG",                 // guild tag WITHOUT brackets, or null
   description: "Hosted by [LEG]! Tangled Depths -> Auric Basin -> ...",
   recurring: true,
   lastVerified: "2026-08-31",   // or null if never checked
