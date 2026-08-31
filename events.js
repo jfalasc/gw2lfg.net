@@ -666,4 +666,40 @@ const events = [
       { day: "Sunday", time: "16:30" },
     ]
   },
+  {
+    name: "Tower of Nightmares",
+    region: "NA",
+    username: "LadyDestinee.5178",
+    guild: "WoM",
+    description: "Hosted by [WoM]!",
+    recurring: true,
+    lastVerified: "2026-08-31",
+    schedule: [
+      { day: "Monday", time: "01:30" },
+    ]
+  },
+  {
+    name: "World Tour Meta Train",
+    region: "NA",
+    username: "LadyDestinee.5178",
+    guild: "WoM",
+    description: "Hosted by [WoM]!",
+    recurring: true,
+    lastVerified: "2026-08-31",
+    schedule: [
+      { day: "Saturday", time: "23:45" },
+    ]
+  },
+  {
+    name: "Battle for Lion's Arch",
+    region: "NA",
+    username: "Empress Adorafae.9028",
+    guild: "DAWN",
+    description: "Hosted by [DAWN]!",
+    recurring: true,
+    lastVerified: "2026-08-31",
+    schedule: [
+      { day: "Wednesday", time: "01:00" },
+    ]
+  },
 ];

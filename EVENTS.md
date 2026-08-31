@@ -8,7 +8,7 @@
 > node tools/build-events-doc.js
 > ```
 
-Generated 2026-08-31 · **47 events** · 150 weekly time slots · 10 EU / 37 NA
+Generated 2026-08-31 · **50 events** · 153 weekly time slots · 10 EU / 40 NA
 
 **All times below are UTC**, exactly as stored in `events.js`. The site
 converts them to each visitor's local time in the browser.
@@ -87,11 +87,12 @@ lastVerified: "2026-08-31",
 | VoE Convergence CMs | `[VEIN]` | Literious.4205 | Mon 14:30 | 2026-08-31 (0d) |
 | Weekly Rifts | `[Hs]` | Platanium.4532 | Tue 17:30 | **never** |
 
-## NA events (37)
+## NA events (40)
 
 | Event | Guild | Host | Runs (UTC) | Last verified |
 | --- | --- | --- | --- | --- |
 | Battle for Lion's Arch | `[DCAP]` | Dark Raven.2160 | Mon 13:00 | **never** |
+| Battle for Lion's Arch | `[DAWN]` | Empress Adorafae.9028 | Wed 01:00 | 2026-08-31 (0d) |
 | Bava Nisos Farm & Meta | — | Sylphonete.7583 | Daily 23:20 | **never** |
 | Casino Blitz | `[MEAT]` | grace.3689 | Daily 00:00 | **never** |
 | Convergence CMs | `[WILT]` | calmerthanu.8375 | Wed, Thu 01:00 | **never** |
@@ -121,12 +122,14 @@ lastVerified: "2026-08-31",
 | SotO Convergence CMs | `[SAS]` | Mr Paul.8247 | Thu 20:00 | **never** |
 | SotO Convergence CMs | `[uLT]` | Ohnage.1638 | Sun 17:00 | **never** |
 | SotO Meta Train | `[LILY]` | LilyVelour.8395 | Wed 20:30 | **never** |
+| Tower of Nightmares | `[WoM]` | LadyDestinee.5178 | Mon 01:30 | 2026-08-31 (0d) |
 | Triple Trouble | `[WHAM]` | CasFamGaming.9843 | Daily 03:30 | **never** |
 | Triple Trouble | `[RNT]` | Dampevamp.6035 | Daily 07:30 | **never** |
 | Triple Trouble | `[DCAP]` | Dark Raven.2160 | Daily 12:00 | **never** |
 | Triple Trouble | `[NOPE]` | Wolfspear.7180 | Daily 19:30 | **never** |
 | Twisted Marionette | `[DCAP]` | Dark Raven.2160 | Thu 13:00 | **never** |
 | World Tour Meta Train | `[ZERO]` | darens.2547 | Thu 15:00 | **never** |
+| World Tour Meta Train | `[WoM]` | LadyDestinee.5178 | Sat 23:45 | 2026-08-31 (0d) |
 | World Tour Meta Train | `[FB]` | MarshAll.3528 | Mon 02:00 | **never** |
 
 ---
@@ -140,6 +143,7 @@ slots before it is added.
 
 - `00:00` **Casino Blitz** `[MEAT]` — grace.3689 (NA)
 - `00:00` **Core Meta Train** `[BUTR]` — Wolfspear.7180 (NA)
+- `01:30` **Tower of Nightmares** `[WoM]` — LadyDestinee.5178 (NA)
 - `02:00` **HoT Meta Train** `[LEG]` — Lamshire.3058 (NA)
 - `02:00` **World Tour Meta Train** `[FB]` — MarshAll.3528 (NA)
 - `02:30` **Dragon's End & Dragonstorm** `[Hs]` — sim.1203 (NA)
@@ -193,6 +197,7 @@ slots before it is added.
 
 - `00:00` **Casino Blitz** `[MEAT]` — grace.3689 (NA)
 - `00:00` **Core Meta Train** `[BUTR]` — Wolfspear.7180 (NA)
+- `01:00` **Battle for Lion's Arch** `[DAWN]` — Empress Adorafae.9028 (NA)
 - `01:00` **Convergence CMs** `[WILT]` — calmerthanu.8375 (NA)
 - `02:30` **Dragon's End & Dragonstorm** `[Hs]` — sim.1203 (NA)
 - `03:00` **HoT Meta Train** `[SHAZ]` — Shazilee.1098 (NA)
@@ -284,6 +289,7 @@ slots before it is added.
 - `20:30` **Convergence CMs** `[LILY]` — LilyVelour.8395 (NA)
 - `23:20` **Bava Nisos Farm & Meta** — Sylphonete.7583 (NA)
 - `23:30` **Silverwastes RIBA Farm** `[Sw]` — EverCursed.9084 (NA)
+- `23:45` **World Tour Meta Train** `[WoM]` — LadyDestinee.5178 (NA)
 
 ### Sunday
 
