@@ -5,6 +5,7 @@ const events = [
     username: "Lamshire.3058",
     description: "Hosted by [LEG]! Tangled Depths -> Auric Basin -> Dragon's Stand -> Auric Basin -> Verdant Brink",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Monday", time: "02:00" },
       { day: "Tuesday", time: "02:00" },
@@ -17,6 +18,7 @@ const events = [
     username: "Ruinandshotel.9278",
     description: "Hosted by [JMAW]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Tuesday", time: "01:30" },
       { day: "Thursday", time: "01:30" },
@@ -29,6 +31,7 @@ const events = [
     username: "SunMatrix.4168",
     description: "Hosted by Convergence Corp!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Tuesday", time: "01:00" },
       { day: "Saturday", time: "18:00" },
@@ -40,6 +43,7 @@ const events = [
     username: "LilyVelour.8395",
     description: "Hosted by [LILY]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Tuesday", time: "23:30" },
       { day: "Saturday", time: "20:30" },
@@ -51,6 +55,7 @@ const events = [
     username: "LilyVelour.8395",
     description: "Hosted by [LILY]! Skywatch > Amnytas > Nayos",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Wednesday", time: "20:30" },
     ]
@@ -61,6 +66,7 @@ const events = [
     username: "MarshAll.3528",
     description: "Hosted by [FB]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Sunday", time: "01:50" },
     ]
@@ -71,6 +77,7 @@ const events = [
     username: "MarshAll.3528",
     description: "Hosted by [FB]! Metas from every expansion",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Monday", time: "02:00" },
     ]
@@ -81,6 +88,7 @@ const events = [
     username: "MarshAll.3528",
     description: "Hosted by [FB]! Seitung Province -> Kaineng City -> Echovald Wilds -> Dragon's End",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Tuesday", time: "03:30" },
     ]
@@ -91,6 +99,7 @@ const events = [
     username: "MarshAll.3528",
     description: "Hosted by [FB]! Every season 4 meta",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Saturday", time: "01:45" },
     ]
@@ -101,6 +110,7 @@ const events = [
     username: "Wolfspear.7180",
     description: "Hosted by [BUTR]! Tequatl -> LLA -> Megadestroyer -> Triple Trouble",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Sunday", time: "00:00" },
       { day: "Monday", time: "00:00" },
@@ -117,6 +127,7 @@ const events = [
     username: "Maverick.3574",
     description: "Times subject to change! Weekends depend on availability! Message Maverick.3574 for details",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Monday", time: "21:00" },
       { day: "Tuesday", time: "21:00" },
@@ -131,6 +142,7 @@ const events = [
     username: "Shiv Deeviant.8072",
     description: "Hosted by [DBJC]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Monday", time: "22:00" },
       { day: "Tuesday", time: "22:00" },
@@ -145,6 +157,7 @@ const events = [
     username: "Mr Paul.8247",
     description: "Hosted by [SAS]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Monday", time: "22:00" },
     ]
@@ -155,6 +168,7 @@ const events = [
     username: "Mr Paul.8247",
     description: "Hosted by [SAS]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Thursday", time: "20:00" },
     ]
@@ -165,6 +179,7 @@ const events = [
     username: "Hempia.5981",
     description: "Hosted by [SIN]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Saturday", time: "18:00" },
     ]
@@ -175,6 +190,7 @@ const events = [
     username: "EverCursed.9084",
     description: "Hosted by [Sw]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Sunday", time: "23:30" },
       { day: "Monday", time: "23:30" },
@@ -191,6 +207,7 @@ const events = [
     username: "grace.3689",
     description: "Crystal Oasis pinata meta hosted by [MEAT]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Sunday", time: "00:00" },
       { day: "Monday", time: "00:00" },
@@ -207,6 +224,7 @@ const events = [
     username: "Sylphonete.7583",
     description: "Bava Nisos farm train before reset, then meta after reset",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Sunday", time: "23:20" },
       { day: "Monday", time: "23:20" },
@@ -223,6 +241,7 @@ const events = [
     username: "OverRealm.3542",
     description: "Hosted by [AO]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Saturday", time: "01:30" },
     ]
@@ -233,6 +252,7 @@ const events = [
     username: "Shazilee.1098",
     description: "Hosted by [SHAZ]! Dragon's Stand & Auric Basin",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Wednesday", time: "03:00" },
       { day: "Saturday", time: "03:00" },
@@ -245,6 +265,7 @@ const events = [
     username: "Wolfspear.7180",
     description: "Hosted by [NOPE]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Sunday", time: "19:30" },
       { day: "Monday", time: "19:30" },
@@ -261,6 +282,7 @@ const events = [
     username: "Dark Raven.2160",
     description: "Hosted by [DCAP]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Sunday", time: "12:00" },
       { day: "Monday", time: "12:00" },
@@ -277,6 +299,7 @@ const events = [
     username: "Dark Raven.2160",
     description: "Hosted by [DCAP]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Thursday", time: "13:00" },
     ]
@@ -287,6 +310,7 @@ const events = [
     username: "Dark Raven.2160",
     description: "Hosted by [DCAP]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Friday", time: "08:00" },
     ]
@@ -297,6 +321,7 @@ const events = [
     username: "Dark Raven.2160",
     description: "Hosted by [DCAP]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Monday", time: "13:00" },
     ]
@@ -307,6 +332,7 @@ const events = [
     username: "Dark Raven.2160",
     description: "Hosted by [DCAP]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Tuesday", time: "13:00" },
     ]
@@ -317,6 +343,7 @@ const events = [
     username: "darens.2547",
     description: "Hosted by [ZERO]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Monday", time: "14:00" },
     ]
@@ -327,6 +354,7 @@ const events = [
     username: "sim.1203",
     description: "Hosted by [Hs]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Sunday", time: "02:30" },
       { day: "Monday", time: "02:30" },
@@ -343,6 +371,7 @@ const events = [
     username: "darens.2547",
     description: "Hosted by [ZERO]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Thursday", time: "15:00" },
     ]
@@ -353,6 +382,7 @@ const events = [
     username: "Thy Weeping Willow.6851",
     description: "Hosted by [Wing]! Learn how to get the most out of your griffon!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Sunday", time: "19:30" },
     ]
@@ -363,6 +393,7 @@ const events = [
     username: "Thy Weeping Willow.6851",
     description: "Hosted by [Wing]! Learn how to get the most out of your griffon!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Monday", time: "18:30" },
     ]
@@ -373,6 +404,7 @@ const events = [
     username: "CasFamGaming.9843",
     description: "Hosted by [WHAM]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Sunday", time: "03:30" },
       { day: "Monday", time: "03:30" },
@@ -389,6 +421,7 @@ const events = [
     username: "Dampevamp.6035",
     description: "Hosted by [RNT]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Sunday", time: "07:30" },
       { day: "Monday", time: "07:30" },
@@ -405,6 +438,7 @@ const events = [
     username: "calmerthanu.8375",
     description: "Hosted by [WILT]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Wednesday", time: "01:00" },
       { day: "Thursday", time: "01:00" },
@@ -416,6 +450,7 @@ const events = [
     username: "SoBread.5628",
     description: "Hosted by [COFE]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Wednesday", time: "05:00" },
       { day: "Friday", time: "05:00" },
@@ -427,6 +462,7 @@ const events = [
     username: "Ohnage.1638",
     description: "Hosted by [uLT]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Saturday", time: "20:00" },
     ]
@@ -437,6 +473,7 @@ const events = [
     username: "Ohnage.1638",
     description: "Hosted by [uLT]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Sunday", time: "17:00" },
     ]
@@ -447,6 +484,7 @@ const events = [
     username: "Thy Weeping Willow.6851",
     description: "Hosted by [Wing]! Learn how to get the most out of your griffon!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Monday", time: "18:30" },
     ]
@@ -457,6 +495,7 @@ const events = [
     username: "Tanylyla.6397",
     description: "Hosted by the EU TT Discord server: https://discord.com/invite/6YG5CC6",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Sunday", time: "19:15" },
       { day: "Tuesday", time: "19:15" },
@@ -472,6 +511,7 @@ const events = [
     username: "Oregon.9387",
     description: "Seitung Province -> Kaineng City -> Echovald Forest -> Dragon's End",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Sunday", time: "08:00" },
       { day: "Monday", time: "08:00" },
@@ -488,6 +528,7 @@ const events = [
     username: "Platanium.4532",
     description: "Hosted by [Hs]!",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Tuesday", time: "17:30" },
     ]
@@ -498,6 +539,7 @@ const events = [
     username: "Platanium.4532",
     description: "Hosted by [Hs]! Seitung Province -> Kaineng City -> Echovald Forest -> Dragon's End -> Echovald Forest -> Gyala Delve",
     recurring: true,
+    lastVerified: null,
     schedule: [
       { day: "Sunday", time: "17:30" },
     ]
