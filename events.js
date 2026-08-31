@@ -586,4 +586,84 @@ const events = [
       { day: "Sunday", time: "17:30" },
     ]
   },
+  {
+    name: "Amalgamated Meta Train",
+    region: "EU",
+    username: "Literious.4205",
+    guild: "VEIN",
+    description: "Hosted by [VEIN]! AB > Drakkar > Junundu > Palawadan > Vabbi > VBMatri > Effigy > LLA > Chak > Doomlore > Oil Floes > DBS > EoD Train. The route changes depending on commanders and requests.",
+    recurring: true,
+    lastVerified: "2026-08-31",
+    schedule: [
+      { day: "Monday", time: "08:45" },
+      { day: "Wednesday", time: "08:45" },
+      { day: "Friday", time: "08:45" },
+    ]
+  },
+  {
+    name: "EoD Meta Train",
+    region: "EU",
+    username: "Literious.4205",
+    guild: "VEIN",
+    description: "Hosted by [VEIN]! Aetherblade Assault > Kaineng Blackout > Gang War > Soo Won > Aspenwood. Runs into the daily scheduled Gyala Delve.",
+    recurring: true,
+    lastVerified: "2026-08-31",
+    schedule: [
+      { day: "Monday", time: "11:30" },
+      { day: "Tuesday", time: "11:30" },
+      { day: "Wednesday", time: "11:30" },
+      { day: "Thursday", time: "11:30" },
+      { day: "Friday", time: "11:30" },
+      { day: "Saturday", time: "11:30" },
+      { day: "Sunday", time: "11:30" },
+    ]
+  },
+  {
+    name: "Gyala Delve Meta",
+    region: "EU",
+    username: "Literious.4205",
+    guild: "VEIN",
+    description: "Hosted by [VEIN]! Part 1 + Part 2. Bring Filters, Protocols, Keys and Lures, plus Shrimplings (optional).",
+    recurring: true,
+    lastVerified: "2026-08-31",
+    schedule: [
+      { day: "Monday", time: "14:15" },
+      { day: "Tuesday", time: "14:15" },
+      { day: "Wednesday", time: "14:15" },
+      { day: "Thursday", time: "14:15" },
+      { day: "Friday", time: "14:15" },
+      { day: "Saturday", time: "14:15" },
+      { day: "Sunday", time: "14:15" },
+    ]
+  },
+  {
+    name: "VoE Convergence CMs",
+    region: "EU",
+    username: "Literious.4205",
+    guild: "VEIN",
+    description: "Hosted by [VEIN]! All bosses. Voice and performance expected.",
+    recurring: true,
+    lastVerified: "2026-08-31",
+    schedule: [
+      { day: "Monday", time: "14:30" },
+    ]
+  },
+  {
+    name: "Drizzlewood Coast Meta",
+    region: "EU",
+    username: "Literious.4205",
+    guild: "VEIN",
+    description: "Hosted by [VEIN]! South + North. Flex schedule - usually daily somewhere between dinner and midnight, and sometimes during the day. Bring Keys (optional).",
+    recurring: true,
+    lastVerified: "2026-08-31",
+    schedule: [
+      { day: "Monday", time: "16:30" },
+      { day: "Tuesday", time: "16:30" },
+      { day: "Wednesday", time: "16:30" },
+      { day: "Thursday", time: "16:30" },
+      { day: "Friday", time: "16:30" },
+      { day: "Saturday", time: "16:30" },
+      { day: "Sunday", time: "16:30" },
+    ]
+  },
 ];

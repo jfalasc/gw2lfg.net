@@ -8,7 +8,7 @@
 > node tools/build-events-doc.js
 > ```
 
-Generated 2026-08-31 · **42 events** · 125 weekly time slots · 5 EU / 37 NA
+Generated 2026-08-31 · **47 events** · 150 weekly time slots · 10 EU / 37 NA
 
 **All times below are UTC**, exactly as stored in `events.js`. The site
 converts them to each visitor's local time in the browser.
@@ -72,14 +72,19 @@ lastVerified: "2026-08-31",
 
 ---
 
-## EU events (5)
+## EU events (10)
 
 | Event | Guild | Host | Runs (UTC) | Last verified |
 | --- | --- | --- | --- | --- |
+| Amalgamated Meta Train | `[VEIN]` | Literious.4205 | Mon, Wed, Fri 08:45 | 2026-08-31 (0d) |
+| Drizzlewood Coast Meta | `[VEIN]` | Literious.4205 | Daily 16:30 | 2026-08-31 (0d) |
+| EoD Meta Train | `[VEIN]` | Literious.4205 | Daily 11:30 | 2026-08-31 (0d) |
 | EoD Meta Train | — | Oregon.9387 | Daily 08:00 | **never** |
 | EoD Meta Train | `[Hs]` | Platanium.4532 | Sun 17:30 | **never** |
 | Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 | **never** |
+| Gyala Delve Meta | `[VEIN]` | Literious.4205 | Daily 14:15 | 2026-08-31 (0d) |
 | Triple Trouble | — | Tanylyla.6397 | Tue, Wed, Thu, Fri, Sat, Sun 19:15 | **never** |
+| VoE Convergence CMs | `[VEIN]` | Literious.4205 | Mon 14:30 | 2026-08-31 (0d) |
 | Weekly Rifts | `[Hs]` | Platanium.4532 | Tue 17:30 | **never** |
 
 ## NA events (37)
@@ -141,9 +146,14 @@ slots before it is added.
 - `03:30` **Triple Trouble** `[WHAM]` — CasFamGaming.9843 (NA)
 - `07:30` **Triple Trouble** `[RNT]` — Dampevamp.6035 (NA)
 - `08:00` **EoD Meta Train** — Oregon.9387 (EU)
+- `08:45` **Amalgamated Meta Train** `[VEIN]` — Literious.4205 (EU)
+- `11:30` **EoD Meta Train** `[VEIN]` — Literious.4205 (EU)
 - `12:00` **Triple Trouble** `[DCAP]` — Dark Raven.2160 (NA)
 - `13:00` **Battle for Lion's Arch** `[DCAP]` — Dark Raven.2160 (NA)
 - `14:00` **SotO & JW Convergence CMs** `[ZERO]` — darens.2547 (NA)
+- `14:15` **Gyala Delve Meta** `[VEIN]` — Literious.4205 (EU)
+- `14:30` **VoE Convergence CMs** `[VEIN]` — Literious.4205 (EU)
+- `16:30` **Drizzlewood Coast Meta** `[VEIN]` — Literious.4205 (EU)
 - `18:30` **Griffon Flight Training** `[Wing]` — Thy Weeping Willow.6851 (NA)
 - `18:30` **Griffon Flight Training** `[Wing]` — Thy Weeping Willow.6851 (EU)
 - `19:30` **Triple Trouble** `[NOPE]` — Wolfspear.7180 (NA)
@@ -165,8 +175,11 @@ slots before it is added.
 - `03:30` **Triple Trouble** `[WHAM]` — CasFamGaming.9843 (NA)
 - `07:30` **Triple Trouble** `[RNT]` — Dampevamp.6035 (NA)
 - `08:00` **EoD Meta Train** — Oregon.9387 (EU)
+- `11:30` **EoD Meta Train** `[VEIN]` — Literious.4205 (EU)
 - `12:00` **Triple Trouble** `[DCAP]` — Dark Raven.2160 (NA)
 - `13:00` **Dragonstorm & Dragon's Stand** `[DCAP]` — Dark Raven.2160 (NA)
+- `14:15` **Gyala Delve Meta** `[VEIN]` — Literious.4205 (EU)
+- `16:30` **Drizzlewood Coast Meta** `[VEIN]` — Literious.4205 (EU)
 - `17:30` **Weekly Rifts** `[Hs]` — Platanium.4532 (EU)
 - `19:15` **Triple Trouble** — Tanylyla.6397 (EU)
 - `19:30` **Triple Trouble** `[NOPE]` — Wolfspear.7180 (NA)
@@ -187,7 +200,11 @@ slots before it is added.
 - `05:00` **Convergence CMs** `[COFE]` — SoBread.5628 (NA)
 - `07:30` **Triple Trouble** `[RNT]` — Dampevamp.6035 (NA)
 - `08:00` **EoD Meta Train** — Oregon.9387 (EU)
+- `08:45` **Amalgamated Meta Train** `[VEIN]` — Literious.4205 (EU)
+- `11:30` **EoD Meta Train** `[VEIN]` — Literious.4205 (EU)
 - `12:00` **Triple Trouble** `[DCAP]` — Dark Raven.2160 (NA)
+- `14:15` **Gyala Delve Meta** `[VEIN]` — Literious.4205 (EU)
+- `16:30` **Drizzlewood Coast Meta** `[VEIN]` — Literious.4205 (EU)
 - `19:15` **Triple Trouble** — Tanylyla.6397 (EU)
 - `19:30` **Triple Trouble** `[NOPE]` — Wolfspear.7180 (NA)
 - `20:30` **SotO Meta Train** `[LILY]` — LilyVelour.8395 (NA)
@@ -207,9 +224,12 @@ slots before it is added.
 - `03:30` **Triple Trouble** `[WHAM]` — CasFamGaming.9843 (NA)
 - `07:30` **Triple Trouble** `[RNT]` — Dampevamp.6035 (NA)
 - `08:00` **EoD Meta Train** — Oregon.9387 (EU)
+- `11:30` **EoD Meta Train** `[VEIN]` — Literious.4205 (EU)
 - `12:00` **Triple Trouble** `[DCAP]` — Dark Raven.2160 (NA)
 - `13:00` **Twisted Marionette** `[DCAP]` — Dark Raven.2160 (NA)
+- `14:15` **Gyala Delve Meta** `[VEIN]` — Literious.4205 (EU)
 - `15:00` **World Tour Meta Train** `[ZERO]` — darens.2547 (NA)
+- `16:30` **Drizzlewood Coast Meta** `[VEIN]` — Literious.4205 (EU)
 - `19:15` **Triple Trouble** — Tanylyla.6397 (EU)
 - `19:30` **Triple Trouble** `[NOPE]` — Wolfspear.7180 (NA)
 - `20:00` **SotO Convergence CMs** `[SAS]` — Mr Paul.8247 (NA)
@@ -228,7 +248,11 @@ slots before it is added.
 - `07:30` **Triple Trouble** `[RNT]` — Dampevamp.6035 (NA)
 - `08:00` **EoD Meta Train** — Oregon.9387 (EU)
 - `08:00` **Gyala Delve** `[DCAP]` — Dark Raven.2160 (NA)
+- `08:45` **Amalgamated Meta Train** `[VEIN]` — Literious.4205 (EU)
+- `11:30` **EoD Meta Train** `[VEIN]` — Literious.4205 (EU)
 - `12:00` **Triple Trouble** `[DCAP]` — Dark Raven.2160 (NA)
+- `14:15` **Gyala Delve Meta** `[VEIN]` — Literious.4205 (EU)
+- `16:30` **Drizzlewood Coast Meta** `[VEIN]` — Literious.4205 (EU)
 - `19:15` **Triple Trouble** — Tanylyla.6397 (EU)
 - `19:30` **Triple Trouble** `[NOPE]` — Wolfspear.7180 (NA)
 - `21:00` **Dragonfall Farm Train** — Maverick.3574 (NA)
@@ -248,7 +272,10 @@ slots before it is added.
 - `03:30` **Triple Trouble** `[WHAM]` — CasFamGaming.9843 (NA)
 - `07:30` **Triple Trouble** `[RNT]` — Dampevamp.6035 (NA)
 - `08:00` **EoD Meta Train** — Oregon.9387 (EU)
+- `11:30` **EoD Meta Train** `[VEIN]` — Literious.4205 (EU)
 - `12:00` **Triple Trouble** `[DCAP]` — Dark Raven.2160 (NA)
+- `14:15` **Gyala Delve Meta** `[VEIN]` — Literious.4205 (EU)
+- `16:30` **Drizzlewood Coast Meta** `[VEIN]` — Literious.4205 (EU)
 - `18:00` **Convergence CMs** — SunMatrix.4168 (NA)
 - `18:00` **Hero Point Train** `[SIN]` — Hempia.5981 (NA)
 - `19:15` **Triple Trouble** — Tanylyla.6397 (EU)
@@ -268,7 +295,10 @@ slots before it is added.
 - `03:30` **Triple Trouble** `[WHAM]` — CasFamGaming.9843 (NA)
 - `07:30` **Triple Trouble** `[RNT]` — Dampevamp.6035 (NA)
 - `08:00` **EoD Meta Train** — Oregon.9387 (EU)
+- `11:30` **EoD Meta Train** `[VEIN]` — Literious.4205 (EU)
 - `12:00` **Triple Trouble** `[DCAP]` — Dark Raven.2160 (NA)
+- `14:15` **Gyala Delve Meta** `[VEIN]` — Literious.4205 (EU)
+- `16:30` **Drizzlewood Coast Meta** `[VEIN]` — Literious.4205 (EU)
 - `17:00` **SotO Convergence CMs** `[uLT]` — Ohnage.1638 (NA)
 - `17:30` **EoD Meta Train** `[Hs]` — Platanium.4532 (EU)
 - `19:15` **Triple Trouble** — Tanylyla.6397 (EU)
