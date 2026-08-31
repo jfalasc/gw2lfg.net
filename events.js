@@ -1,3 +1,17 @@
+/*
+ * Event data for gw2lfg.net — the single source of truth.
+ *
+ * ALL TIMES AND DAYS BELOW ARE UTC. The site converts them to each visitor's
+ * local time in the browser. An event at { day: "Saturday", time: "02:00" }
+ * therefore shows on FRIDAY evening in North America, which is correct.
+ *
+ * lastVerified is the date the event was last confirmed to still be running,
+ * as "YYYY-MM-DD", or null if it never has been. Anything null or older than
+ * 90 days is listed under "Needs checking" in EVENTS.md.
+ *
+ * After editing this file, rebuild the register:  node tools/build-events-doc.js
+ * (a pre-commit hook does this for you when events.js is part of a commit.)
+ */
 const events = [
   {
     name: "HoT Meta Train",
