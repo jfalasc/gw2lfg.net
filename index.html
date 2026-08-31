@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GW2 LFG</title>
-    <link rel="stylesheet" href="style.css?v=9" />
+    <link rel="stylesheet" href="style.css?v=19" />
     <link rel="icon" type="image/png" href="Web Art/favicon.ico" />
 </head>
 
@@ -102,6 +102,24 @@
 
                                     <span id="scheduleSelectedDayCount">0 events</span>
                                 </div>
+                                <div class="schedule-now-bar" id="scheduleNowBar" hidden>
+                                    <div class="schedule-now-marker">
+                                        <span class="schedule-now-pulse" aria-hidden="true"></span>
+                                        <span class="schedule-now-label">Now</span>
+                                        <span class="schedule-now-time" id="scheduleNowTime">--</span>
+                                    </div>
+
+                                    <div class="schedule-now-slot">
+                                        <span class="schedule-now-slot-label">Last started</span>
+                                        <span class="schedule-now-slot-value" id="scheduleNowLast">--</span>
+                                    </div>
+
+                                    <div class="schedule-now-slot schedule-now-slot-next">
+                                        <span class="schedule-now-slot-label">Next up</span>
+                                        <span class="schedule-now-slot-value" id="scheduleNowNext">--</span>
+                                    </div>
+                                </div>
+
                                 <div class="schedule-events-viewport" id="scheduleEventsViewport">
                                     <div class="schedule-events-track" id="scheduleEventsTrack"></div>
                                 </div>
@@ -164,8 +182,8 @@
         </div>
     </div>
 
-    <script src="events.js?v=10"></script>
-    <script src="script.js?v=10"></script>
+    <script src="events.js?v=19"></script>
+    <script src="script.js?v=19"></script>
 </body>
 
 </html>

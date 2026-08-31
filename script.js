@@ -22,9 +22,34 @@ const utcDayNames = [
   "Saturday"
 ];
 
+/* Shared by the day buttons and by the schedule panel, which wears the
+   selected day's class so its colour flows down to everything inside. */
+const scheduleDayClassMap = {
+  Monday: "day-mon",
+  Tuesday: "day-tues",
+  Wednesday: "day-wed",
+  Thursday: "day-thurs",
+  Friday: "day-fri",
+  Saturday: "day-sat",
+  Sunday: "day-sun"
+};
+
+const scheduleDayClassNames = Object.values(scheduleDayClassMap);
+
+/* Parts of the day, matched to the colours the timeline bar runs through. */
+const eventTimeBands = [
+  { className: "time-night", startHour: 0 },
+  { className: "time-morning", startHour: 6 },
+  { className: "time-afternoon", startHour: 12 },
+  { className: "time-evening", startHour: 18 }
+];
+
 const timelineTickOffsets = [0, 4, 8, 12, 16, 20, 24];
 const timelineWindowHours = 24;
 const timelineRefreshMilliseconds = 60 * 1000;
+
+/* Matches the stylesheet breakpoint where tooltips anchor to the viewport. */
+const timelineAnchoredTooltipMaxWidth = 700;
 
 const eventRegions = ["NA", "EU"];
 const selectedRegionStorageKey = "gw2LfgSelectedRegion";
@@ -37,6 +62,10 @@ let selectedTimeDisplayMode = getInitialTimeDisplayMode();
 let selectedScheduleDay = getCurrentDisplayDayName();
 let scheduleFollowsCurrentDay = true;
 let lastScheduleDialogTrigger = null;
+
+/* Which day the "today" marker was last drawn against, so a page left open
+   overnight refreshes the marker even while another day is pinned. */
+let lastMarkedCurrentDayName = null;
 
 /* ---------- Shared date and time helpers ---------- */
 
@@ -60,6 +89,30 @@ function getDisplayDayIndex(date) {
   return selectedTimeDisplayMode === "utc"
     ? date.getUTCDay()
     : date.getDay();
+}
+
+function getDisplayHours(date) {
+  if (!isValidDate(date)) {
+    return 0;
+  }
+
+  return selectedTimeDisplayMode === "utc"
+    ? date.getUTCHours()
+    : date.getHours();
+}
+
+function getEventTimeBandClass(date) {
+  const hours = getDisplayHours(date);
+
+  let matched = eventTimeBands[0];
+
+  eventTimeBands.forEach((band) => {
+    if (hours >= band.startHour) {
+      matched = band;
+    }
+  });
+
+  return matched.className;
 }
 
 function getCurrentDisplayDayName(referenceDate = new Date()) {
@@ -759,7 +812,7 @@ function initializeScheduleEventDetails() {
   window.addEventListener("scroll", repositionOpenScheduleEventDetailsPanel, true);
 }
 
-function renderScheduleDayButtons() {
+function renderScheduleDayButtons(referenceDate = new Date()) {
   const container = document.getElementById("scheduleDayButtons");
 
   if (!container) {
@@ -768,34 +821,42 @@ function renderScheduleDayButtons() {
 
   container.replaceChildren();
 
-  const dayClassMap = {
-    Monday: "day-mon",
-    Tuesday: "day-tues",
-    Wednesday: "day-wed",
-    Thursday: "day-thurs",
-    Friday: "day-fri",
-    Saturday: "day-sat",
-    Sunday: "day-sun"
-  };
+  const currentDayName = getCurrentDisplayDayName(referenceDate);
+  lastMarkedCurrentDayName = currentDayName;
 
   scheduleDays.forEach((day) => {
     const button = document.createElement("button");
-    const screenReaderText = document.createElement("span");
+    const accentDot = document.createElement("span");
+    const fullLabel = document.createElement("span");
+    const shortLabel = document.createElement("span");
+    const isActiveDay = day === selectedScheduleDay;
+    const isCurrentDay = day === currentDayName;
 
     button.type = "button";
     button.className = "schedule-day-button";
-    button.classList.add(dayClassMap[day]);
+    button.classList.add(scheduleDayClassMap[day]);
+    button.classList.toggle("is-today", isCurrentDay);
     button.setAttribute(
       "aria-label",
-      `Show ${day} events in ${getTimeDisplayModeLabel()}`
+      `Show ${day} events in ${getTimeDisplayModeLabel()}` +
+      (isCurrentDay ? " (today)" : "")
     );
+    button.setAttribute("aria-pressed", String(isActiveDay));
 
-    screenReaderText.className = "sr-only";
-    screenReaderText.textContent = day;
+    accentDot.className = "schedule-day-button-dot";
+    accentDot.setAttribute("aria-hidden", "true");
 
-    button.appendChild(screenReaderText);
+    // Both labels are decorative: the button's aria-label is what gets
+    // announced, so CSS is free to swap them by viewport width.
+    fullLabel.className = "schedule-day-button-full";
+    fullLabel.textContent = day;
 
-    if (day === selectedScheduleDay) {
+    shortLabel.className = "schedule-day-button-short";
+    shortLabel.textContent = day.slice(0, 3);
+
+    button.append(accentDot, fullLabel, shortLabel);
+
+    if (isActiveDay) {
       button.classList.add("active");
     }
 
@@ -860,6 +921,9 @@ function renderScheduleEvents(referenceDate = new Date()) {
     const formattedTime = formatDisplayTime(event.startsAt, true);
 
     card.className = "schedule-event-card";
+    card.classList.add(getEventTimeBandClass(event.startsAt));
+    card.dataset.startsAt = String(event.startsAt.getTime());
+    card.dataset.eventName = event.name;
     card.setAttribute("tabindex", "0");
     card.setAttribute("role", "button");
     card.setAttribute("aria-pressed", "false");
@@ -896,13 +960,214 @@ function renderScheduleEvents(referenceDate = new Date()) {
   });
 }
 
+function applyScheduleDayAccent() {
+  const frame = document.querySelector(".schedule-frame");
+
+  if (!frame) {
+    return;
+  }
+
+  frame.classList.remove(...scheduleDayClassNames);
+
+  const dayClass = scheduleDayClassMap[selectedScheduleDay];
+
+  if (dayClass) {
+    frame.classList.add(dayClass);
+  }
+}
+
+/* ---------- "You are here" state for the day in view ---------- */
+
+const scheduleNowStateClasses = ["is-past", "is-last-started", "is-next"];
+
+function formatRelativeDuration(milliseconds) {
+  const totalMinutes = Math.round(milliseconds / 60000);
+
+  if (totalMinutes < 1) {
+    return "less than a minute";
+  }
+
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+
+  if (hours === 0) {
+    return `${minutes} min`;
+  }
+
+  if (minutes === 0) {
+    return `${hours} hr`;
+  }
+
+  return `${hours} hr ${minutes} min`;
+}
+
+function isViewingCurrentDisplayDay(referenceDate = new Date()) {
+  return selectedScheduleDay === getCurrentDisplayDayName(referenceDate);
+}
+
+/* Names one group of events that all start on the same minute. */
+function describeEventGroup(cards) {
+  const names = cards.map((card) => card.dataset.eventName || "Untitled event");
+  const uniqueNames = Array.from(new Set(names));
+
+  if (uniqueNames.length === 0) {
+    return "";
+  }
+
+  if (uniqueNames.length === 1) {
+    return names.length === 1
+      ? uniqueNames[0]
+      : `${uniqueNames[0]} ×${names.length}`;
+  }
+
+  // Joined with "+" rather than "&", because several event names contain an
+  // ampersand of their own and would read as two events.
+  if (uniqueNames.length === 2) {
+    return `${uniqueNames[0]} + ${uniqueNames[1]}`;
+  }
+
+  return `${uniqueNames[0]} + ${uniqueNames.length - 1} more`;
+}
+
+/* Full list for the tooltip, so nothing is lost when the label is clipped. */
+function listEventGroup(cards) {
+  return cards
+    .map((card) => card.dataset.eventName || "Untitled event")
+    .join(", ");
+}
+
+function setScheduleNowSlot(element, cards, buildLabel, emptyText) {
+  if (!element) {
+    return;
+  }
+
+  if (cards.length === 0) {
+    element.textContent = emptyText;
+    element.removeAttribute("title");
+    return;
+  }
+
+  element.textContent = buildLabel(describeEventGroup(cards));
+  element.title = listEventGroup(cards);
+}
+
+/* Repaints the now bar and the per-card states without rebuilding any cards,
+   so this is safe to run every second while a popover is open. */
+function updateScheduleNowState(referenceDate = new Date()) {
+  const nowBar = document.getElementById("scheduleNowBar");
+  const cards = Array.from(
+    document.querySelectorAll(".schedule-event-card")
+  );
+
+  if (!isViewingCurrentDisplayDay(referenceDate)) {
+    if (nowBar) {
+      nowBar.hidden = true;
+    }
+
+    cards.forEach((card) => {
+      card.classList.remove(...scheduleNowStateClasses);
+    });
+
+    return;
+  }
+
+  const nowMilliseconds = referenceDate.getTime();
+
+  // Events frequently share a start time, so track the times themselves and
+  // treat everything on the same minute as one group.
+  let lastStartedTime = null;
+  let nextTime = null;
+
+  cards.forEach((card) => {
+    const startsAtMilliseconds = Number(card.dataset.startsAt);
+
+    if (!Number.isFinite(startsAtMilliseconds)) {
+      return;
+    }
+
+    if (startsAtMilliseconds <= nowMilliseconds) {
+      if (lastStartedTime === null || startsAtMilliseconds > lastStartedTime) {
+        lastStartedTime = startsAtMilliseconds;
+      }
+    } else if (nextTime === null || startsAtMilliseconds < nextTime) {
+      nextTime = startsAtMilliseconds;
+    }
+  });
+
+  function cardsStartingAt(startTime) {
+    if (startTime === null) {
+      return [];
+    }
+
+    return cards.filter(
+      (card) => Number(card.dataset.startsAt) === startTime
+    );
+  }
+
+  const lastStartedCards = cardsStartingAt(lastStartedTime);
+  const nextCards = cardsStartingAt(nextTime);
+
+  cards.forEach((card) => {
+    const startsAtMilliseconds = Number(card.dataset.startsAt);
+    const hasStarted =
+      Number.isFinite(startsAtMilliseconds) &&
+      startsAtMilliseconds <= nowMilliseconds;
+
+    card.classList.toggle(
+      "is-past",
+      hasStarted && startsAtMilliseconds !== lastStartedTime
+    );
+    card.classList.toggle(
+      "is-last-started",
+      hasStarted && startsAtMilliseconds === lastStartedTime
+    );
+    card.classList.toggle(
+      "is-next",
+      Number.isFinite(startsAtMilliseconds) &&
+      startsAtMilliseconds === nextTime
+    );
+  });
+
+  if (!nowBar) {
+    return;
+  }
+
+  nowBar.hidden = false;
+
+  const nowTime = document.getElementById("scheduleNowTime");
+  const lastValue = document.getElementById("scheduleNowLast");
+  const nextValue = document.getElementById("scheduleNowNext");
+
+  if (nowTime) {
+    nowTime.textContent = formatDisplayTime(referenceDate, true);
+  }
+
+  setScheduleNowSlot(
+    lastValue,
+    lastStartedCards,
+    (label) =>
+      `${label} · ${formatRelativeDuration(nowMilliseconds - lastStartedTime)} ago`,
+    "Nothing yet today"
+  );
+
+  setScheduleNowSlot(
+    nextValue,
+    nextCards,
+    (label) =>
+      `${label} · in ${formatRelativeDuration(nextTime - nowMilliseconds)}`,
+    "Nothing else today"
+  );
+}
+
 function renderSchedule(referenceDate = new Date()) {
   if (scheduleFollowsCurrentDay) {
     selectedScheduleDay = getCurrentDisplayDayName(referenceDate);
   }
 
-  renderScheduleDayButtons();
+  applyScheduleDayAccent();
+  renderScheduleDayButtons(referenceDate);
   renderScheduleEvents(referenceDate);
+  updateScheduleNowState(referenceDate);
 }
 
 /* ---------- Timeline ---------- */
@@ -1053,6 +1318,106 @@ function createTimelineTooltip(group) {
   return tooltip;
 }
 
+/* Timeline tooltips are revealed by hover on a mouse, but touch devices have
+   no hover and browsers withhold :focus-visible from taps, so pins also toggle
+   an explicit open state. The key survives the 60s timeline re-render. */
+let openTimelinePinKey = null;
+
+function positionOpenTimelineTooltip() {
+  const pin = document.querySelector(".timeline-pin.is-open");
+
+  if (!pin) {
+    return;
+  }
+
+  const tooltip = pin.querySelector(".timeline-pin-tooltip");
+
+  if (!tooltip) {
+    return;
+  }
+
+  if (window.innerWidth > timelineAnchoredTooltipMaxWidth) {
+    tooltip.classList.remove("is-anchored");
+    tooltip.style.left = "";
+    tooltip.style.width = "";
+    tooltip.style.top = "";
+    tooltip.style.bottom = "";
+    return;
+  }
+
+  const card = pin.closest(".timeline-card");
+
+  if (!card) {
+    return;
+  }
+
+  tooltip.classList.add("is-anchored");
+
+  const edgePadding = 10;
+  const gap = 14;
+  const cardRect = card.getBoundingClientRect();
+  const pinRect = pin.getBoundingClientRect();
+
+  // left resolves against the pin, which is the tooltip's containing block.
+  tooltip.style.width = `${Math.max(0, cardRect.width - edgePadding * 2)}px`;
+  tooltip.style.left = `${cardRect.left + edgePadding - pinRect.left}px`;
+
+  // Flip below the pin when the tooltip would run off the top of the screen.
+  tooltip.style.top = "";
+  tooltip.style.bottom = "";
+
+  if (pinRect.top < tooltip.offsetHeight + gap + edgePadding) {
+    tooltip.style.bottom = "auto";
+    tooltip.style.top = `calc(100% + ${gap}px)`;
+  }
+}
+
+function closeTimelineTooltips() {
+  document.querySelectorAll(".timeline-pin.is-open").forEach((pin) => {
+    pin.classList.remove("is-open");
+
+    const tooltip = pin.querySelector(".timeline-pin-tooltip");
+
+    if (tooltip) {
+      tooltip.classList.remove("is-anchored");
+      tooltip.style.top = "";
+    }
+  });
+
+  openTimelinePinKey = null;
+}
+
+function toggleTimelineTooltip(pin) {
+  const wasOpen = pin.classList.contains("is-open");
+
+  closeTimelineTooltips();
+
+  if (wasOpen) {
+    return;
+  }
+
+  pin.classList.add("is-open");
+  openTimelinePinKey = pin.dataset.groupKey || null;
+  positionOpenTimelineTooltip();
+}
+
+function initializeTimelineInteractions() {
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".timeline-pin")) {
+      closeTimelineTooltips();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeTimelineTooltips();
+    }
+  });
+
+  window.addEventListener("resize", positionOpenTimelineTooltip);
+  window.addEventListener("scroll", positionOpenTimelineTooltip, true);
+}
+
 function renderTimelinePins(referenceDate = new Date()) {
   const pinsContainer = document.getElementById("timelinePins");
   const emptyState = document.getElementById("timelineEmptyState");
@@ -1109,6 +1474,18 @@ function renderTimelinePins(referenceDate = new Date()) {
       `${formatDisplayDateTime(group.startsAt)}`
     );
 
+    pin.dataset.groupKey = String(group.startsAt.getTime());
+
+    pin.addEventListener("click", (clickEvent) => {
+      clickEvent.stopPropagation();
+      toggleTimelineTooltip(pin);
+    });
+
+    // Re-apply the open state after a refresh rebuilt the pins.
+    if (openTimelinePinKey && pin.dataset.groupKey === openTimelinePinKey) {
+      pin.classList.add("is-open");
+    }
+
     dot.className = "timeline-pin-dot";
     pin.appendChild(dot);
 
@@ -1122,6 +1499,13 @@ function renderTimelinePins(referenceDate = new Date()) {
     pin.appendChild(tooltip);
     pinsContainer.appendChild(pin);
   });
+
+  // The open group may have dropped out of the 24 hour window entirely.
+  if (openTimelinePinKey && !pinsContainer.querySelector(".timeline-pin.is-open")) {
+    openTimelinePinKey = null;
+  }
+
+  positionOpenTimelineTooltip();
 }
 
 function renderTimeline(referenceDate = new Date()) {
@@ -1341,19 +1725,29 @@ function updateDisplayClock() {
     utcOffsetValue.textContent = formatUtcOffset(now);
   }
 
-  if (
-    scheduleFollowsCurrentDay &&
-    selectedScheduleDay !== getCurrentDisplayDayName(now)
-  ) {
-    selectedScheduleDay = getCurrentDisplayDayName(now);
+  const currentDayName = getCurrentDisplayDayName(now);
+
+  if (scheduleFollowsCurrentDay && selectedScheduleDay !== currentDayName) {
+    selectedScheduleDay = currentDayName;
     renderSchedule(now);
+    return;
   }
+
+  if (currentDayName !== lastMarkedCurrentDayName) {
+    // Midnight rolled over while another day was pinned, so move the marker.
+    renderScheduleDayButtons(now);
+  }
+
+  // Keeps the countdown live without rebuilding cards, which would close
+  // an open popover and reset the scroll position.
+  updateScheduleNowState(now);
 }
 
 function initializePage() {
   initializeRegionToggle();
   initializeTimeDisplayToggle();
   initializeScheduleEventDetails();
+  initializeTimelineInteractions();
   renderSchedule();
   renderTimeline();
   loadDiscordFeedsFromJson();

@@ -514,13 +514,15 @@ body {
 }
 
 .timeline-pin:hover,
-.timeline-pin:focus-visible {
+.timeline-pin:focus-visible,
+.timeline-pin.is-open {
   z-index: 20;
   outline: none;
 }
 
 .timeline-pin:hover .timeline-pin-dot,
-.timeline-pin:focus-visible .timeline-pin-dot {
+.timeline-pin:focus-visible .timeline-pin-dot,
+.timeline-pin.is-open .timeline-pin-dot {
   transform: scale(1.18);
   background: #8fd3ff;
   box-shadow:
@@ -563,7 +565,8 @@ body {
 }
 
 .timeline-pin:hover .timeline-pin-tooltip,
-.timeline-pin:focus-visible .timeline-pin-tooltip {
+.timeline-pin:focus-visible .timeline-pin-tooltip,
+.timeline-pin.is-open .timeline-pin-tooltip {
   opacity: 1;
   transform: translate(-50%, 0);
 }
@@ -574,7 +577,8 @@ body {
 }
 
 .timeline-pin.near-left-edge:hover .timeline-pin-tooltip,
-.timeline-pin.near-left-edge:focus-visible .timeline-pin-tooltip {
+.timeline-pin.near-left-edge:focus-visible .timeline-pin-tooltip,
+.timeline-pin.near-left-edge.is-open .timeline-pin-tooltip {
   transform: translate(0, 0);
 }
 
@@ -590,7 +594,8 @@ body {
 }
 
 .timeline-pin.near-right-edge:hover .timeline-pin-tooltip,
-.timeline-pin.near-right-edge:focus-visible .timeline-pin-tooltip {
+.timeline-pin.near-right-edge:focus-visible .timeline-pin-tooltip,
+.timeline-pin.near-right-edge.is-open .timeline-pin-tooltip {
   transform: translate(0, 0);
 }
 
@@ -766,35 +771,69 @@ body {
 }
 
 .schedule-frame {
-  --schedule-breakout-left: clamp(36px, 4.5vw, 82px);
+  /* Overwritten per selected day by the .day-* class the script sets here, so
+     the whole panel takes on the colour of the day you are looking at. */
+  --day-accent-rgb: 74 159 240;
+  --day-accent: rgb(var(--day-accent-rgb));
 
   position: relative;
-  width: calc(100% + var(--schedule-breakout-left));
-  margin-left: calc(-1 * var(--schedule-breakout-left));
-  margin-right: 0;
+  width: 100%;
+  margin: 0;
+  padding: clamp(18px, 2vw, 30px) clamp(18px, 2.2vw, 32px) clamp(20px, 2.2vw, 32px);
 
-  aspect-ratio: 1280 / 700;
-  background-image: url("Web Art/ScheduleBackground.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
-
-  --schedule-safe-top: 13%;
-  --schedule-safe-right: 10%;
-  --schedule-safe-bottom: 16%;
-  --schedule-safe-left: 10%;
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.34) 0%,
+      rgba(255, 255, 255, 0) 44%),
+    radial-gradient(130% 86% at 8% -6%,
+      rgb(var(--day-accent-rgb) / 0.34) 0%,
+      rgb(var(--day-accent-rgb) / 0.12) 38%,
+      rgb(var(--day-accent-rgb) / 0) 72%),
+    radial-gradient(120% 90% at 104% 108%,
+      rgb(var(--day-accent-rgb) / 0.2) 0%,
+      rgb(var(--day-accent-rgb) / 0) 62%),
+    linear-gradient(165deg,
+      rgba(238, 243, 246, 0.8) 0%,
+      rgba(213, 231, 242, 0.72) 54%,
+      rgba(196, 219, 234, 0.76) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.16),
+    0 0 26px rgb(var(--day-accent-rgb) / 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
+  transition: background 0.28s ease, box-shadow 0.28s ease;
 
   --schedule-day-rail-width: clamp(160px, 11vw, 195px);
   --schedule-column-gap: clamp(18px, 2vw, 28px);
-  --schedule-row-gap: clamp(2px, 0.35vw, 5px);
+  --schedule-row-gap: clamp(6px, 0.6vw, 9px);
+}
+
+/* hairline of light along the top edge, echoing the timeline bar */
+.schedule-frame::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: min(100%, 620px);
+  height: 2px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg,
+      rgb(var(--day-accent-rgb) / 0) 0%,
+      rgba(255, 255, 255, 0.76) 20%,
+      rgb(var(--day-accent-rgb) / 0.95) 50%,
+      rgba(255, 255, 255, 0.76) 80%,
+      rgb(var(--day-accent-rgb) / 0) 100%);
+  box-shadow: 0 0 12px rgb(var(--day-accent-rgb) / 0.55);
+  pointer-events: none;
+  transition: background 0.28s ease, box-shadow 0.28s ease;
 }
 
 .schedule-safe-area {
-  position: absolute;
-  top: var(--schedule-safe-top);
-  right: var(--schedule-safe-right);
-  bottom: var(--schedule-safe-bottom);
-  left: var(--schedule-safe-left);
+  position: static;
 
   display: grid;
   grid-template-columns: var(--schedule-day-rail-width) minmax(0, 1fr);
@@ -814,63 +853,80 @@ body {
 }
 
 .schedule-day-button {
+  /* Each button keeps its own hue even while the panel wears the selected
+     day's, because the .day-* class below re-declares this on the button. */
+  --day-accent-rgb: 74 159 240;
+  --day-accent: rgb(var(--day-accent-rgb));
+
   appearance: none;
-  border: none;
   width: 100%;
-  height: clamp(41px, 3vw, 54px);
-  display: block;
-  padding: 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0.5em 0.9em 0.5em 1em;
   cursor: pointer;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% auto;
   position: relative;
   isolation: isolate;
   overflow: visible;
+
+  border-radius: 999px;
+  border: 1px solid rgb(var(--day-accent-rgb) / 0.3);
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.52) 0%,
+      rgb(var(--day-accent-rgb) / 0.16) 100%);
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+
+  color: #10202c;
+  font-family: "Palatino Linotype", Georgia, serif;
+  font-size: clamp(1rem, 1.06vw, 1.16rem);
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  line-height: 1;
+  text-align: left;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+
   transition:
     transform 0.16s ease,
-    filter 0.16s ease;
+    background 0.16s ease,
+    border-color 0.16s ease,
+    box-shadow 0.16s ease,
+    color 0.16s ease;
+}
+
+/* the day's own hue, shown as a dot when idle and as the fill when active */
+.schedule-day-button-dot {
+  flex: 0 0 auto;
+  width: 9px;
+  height: 9px;
+  margin-right: 0.6em;
+  border-radius: 999px;
+  background: var(--day-accent);
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.5),
+    0 1px 3px rgba(0, 0, 0, 0.22);
+  transition: background 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+}
+
+.schedule-day-button-short {
+  display: none;
 }
 
 .schedule-day-button::before {
   content: "";
   position: absolute;
-  inset: 6% -7%;
+  inset: -3px -5px;
   z-index: -1;
   border-radius: 999px;
   background:
     radial-gradient(ellipse at center,
-      rgba(255, 255, 255, 0.58) 0%,
-      rgba(143, 211, 255, 0.38) 42%,
-      rgba(143, 211, 255, 0.08) 72%,
-      rgba(143, 211, 255, 0) 100%);
+      rgb(var(--day-accent-rgb) / 0.5) 0%,
+      rgb(var(--day-accent-rgb) / 0.18) 58%,
+      rgb(var(--day-accent-rgb) / 0) 100%);
   opacity: 0;
-  transform: scaleX(0.9);
-  transition:
-    opacity 0.16s ease,
-    transform 0.16s ease;
-  pointer-events: none;
-}
-
-.schedule-day-button::after {
-  content: "";
-  position: absolute;
-  right: -9px;
-  top: 50%;
-  width: 7px;
-  height: 42%;
-  border-radius: 999px;
-  background:
-    linear-gradient(180deg,
-      rgba(255, 255, 255, 0.98) 0%,
-      rgba(143, 211, 255, 0.95) 50%,
-      rgba(55, 169, 244, 0.9) 100%);
-  box-shadow:
-    0 0 10px rgba(143, 211, 255, 0.78),
-    0 3px 8px rgba(0, 0, 0, 0.22);
-  opacity: 0;
-  transform: translateY(-50%) scaleY(0.65);
+  transform: scaleX(0.92);
   transition:
     opacity 0.16s ease,
     transform 0.16s ease;
@@ -879,7 +935,19 @@ body {
 
 .schedule-day-button:hover {
   transform: translateX(2px);
-  filter: brightness(1.04);
+  border-color: rgb(var(--day-accent-rgb) / 0.5);
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.66) 0%,
+      rgb(var(--day-accent-rgb) / 0.3) 100%);
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.13),
+    0 0 14px rgb(var(--day-accent-rgb) / 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.schedule-day-button:hover .schedule-day-button-dot {
+  transform: scale(1.15);
 }
 
 .schedule-day-button:focus-visible {
@@ -888,23 +956,34 @@ body {
 }
 
 .schedule-day-button.active {
-  transform: translateX(clamp(5px, 0.55vw, 8px));
-  filter:
-    brightness(1.18)
-    saturate(1.26)
-    contrast(1.05)
-    drop-shadow(0 5px 7px rgba(0, 0, 0, 0.24))
-    drop-shadow(0 0 12px rgba(143, 211, 255, 0.78));
+  transform: translateX(clamp(4px, 0.5vw, 7px));
+
+  background-color: var(--day-accent);
+  background-image:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.34) 0%,
+      rgba(255, 255, 255, 0.06) 52%,
+      rgba(0, 0, 0, 0.1) 100%);
+  border-color: rgba(255, 255, 255, 0.62);
+
+  color: #08161f;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.32);
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.22),
+    0 0 20px rgb(var(--day-accent-rgb) / 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .schedule-day-button.active:hover {
   transform: translateX(clamp(6px, 0.7vw, 10px));
-  filter:
-    brightness(1.22)
-    saturate(1.3)
-    contrast(1.06)
-    drop-shadow(0 6px 9px rgba(0, 0, 0, 0.28))
-    drop-shadow(0 0 15px rgba(143, 211, 255, 0.9));
+}
+
+.schedule-day-button.active .schedule-day-button-dot {
+  background: #ffffff;
+  transform: scale(1.12);
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.4),
+    0 1px 3px rgba(0, 0, 0, 0.26);
 }
 
 .schedule-day-button.active::before {
@@ -912,37 +991,65 @@ body {
   transform: scaleX(1);
 }
 
-.schedule-day-button.active::after {
-  opacity: 1;
-  transform: translateY(-50%) scaleY(1);
+/* Today's marker: an arrowhead pointing at the day you are actually on,
+   shown whether or not that day is the one selected. */
+.schedule-day-button.is-today {
+  border-color: rgb(var(--day-accent-rgb) / 0.62);
 }
 
+.schedule-day-button.is-today::after {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid rgb(var(--day-accent-rgb));
+  filter: drop-shadow(0 0 4px rgb(var(--day-accent-rgb) / 0.75));
+  pointer-events: none;
+}
+
+/* Each day carries its own hue: a cool sweep from azure through teal on
+   weekdays, shifting to indigo and violet for the weekend. The same class
+   goes on .schedule-frame for the selected day, so the panel, its glow and
+   every badge inside pick the colour up by inheritance. */
+
+.schedule-frame.day-mon,
 .schedule-day-button.day-mon {
-  background-image: url("Web Art/MondayButton.png");
+  --day-accent-rgb: 74 159 240;
 }
 
+.schedule-frame.day-tues,
 .schedule-day-button.day-tues {
-  background-image: url("Web Art/TuesdayButton.png");
+  --day-accent-rgb: 63 184 212;
 }
 
+.schedule-frame.day-wed,
 .schedule-day-button.day-wed {
-  background-image: url("Web Art/WednesdayButton.png");
+  --day-accent-rgb: 69 199 174;
 }
 
+.schedule-frame.day-thurs,
 .schedule-day-button.day-thurs {
-  background-image: url("Web Art/ThursdayButton.png");
+  --day-accent-rgb: 98 192 140;
 }
 
+.schedule-frame.day-fri,
 .schedule-day-button.day-fri {
-  background-image: url("Web Art/FridayButton.png");
+  --day-accent-rgb: 110 147 224;
 }
 
+.schedule-frame.day-sat,
 .schedule-day-button.day-sat {
-  background-image: url("Web Art/SaturdayButton.png");
+  --day-accent-rgb: 138 127 224;
 }
 
+.schedule-frame.day-sun,
 .schedule-day-button.day-sun {
-  background-image: url("Web Art/SundayButton.png");
+  --day-accent-rgb: 168 123 216;
 }
 
 .schedule-content-shell {
@@ -988,13 +1095,31 @@ body {
 }
 
 .schedule-selected-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+
   font-family: "Segoe UI", Tahoma, sans-serif;
   font-size: clamp(0.9rem, 1vw, 1rem);
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(244, 249, 255, 0.95);
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  /* Dark enough to read on the light panel: this line used to sit on the
+     dark background image and was near-invisible once that went away. */
+  color: #26485e;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+
+.schedule-selected-date::before {
+  content: "";
+  width: 22px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg,
+    rgb(var(--day-accent-rgb)) 0%,
+    rgb(var(--day-accent-rgb) / 0.35) 100%);
+  box-shadow: 0 0 8px rgb(var(--day-accent-rgb) / 0.55);
+  flex: 0 0 auto;
 }
 
 .schedule-click-tip {
@@ -1007,9 +1132,9 @@ body {
   border-radius: 999px;
   background:
     linear-gradient(180deg,
-      rgba(255, 255, 255, 0.42) 0%,
-      rgba(210, 232, 242, 0.24) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.28);
+      rgba(255, 255, 255, 0.5) 0%,
+      rgb(var(--day-accent-rgb) / 0.26) 100%);
+  border: 1px solid rgb(var(--day-accent-rgb) / 0.38);
   color: #10202c;
   font-family: "Segoe UI", Tahoma, sans-serif;
   font-size: clamp(0.76rem, 0.86vw, 0.9rem);
@@ -1020,8 +1145,8 @@ body {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.42);
   box-shadow:
     0 7px 16px rgba(0, 0, 0, 0.1),
-    0 0 14px rgba(143, 211, 255, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    0 0 14px rgb(var(--day-accent-rgb) / 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
   backdrop-filter: blur(4px);
 }
 
@@ -1032,8 +1157,11 @@ body {
   margin-top: 4px;
   padding: 0.4em 0.85em;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgb(var(--day-accent-rgb) / 0.3) 100%);
+  border: 1px solid rgb(var(--day-accent-rgb) / 0.42);
   color: #10202c;
   font-family: "Segoe UI", Tahoma, sans-serif;
   font-size: 0.92rem;
@@ -1043,6 +1171,116 @@ body {
     0 6px 14px rgba(0, 0, 0, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(4px);
+}
+
+/* where you are in the day */
+
+/* Must come with the display rule below: a class selector outranks the user
+   agent's [hidden] { display: none }, so without this the bar keeps showing
+   on days that are not today. */
+.schedule-now-bar[hidden] {
+  display: none;
+}
+
+.schedule-now-bar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(10px, 1.4vw, 22px);
+  padding: 8px clamp(13px, 1.2vw, 18px) 9px;
+  border-radius: 999px;
+
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.54) 0%,
+      rgb(var(--day-accent-rgb) / 0.22) 100%);
+  border: 1px solid rgb(var(--day-accent-rgb) / 0.42);
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.1),
+    0 0 16px rgb(var(--day-accent-rgb) / 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(4px);
+}
+
+.schedule-now-marker {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding-right: clamp(10px, 1.2vw, 18px);
+  border-right: 1px solid rgb(var(--day-accent-rgb) / 0.36);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.schedule-now-pulse {
+  width: 9px;
+  height: 9px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: rgb(var(--day-accent-rgb));
+  box-shadow: 0 0 0 0 rgb(var(--day-accent-rgb) / 0.6);
+  animation: schedule-now-pulse 2.6s ease-out infinite;
+}
+
+@keyframes schedule-now-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(var(--day-accent-rgb) / 0.65);
+  }
+
+  70% {
+    box-shadow: 0 0 0 8px rgb(var(--day-accent-rgb) / 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgb(var(--day-accent-rgb) / 0);
+  }
+}
+
+.schedule-now-label {
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #26485e;
+}
+
+.schedule-now-time {
+  font-size: 0.92rem;
+  font-weight: 900;
+  color: #10202c;
+  font-variant-numeric: tabular-nums;
+}
+
+.schedule-now-slot {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  line-height: 1.15;
+}
+
+.schedule-now-slot-label {
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #4a6478;
+}
+
+.schedule-now-slot-value {
+  min-width: 0;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #10202c;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.schedule-now-slot-next .schedule-now-slot-value {
+  color: #0c2233;
 }
 
 /* schedule events */
@@ -1081,20 +1319,25 @@ body {
 }
 
 .schedule-event-card {
+  /* Set per card by the .time-* class, so a card is tinted by the part of
+     day it falls in — the same hues the timeline bar runs through. */
+  --event-accent-rgb: 55 169 244;
+
   width: 100%;
   height: 100%;
   min-height: 0;
   align-self: stretch;
   padding: clamp(10px, 0.9vw, 12px) clamp(12px, 1vw, 16px);
+  padding-left: calc(clamp(12px, 1vw, 16px) + 7px);
   border-radius: 22px;
   background:
     linear-gradient(180deg,
-      rgba(255, 255, 255, 0.88) 0%,
-      rgba(237, 242, 245, 0.84) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.34);
+      rgba(255, 255, 255, 0.92) 0%,
+      rgb(var(--event-accent-rgb) / 0.16) 100%);
+  border: 1px solid rgb(var(--event-accent-rgb) / 0.28);
   box-shadow:
     0 12px 24px rgba(0, 0, 0, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+    inset 0 1px 0 rgba(255, 255, 255, 0.52);
   color: #111;
   overflow: hidden;
   cursor: pointer;
@@ -1106,30 +1349,135 @@ body {
   transition:
     box-shadow 0.18s ease,
     background 0.18s ease,
-    border-color 0.18s ease;
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+/* colour spine down the leading edge */
+.schedule-event-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background:
+    linear-gradient(180deg,
+      rgb(var(--event-accent-rgb)) 0%,
+      rgb(var(--event-accent-rgb) / 0.55) 100%);
+  box-shadow: 0 0 10px rgb(var(--event-accent-rgb) / 0.5);
+  transition: width 0.18s ease;
+  pointer-events: none;
 }
 
 .schedule-event-card:hover,
 .schedule-event-card.is-selected {
+  transform: translateY(-2px);
   background:
     linear-gradient(180deg,
       rgba(255, 255, 255, 0.96) 0%,
-      rgba(237, 246, 250, 0.92) 100%);
-  border-color: rgba(143, 211, 255, 0.52);
+      rgb(var(--event-accent-rgb) / 0.28) 100%);
+  border-color: rgb(var(--event-accent-rgb) / 0.6);
   box-shadow:
     0 16px 28px rgba(0, 0, 0, 0.2),
-    0 0 18px rgba(143, 211, 255, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.46);
+    0 0 22px rgb(var(--event-accent-rgb) / 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.schedule-event-card:hover::before,
+.schedule-event-card.is-selected::before {
+  width: 9px;
 }
 
 .schedule-event-card:focus-visible {
-  outline: 3px solid rgba(143, 211, 255, 0.9);
+  outline: 3px solid rgb(var(--event-accent-rgb) / 0.95);
   outline-offset: 3px;
-  border-color: rgba(143, 211, 255, 0.62);
+  border-color: rgb(var(--event-accent-rgb) / 0.7);
   box-shadow:
     0 16px 28px rgba(0, 0, 0, 0.2),
-    0 0 18px rgba(143, 211, 255, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.46);
+    0 0 20px rgb(var(--event-accent-rgb) / 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Past, just-started and next-up, for the day currently in view. */
+
+.schedule-event-card.is-past {
+  opacity: 0.5;
+  filter: saturate(0.55);
+}
+
+.schedule-event-card.is-past:hover,
+.schedule-event-card.is-past:focus-visible,
+.schedule-event-card.is-past.is-selected {
+  opacity: 0.86;
+  filter: saturate(0.9);
+}
+
+.schedule-event-card.is-last-started {
+  opacity: 0.9;
+}
+
+.schedule-event-card.is-next {
+  border-color: rgb(var(--event-accent-rgb) / 0.85);
+  box-shadow:
+    0 16px 28px rgba(0, 0, 0, 0.2),
+    0 0 0 2px rgb(var(--event-accent-rgb) / 0.5),
+    0 0 24px rgb(var(--event-accent-rgb) / 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.schedule-event-card.is-next::before {
+  width: 9px;
+}
+
+.schedule-event-card.is-next::after,
+.schedule-event-card.is-last-started::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 3px 9px 4px;
+  border-radius: 0 0 0 12px;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.schedule-event-card.is-next::after {
+  content: "NEXT";
+  background: rgb(var(--event-accent-rgb));
+  color: #08161f;
+}
+
+.schedule-event-card.is-last-started::after {
+  content: "STARTED";
+  background: rgba(14, 28, 39, 0.82);
+  color: #eef5fb;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .schedule-now-pulse {
+    animation: none;
+  }
+}
+
+/* Parts of the day, in the timeline bar's own colours. */
+.schedule-event-card.time-night {
+  --event-accent-rgb: 94 116 184;
+}
+
+.schedule-event-card.time-morning {
+  --event-accent-rgb: 55 169 244;
+}
+
+.schedule-event-card.time-afternoon {
+  --event-accent-rgb: 101 200 178;
+}
+
+.schedule-event-card.time-evening {
+  --event-accent-rgb: 138 127 224;
 }
 
 .schedule-event-summary {
@@ -1147,7 +1495,8 @@ body {
   align-self: flex-start;
   padding: 5px 9px;
   border-radius: 999px;
-  background: rgba(16, 32, 44, 0.08);
+  background: rgb(var(--event-accent-rgb) / 0.24);
+  border: 1px solid rgb(var(--event-accent-rgb) / 0.34);
   color: #10202c;
   font-family: "Segoe UI", Tahoma, sans-serif;
   font-size: clamp(0.74rem, 0.78vw, 0.84rem);
@@ -1181,12 +1530,13 @@ body {
   border-radius: 22px;
   background:
     linear-gradient(180deg,
-      rgba(255, 255, 255, 0.82) 0%,
-      rgba(236, 241, 244, 0.78) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.34);
+      rgba(255, 255, 255, 0.86) 0%,
+      rgb(var(--day-accent-rgb) / 0.18) 100%);
+  border: 1px solid rgb(var(--day-accent-rgb) / 0.34);
   box-shadow:
     0 12px 24px rgba(0, 0, 0, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.38);
+    0 0 16px rgb(var(--day-accent-rgb) / 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
   color: #21313d;
   font-family: "Segoe UI", Tahoma, sans-serif;
   font-size: 1rem;
@@ -1258,6 +1608,9 @@ body {
 }
 
 .panel.discord-panel {
+  /* Flex items default to min-width:auto, so without this the panel refuses to
+     shrink below its longest unbroken word and overhangs narrow screens. */
+  min-width: 0;
   min-height: 260px;
   border-radius: 24px;
   padding: 18px;
@@ -1391,6 +1744,9 @@ body {
 
 .discord-message-content {
   margin: 0;
+  /* Discord posts are full of long unbroken tokens (squad names, URLs, meta
+     routes) that would otherwise force the panel wider than the screen. */
+  overflow-wrap: anywhere;
   color: rgba(244, 248, 255, 0.9);
   font-family: "Segoe UI", Tahoma, sans-serif;
   font-size: 0.9rem;
@@ -1539,26 +1895,39 @@ body {
   }
 
   .schedule-frame {
-    width: 88%;
-    margin: 0 auto;
-    aspect-ratio: 960 / 700;
-    background-size: contain;
+    width: 100%;
+    margin: 0;
   }
 }
 
 @media (max-width: 900px) {
   .schedule-frame {
-    width: 96%;
-    margin: 0 auto;
-    aspect-ratio: 960 / 700;
-    background-size: contain;
-    --schedule-safe-top: 12%;
-    --schedule-safe-right: 12%;
-    --schedule-safe-bottom: 15%;
-    --schedule-safe-left: 8%;
-    --schedule-day-rail-width: 130px;
-    --schedule-column-gap: 12px;
-    --schedule-row-gap: 5px;
+    width: 100%;
+    margin: 0;
+    --schedule-day-rail-width: 132px;
+    --schedule-column-gap: 14px;
+    --schedule-row-gap: 6px;
+  }
+
+  .schedule-day-button {
+    font-size: 0.95rem;
+    padding: 0.5em 0.7em 0.5em 0.8em;
+  }
+
+  /* Marker on its own line so the two slots keep readable width. */
+  .schedule-now-bar {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    row-gap: 9px;
+    border-radius: 20px;
+    padding: 10px 16px 11px;
+  }
+
+  .schedule-now-marker {
+    grid-column: 1 / -1;
+    padding-right: 0;
+    padding-bottom: 9px;
+    border-right: none;
+    border-bottom: 1px solid rgb(var(--day-accent-rgb) / 0.34);
   }
 
   .schedule-header-row {
@@ -1611,15 +1980,6 @@ body {
     padding: 0.36em 0.64em;
     letter-spacing: 0.02em;
     white-space: normal;
-  }
-
-  .schedule-day-button::after {
-    right: -6px;
-    width: 5px;
-  }
-
-  .schedule-day-button.active {
-    transform: translateX(4px);
   }
 
   .site-grid {
@@ -1678,6 +2038,12 @@ body {
     font-size: 0.68rem;
   }
 
+  /* Seven labels collide on a phone, so show every other one — Now, +8h, +16h,
+     +24h. The 4-hour tick marks on the bar itself all stay. */
+  .timeline-label:nth-child(even) {
+    display: none;
+  }
+
   .timeline-label-sub {
     font-size: 0.66em;
     letter-spacing: -0.01em;
@@ -1696,13 +2062,52 @@ body {
     bottom: 6px;
   }
 
+  /* A little more to aim at on a touch screen; the dot itself stays 18px. */
+  .timeline-pin {
+    width: 34px;
+    height: 34px;
+  }
+
+  .timeline-pin-dot {
+    margin: 8px;
+  }
+
   .timeline-pin-tooltip {
     width: min(250px, 78vw);
+  }
+
+  /* Widened to span the timeline card, so a tooltip near either end of the bar
+     is never cut off. It stays absolute on purpose: the pin carries a transform
+     and the card a backdrop-filter, and either one would trap a position:fixed
+     descendant, so script supplies the left offset and width instead. */
+  .timeline-pin-tooltip.is-anchored {
+    right: auto;
+    bottom: calc(100% + 14px);
+    max-width: none;
+  }
+
+  .timeline-pin.is-open .timeline-pin-tooltip.is-anchored,
+  .timeline-pin.near-left-edge.is-open .timeline-pin-tooltip.is-anchored,
+  .timeline-pin.near-right-edge.is-open .timeline-pin-tooltip.is-anchored {
+    transform: none;
+  }
+
+  /* The little arrow only makes sense while the tooltip is attached to a pin. */
+  .timeline-pin-tooltip.is-anchored::after {
+    display: none;
   }
 
   .timeline-empty-state {
     margin: 8px 12px 0;
     font-size: 0.86rem;
+  }
+
+  /* Comfortable touch targets for the two preference toggles. */
+  .region-toggle-button,
+  .time-display-toggle-button {
+    min-height: 44px;
+    min-width: 56px;
+    padding: 0 16px;
   }
 
   .schedule-title {
@@ -1717,21 +2122,77 @@ body {
   }
 
   .schedule-frame {
-    width: 94%;
-    margin: 0 auto;
-    aspect-ratio: 960 / 700;
-    background-size: contain;
-    --schedule-safe-top: 10%;
-    --schedule-safe-right: 10%;
-    --schedule-safe-bottom: 13%;
-    --schedule-safe-left: 6%;
-    --schedule-day-rail-width: 92px;
-    --schedule-column-gap: 10px;
-    --schedule-row-gap: 4px;
+    width: 100%;
+    margin: 0;
+    padding: 16px 14px 18px;
+    border-radius: 22px;
+  }
+
+  /* The day rail moves above the events and becomes a week strip. */
+  .schedule-safe-area {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 16px;
+  }
+
+  /* All seven days on one row, so the rail reads as a week strip. */
+  .schedule-day-buttons {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 5px;
   }
 
   .schedule-day-button {
-    height: 28px;
+    min-height: 46px;
+    padding: 0.45em 0.2em;
+    justify-content: center;
+    text-align: center;
+    font-size: clamp(0.76rem, 3.1vw, 0.92rem);
+    letter-spacing: 0.01em;
+  }
+
+  /* The accent dot costs width the labels need; the active fill still
+     carries each day's colour. */
+  .schedule-day-button-dot {
+    display: none;
+  }
+
+  /* No sideways nudge once the buttons sit in a row. */
+  .schedule-day-button:hover,
+  .schedule-day-button.active,
+  .schedule-day-button.active:hover {
+    transform: none;
+  }
+
+  .schedule-day-button-full {
+    display: none;
+  }
+
+  .schedule-day-button-short {
+    display: inline;
+  }
+
+  /* No room beside a ~40px button in the week strip, so the arrow moves above
+     it and points down instead. */
+  .schedule-day-button.is-today::after {
+    left: 50%;
+    top: -10px;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid rgb(var(--day-accent-rgb));
+    border-bottom: 0;
+  }
+
+  .schedule-now-bar {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 8px;
+    border-radius: 18px;
+    padding: 11px 15px 12px;
+  }
+
+  .schedule-now-slot-value {
+    font-size: 0.85rem;
+    white-space: normal;
   }
 
   .schedule-heading-group h3 {
@@ -1748,13 +2209,30 @@ body {
     padding: 0.3em 0.7em;
   }
 
+  /* Events become one vertical list that scrolls with the page, instead of a
+     three-row grid that has to be scrolled sideways through a short window. */
+  .schedule-events-viewport {
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
   .schedule-events-track {
-    grid-auto-columns: clamp(160px, 42vw, 190px);
-    gap: 10px 12px;
+    grid-auto-flow: row;
+    grid-template-rows: none;
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-columns: auto;
+    width: 100%;
+    gap: 10px;
   }
 
   .schedule-event-card {
-    padding: 9px 10px;
+    height: auto;
+    min-height: 60px;
+    padding: 11px 13px 11px 20px;
+  }
+
+  .schedule-empty-state {
+    min-width: 0;
   }
 
   .schedule-event-name {
@@ -1773,6 +2251,14 @@ body {
     padding: 18px;
   }
 
+  /* The page already scrolls, and a nested scroll region inside it is awkward
+     to use on touch, so the feed just runs to its full length here. */
+  .discord-feed-messages {
+    max-height: none;
+    overflow-y: visible;
+    padding-right: 0;
+  }
+
   .panel.discord-panel h2 {
     font-size: 20px;
   }
@@ -1781,11 +2267,15 @@ body {
     font-size: 15px;
   }
 
+  /* Floating it here would cover ~70% of the width of a phone screen at every
+     scroll position, so on small screens it becomes a footer instead. */
   .utc-clock {
-    left: 12px;
-    bottom: 12px;
-    min-width: 230px;
-    max-width: calc(100vw - 24px);
+    position: static;
+    left: auto;
+    bottom: auto;
+    margin: 0 14px 14px;
+    min-width: 0;
+    max-width: none;
     padding: 9px 12px 10px;
     border-radius: 14px;
   }
