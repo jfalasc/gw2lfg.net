@@ -86,7 +86,7 @@ const events = [
     guild: "FB",
     description: "Hosted by [FB]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-08-31",
     schedule: [
       { day: "Sunday", time: "01:50" },
     ]
@@ -98,7 +98,7 @@ const events = [
     guild: "FB",
     description: "Hosted by [FB]! Metas from every expansion",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-08-31",
     schedule: [
       { day: "Monday", time: "02:00" },
     ]
@@ -110,7 +110,7 @@ const events = [
     guild: "FB",
     description: "Hosted by [FB]! Seitung Province -> Kaineng City -> Echovald Wilds -> Dragon's End",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-08-31",
     schedule: [
       { day: "Tuesday", time: "03:30" },
     ]
@@ -122,7 +122,7 @@ const events = [
     guild: "FB",
     description: "Hosted by [FB]! Every season 4 meta",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-08-31",
     schedule: [
       { day: "Saturday", time: "01:45" },
     ]
@@ -274,7 +274,7 @@ const events = [
     guild: "AO",
     description: "Hosted by [AO]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-08-31",
     schedule: [
       { day: "Saturday", time: "01:30" },
     ]
@@ -499,7 +499,7 @@ const events = [
     guild: "COFE",
     description: "Hosted by [COFE]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-08-31",
     schedule: [
       { day: "Wednesday", time: "05:00" },
       { day: "Friday", time: "05:00" },
@@ -565,7 +565,7 @@ const events = [
     guild: null,
     description: "Seitung Province -> Kaineng City -> Echovald Forest -> Dragon's End",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-08-31",
     schedule: [
       { day: "Sunday", time: "08:00" },
       { day: "Monday", time: "08:00" },

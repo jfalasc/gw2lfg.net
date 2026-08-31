@@ -60,20 +60,14 @@ threshold before it crosses.
 
 ---
 
-## Needs checking (33)
+## Needs checking (26)
 
 Never verified, or last verified 90+ days ago.
 
 | Event | Guild | Host | Region | Runs (UTC) | Last verified |
 | --- | --- | --- | --- | --- | --- |
-| PoF Meta Train | `[AO]` | OverRealm.3542 | NA | Sat 01:30 | **never** |
 | Core Meta Train | `[BUTR]` | Wolfspear.7180 | NA | Daily 00:00 | **never** |
-| Convergence CMs | `[COFE]` | SoBread.5628 | NA | Wed, Fri 05:00 | **never** |
 | Dragon's End | `[DBJC]` | Shiv Deeviant.8072 | NA | Mon, Tue, Wed, Thu, Fri 22:00 | **never** |
-| EoD Meta Train | `[FB]` | MarshAll.3528 | NA | Tue 03:30 | **never** |
-| S4 Meta Train | `[FB]` | MarshAll.3528 | NA | Sat 01:45 | **never** |
-| SotO Convergence CMs | `[FB]` | MarshAll.3528 | NA | Sun 01:50 | **never** |
-| World Tour Meta Train | `[FB]` | MarshAll.3528 | NA | Mon 02:00 | **never** |
 | Dragon's End & Dragonstorm | `[Hs]` | sim.1203 | NA | Daily 02:30 | **never** |
 | EoD Meta Train | `[Hs]` | Platanium.4532 | EU | Sun 17:30 | **never** |
 | Weekly Rifts | `[Hs]` | Platanium.4532 | EU | Tue 17:30 | **never** |
@@ -98,7 +92,6 @@ Never verified, or last verified 90+ days ago.
 | Bava Nisos Farm & Meta | — | Sylphonete.7583 | NA | Daily 23:20 | **never** |
 | Convergence CMs | — | SunMatrix.4168 | NA | Tue 01:00 · Sat 18:00 | **never** |
 | Dragonfall Farm Train | — | Maverick.3574 | NA | Mon, Tue, Wed, Thu, Fri 21:00 | **never** |
-| EoD Meta Train | — | Oregon.9387 | EU | Daily 08:00 | **never** |
 
 To record a check, set `lastVerified` on that event in `events.js`:
 
@@ -120,16 +113,16 @@ lastVerified: "2026-08-31",
 | Gyala Delve | `[VEIN]` | Literious.4205 | Daily 14:15 | 2026-08-31 (0d) |
 | VoE Convergence CMs | `[VEIN]` | Literious.4205 | Mon 14:30 | 2026-08-31 (0d) |
 | Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 | **never** |
-| EoD Meta Train | — | Oregon.9387 | Daily 08:00 | **never** |
+| EoD Meta Train | — | Oregon.9387 | Daily 08:00 | 2026-08-31 (0d) |
 | Triple Trouble | — | Tanylyla.6397 | Tue, Wed, Thu, Fri, Sat, Sun 19:15 | 2026-08-31 (0d) |
 
 ## NA events (40)
 
 | Event | Guild | Host | Runs (UTC) | Last verified |
 | --- | --- | --- | --- | --- |
-| PoF Meta Train | `[AO]` | OverRealm.3542 | Sat 01:30 | **never** |
+| PoF Meta Train | `[AO]` | OverRealm.3542 | Sat 01:30 | 2026-08-31 (0d) |
 | Core Meta Train | `[BUTR]` | Wolfspear.7180 | Daily 00:00 | **never** |
-| Convergence CMs | `[COFE]` | SoBread.5628 | Wed, Fri 05:00 | **never** |
+| Convergence CMs | `[COFE]` | SoBread.5628 | Wed, Fri 05:00 | 2026-08-31 (0d) |
 | Battle for Lion's Arch | `[DAWN]` | Empress Adorafae.9028 | Wed 01:00 | 2026-08-31 (0d) |
 | Dragon's End | `[DBJC]` | Shiv Deeviant.8072 | Mon, Tue, Wed, Thu, Fri 22:00 | **never** |
 | Battle for Lion's Arch | `[DCAP]` | Dark Raven.2160 | Mon 13:00 | 2026-08-31 (0d) |
@@ -137,10 +130,10 @@ lastVerified: "2026-08-31",
 | Gyala Delve | `[DCAP]` | Dark Raven.2160 | Fri 08:00 | 2026-08-31 (0d) |
 | Triple Trouble | `[DCAP]` | Dark Raven.2160 | Daily 12:00 | 2026-08-31 (0d) |
 | Twisted Marionette | `[DCAP]` | Dark Raven.2160 | Thu 13:00 | 2026-08-31 (0d) |
-| EoD Meta Train | `[FB]` | MarshAll.3528 | Tue 03:30 | **never** |
-| S4 Meta Train | `[FB]` | MarshAll.3528 | Sat 01:45 | **never** |
-| SotO Convergence CMs | `[FB]` | MarshAll.3528 | Sun 01:50 | **never** |
-| World Tour Meta Train | `[FB]` | MarshAll.3528 | Mon 02:00 | **never** |
+| EoD Meta Train | `[FB]` | MarshAll.3528 | Tue 03:30 | 2026-08-31 (0d) |
+| S4 Meta Train | `[FB]` | MarshAll.3528 | Sat 01:45 | 2026-08-31 (0d) |
+| SotO Convergence CMs | `[FB]` | MarshAll.3528 | Sun 01:50 | 2026-08-31 (0d) |
+| World Tour Meta Train | `[FB]` | MarshAll.3528 | Mon 02:00 | 2026-08-31 (0d) |
 | Dragon's End & Dragonstorm | `[Hs]` | sim.1203 | Daily 02:30 | **never** |
 | Gyala Delve | `[JMAW]` | Ruinandshotel.9278 | Tue, Thu, Sat 01:30 | **never** |
 | HoT Meta Train | `[LEG]` | Lamshire.3058 | Mon, Tue, Thu 02:00 | **never** |
