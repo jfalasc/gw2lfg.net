@@ -60,7 +60,7 @@ threshold before it crosses.
 
 ---
 
-## Needs checking (42)
+## Needs checking (33)
 
 Never verified, or last verified 90+ days ago.
 
@@ -70,11 +70,6 @@ Never verified, or last verified 90+ days ago.
 | Core Meta Train | `[BUTR]` | Wolfspear.7180 | NA | Daily 00:00 | **never** |
 | Convergence CMs | `[COFE]` | SoBread.5628 | NA | Wed, Fri 05:00 | **never** |
 | Dragon's End | `[DBJC]` | Shiv Deeviant.8072 | NA | Mon, Tue, Wed, Thu, Fri 22:00 | **never** |
-| Battle for Lion's Arch | `[DCAP]` | Dark Raven.2160 | NA | Mon 13:00 | **never** |
-| Dragonstorm & Dragon's Stand | `[DCAP]` | Dark Raven.2160 | NA | Tue 13:00 | **never** |
-| Gyala Delve | `[DCAP]` | Dark Raven.2160 | NA | Fri 08:00 | **never** |
-| Triple Trouble | `[DCAP]` | Dark Raven.2160 | NA | Daily 12:00 | **never** |
-| Twisted Marionette | `[DCAP]` | Dark Raven.2160 | NA | Thu 13:00 | **never** |
 | EoD Meta Train | `[FB]` | MarshAll.3528 | NA | Tue 03:30 | **never** |
 | S4 Meta Train | `[FB]` | MarshAll.3528 | NA | Sat 01:45 | **never** |
 | SotO Convergence CMs | `[FB]` | MarshAll.3528 | NA | Sun 01:50 | **never** |
@@ -87,8 +82,6 @@ Never verified, or last verified 90+ days ago.
 | Convergence CMs | `[LILY]` | LilyVelour.8395 | NA | Sat 20:30 · Tue 23:30 | **never** |
 | SotO Meta Train | `[LILY]` | LilyVelour.8395 | NA | Wed 20:30 | **never** |
 | Casino Blitz | `[MEAT]` | grace.3689 | NA | Daily 00:00 | **never** |
-| Triple Trouble | `[NOPE]` | Wolfspear.7180 | NA | Daily 19:30 | **never** |
-| Triple Trouble | `[RNT]` | Dampevamp.6035 | NA | Daily 07:30 | **never** |
 | JW Convergence CMs | `[SAS]` | Mr Paul.8247 | NA | Mon 22:00 | **never** |
 | SotO Convergence CMs | `[SAS]` | Mr Paul.8247 | NA | Thu 20:00 | **never** |
 | HoT Meta Train | `[SHAZ]` | Shazilee.1098 | NA | Wed, Sat, Sun 03:00 | **never** |
@@ -96,7 +89,6 @@ Never verified, or last verified 90+ days ago.
 | Silverwastes RIBA Farm | `[Sw]` | EverCursed.9084 | NA | Daily 23:30 | **never** |
 | JW Convergence CMs | `[uLT]` | Ohnage.1638 | NA | Sat 20:00 | **never** |
 | SotO Convergence CMs | `[uLT]` | Ohnage.1638 | NA | Sun 17:00 | **never** |
-| Triple Trouble | `[WHAM]` | CasFamGaming.9843 | NA | Daily 03:30 | **never** |
 | Convergence CMs | `[WILT]` | calmerthanu.8375 | NA | Wed, Thu 01:00 | **never** |
 | Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | NA | Sun 19:30 | **never** |
 | Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | NA | Mon 18:30 | **never** |
@@ -107,7 +99,6 @@ Never verified, or last verified 90+ days ago.
 | Convergence CMs | — | SunMatrix.4168 | NA | Tue 01:00 · Sat 18:00 | **never** |
 | Dragonfall Farm Train | — | Maverick.3574 | NA | Mon, Tue, Wed, Thu, Fri 21:00 | **never** |
 | EoD Meta Train | — | Oregon.9387 | EU | Daily 08:00 | **never** |
-| Triple Trouble | — | Tanylyla.6397 | EU | Tue, Wed, Thu, Fri, Sat, Sun 19:15 | **never** |
 
 To record a check, set `lastVerified` on that event in `events.js`:
 
@@ -130,7 +121,7 @@ lastVerified: "2026-08-31",
 | VoE Convergence CMs | `[VEIN]` | Literious.4205 | Mon 14:30 | 2026-08-31 (0d) |
 | Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 | **never** |
 | EoD Meta Train | — | Oregon.9387 | Daily 08:00 | **never** |
-| Triple Trouble | — | Tanylyla.6397 | Tue, Wed, Thu, Fri, Sat, Sun 19:15 | **never** |
+| Triple Trouble | — | Tanylyla.6397 | Tue, Wed, Thu, Fri, Sat, Sun 19:15 | 2026-08-31 (0d) |
 
 ## NA events (40)
 
@@ -141,11 +132,11 @@ lastVerified: "2026-08-31",
 | Convergence CMs | `[COFE]` | SoBread.5628 | Wed, Fri 05:00 | **never** |
 | Battle for Lion's Arch | `[DAWN]` | Empress Adorafae.9028 | Wed 01:00 | 2026-08-31 (0d) |
 | Dragon's End | `[DBJC]` | Shiv Deeviant.8072 | Mon, Tue, Wed, Thu, Fri 22:00 | **never** |
-| Battle for Lion's Arch | `[DCAP]` | Dark Raven.2160 | Mon 13:00 | **never** |
-| Dragonstorm & Dragon's Stand | `[DCAP]` | Dark Raven.2160 | Tue 13:00 | **never** |
-| Gyala Delve | `[DCAP]` | Dark Raven.2160 | Fri 08:00 | **never** |
-| Triple Trouble | `[DCAP]` | Dark Raven.2160 | Daily 12:00 | **never** |
-| Twisted Marionette | `[DCAP]` | Dark Raven.2160 | Thu 13:00 | **never** |
+| Battle for Lion's Arch | `[DCAP]` | Dark Raven.2160 | Mon 13:00 | 2026-08-31 (0d) |
+| Dragonstorm & Dragon's Stand | `[DCAP]` | Dark Raven.2160 | Tue 13:00 | 2026-08-31 (0d) |
+| Gyala Delve | `[DCAP]` | Dark Raven.2160 | Fri 08:00 | 2026-08-31 (0d) |
+| Triple Trouble | `[DCAP]` | Dark Raven.2160 | Daily 12:00 | 2026-08-31 (0d) |
+| Twisted Marionette | `[DCAP]` | Dark Raven.2160 | Thu 13:00 | 2026-08-31 (0d) |
 | EoD Meta Train | `[FB]` | MarshAll.3528 | Tue 03:30 | **never** |
 | S4 Meta Train | `[FB]` | MarshAll.3528 | Sat 01:45 | **never** |
 | SotO Convergence CMs | `[FB]` | MarshAll.3528 | Sun 01:50 | **never** |
@@ -156,8 +147,8 @@ lastVerified: "2026-08-31",
 | Convergence CMs | `[LILY]` | LilyVelour.8395 | Sat 20:30 · Tue 23:30 | **never** |
 | SotO Meta Train | `[LILY]` | LilyVelour.8395 | Wed 20:30 | **never** |
 | Casino Blitz | `[MEAT]` | grace.3689 | Daily 00:00 | **never** |
-| Triple Trouble | `[NOPE]` | Wolfspear.7180 | Daily 19:30 | **never** |
-| Triple Trouble | `[RNT]` | Dampevamp.6035 | Daily 07:30 | **never** |
+| Triple Trouble | `[NOPE]` | Wolfspear.7180 | Daily 19:30 | 2026-08-31 (0d) |
+| Triple Trouble | `[RNT]` | Dampevamp.6035 | Daily 07:30 | 2026-08-31 (0d) |
 | JW Convergence CMs | `[SAS]` | Mr Paul.8247 | Mon 22:00 | **never** |
 | SotO Convergence CMs | `[SAS]` | Mr Paul.8247 | Thu 20:00 | **never** |
 | HoT Meta Train | `[SHAZ]` | Shazilee.1098 | Wed, Sat, Sun 03:00 | **never** |
@@ -165,7 +156,7 @@ lastVerified: "2026-08-31",
 | Silverwastes RIBA Farm | `[Sw]` | EverCursed.9084 | Daily 23:30 | **never** |
 | JW Convergence CMs | `[uLT]` | Ohnage.1638 | Sat 20:00 | **never** |
 | SotO Convergence CMs | `[uLT]` | Ohnage.1638 | Sun 17:00 | **never** |
-| Triple Trouble | `[WHAM]` | CasFamGaming.9843 | Daily 03:30 | **never** |
+| Triple Trouble | `[WHAM]` | CasFamGaming.9843 | Daily 03:30 | 2026-08-31 (0d) |
 | Convergence CMs | `[WILT]` | calmerthanu.8375 | Wed, Thu 01:00 | **never** |
 | Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Sun 19:30 | **never** |
 | Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 | **never** |

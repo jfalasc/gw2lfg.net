@@ -300,7 +300,7 @@ const events = [
     guild: "NOPE",
     description: "Hosted by [NOPE]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-08-31",
     schedule: [
       { day: "Sunday", time: "19:30" },
       { day: "Monday", time: "19:30" },
@@ -318,7 +318,7 @@ const events = [
     guild: "DCAP",
     description: "Hosted by [DCAP]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-08-31",
     schedule: [
       { day: "Sunday", time: "12:00" },
       { day: "Monday", time: "12:00" },
@@ -336,7 +336,7 @@ const events = [
     guild: "DCAP",
     description: "Hosted by [DCAP]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-08-31",
     schedule: [
       { day: "Thursday", time: "13:00" },
     ]
@@ -348,7 +348,7 @@ const events = [
     guild: "DCAP",
     description: "Hosted by [DCAP]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-08-31",
     schedule: [
       { day: "Friday", time: "08:00" },
     ]
@@ -360,7 +360,7 @@ const events = [
     guild: "DCAP",
     description: "Hosted by [DCAP]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-08-31",
     schedule: [
       { day: "Monday", time: "13:00" },
     ]
@@ -372,7 +372,7 @@ const events = [
     guild: "DCAP",
     description: "Hosted by [DCAP]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-08-31",
     schedule: [
       { day: "Tuesday", time: "13:00" },
     ]
@@ -450,7 +450,7 @@ const events = [
     guild: "WHAM",
     description: "Hosted by [WHAM]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-08-31",
     schedule: [
       { day: "Sunday", time: "03:30" },
       { day: "Monday", time: "03:30" },
@@ -468,7 +468,7 @@ const events = [
     guild: "RNT",
     description: "Hosted by [RNT]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-08-31",
     schedule: [
       { day: "Sunday", time: "07:30" },
       { day: "Monday", time: "07:30" },
@@ -548,7 +548,7 @@ const events = [
     guild: null,
     description: "Hosted by the EU TT Discord server: https://discord.com/invite/6YG5CC6",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-08-31",
     schedule: [
       { day: "Sunday", time: "19:15" },
       { day: "Tuesday", time: "19:15" },
