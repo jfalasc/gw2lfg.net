@@ -53,6 +53,32 @@ Never edit `EVENTS.md` directly — the next generation overwrites it. It exists
 so a person can scan the schedule and see what needs re-checking; `events.js`
 is where changes are made.
 
+### Naming
+
+Name an event after the content, and do not append a redundant "Meta".
+
+- One map or encounter — just its name: `Gyala Delve`, `Dragon's End`,
+  `Triple Trouble`, `Drizzlewood Coast`, `Twisted Marionette`.
+  Not `Gyala Delve Meta`, not `Drizzlewood Coast Meta`.
+- A train across several maps — keep the words that say so:
+  `HoT Meta Train`, `EoD Meta Train`, `Core Meta Train`, `Hero Point Train`.
+- Convergences take their expansion as a prefix: `SotO Convergence CMs`,
+  `JW Convergence CMs`, `VoE Convergence CMs`.
+- "Meta" only earns a place when it distinguishes something, as in
+  `Bava Nisos Farm & Meta`, which is a farm before reset and a meta after.
+
+**Reuse an existing name when the content is the same.** Several hosts run the
+same content, and the register groups by name — inventing a variant spelling
+splits one activity into two rows. Check the existing names first:
+
+```bash
+node -e "const e=new Function(require('fs').readFileSync('events.js','utf8')+'; return events;')(); console.log([...new Set(e.map(x=>x.name))].sort().join('\n'))"
+```
+
+Discord event titles do not follow this convention, so titles taken from
+screenshots usually need trimming — "Gyala Delve Meta @ Daily" is the event
+`Gyala Delve`, running daily.
+
 An event's shape:
 
 ```js

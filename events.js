@@ -619,7 +619,7 @@ const events = [
     ]
   },
   {
-    name: "Gyala Delve Meta",
+    name: "Gyala Delve",
     region: "EU",
     username: "Literious.4205",
     guild: "VEIN",
@@ -649,7 +649,7 @@ const events = [
     ]
   },
   {
-    name: "Drizzlewood Coast Meta",
+    name: "Drizzlewood Coast",
     region: "EU",
     username: "Literious.4205",
     guild: "VEIN",
