@@ -1537,10 +1537,7 @@ const discordFeedRefreshMilliseconds = 30 * 1000;
 const discordFeedJsonUrl =
   "https://gw2-lfg-bot-production.up.railway.app/discordFeed.json";
 
-let currentDiscordFeeds =
-  typeof discordFeeds !== "undefined" && Array.isArray(discordFeeds)
-    ? discordFeeds
-    : [];
+let currentDiscordFeeds = [];
 
 function getDiscordFeedSource() {
   if (Array.isArray(currentDiscordFeeds)) {

@@ -29,9 +29,11 @@ up on *Friday* evening for North American visitors, and that is correct.
 | `EVENTS.md` | **Generated.** Human-readable event register. Do not hand-edit. |
 | `tools/build-events-doc.js` | Generates `EVENTS.md` from `events.js`. |
 
-`discordFeed.js` / `discordFeed.json` are stale snapshots from the bot and are
-not loaded by the page. The live feed is fetched from the Railway URL in
-`script.js`. Either wire the local file in as a fallback or delete both.
+The Discord feed is fetched at runtime from the Railway URL in `script.js` and
+has no local copy. Committed snapshots were tried early on and removed: a stale
+file is worse than nothing here, because the panel labels whatever it renders
+"Live", and this site exists to say what is happening *now*. If the fetch
+fails, the panel says so and keeps the last good data it had this session.
 
 ## Adding or changing an event
 
