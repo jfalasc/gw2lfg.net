@@ -123,6 +123,24 @@ function formatGuild(event) {
   return event.guild ? `\`[${escapeCell(event.guild)}]\`` : "—";
 }
 
+/* Keeps a guild's events together — one guild can then be checked in one go.
+   Tags are compared case-insensitively so "uLT" sits with the U's, and events
+   run by no guild collect at the end rather than sorting under a dash. */
+function byGuildThenName(a, b) {
+  const guildA = a.guild || "";
+  const guildB = b.guild || "";
+
+  if (Boolean(guildA) !== Boolean(guildB)) {
+    return guildA ? -1 : 1;
+  }
+
+  return (
+    guildA.localeCompare(guildB, "en", { sensitivity: "base" }) ||
+    a.name.localeCompare(b.name) ||
+    a.username.localeCompare(b.username)
+  );
+}
+
 function buildRegionTable(events) {
   const lines = [
     "| Event | Guild | Host | Runs (UTC) | Last verified |",
@@ -131,8 +149,7 @@ function buildRegionTable(events) {
 
   events
     .slice()
-    .sort((a, b) =>
-      a.name.localeCompare(b.name) || a.username.localeCompare(b.username))
+    .sort(byGuildThenName)
     .forEach((event) => {
       lines.push(
         `| ${escapeCell(event.name)} ` +
@@ -233,7 +250,7 @@ function buildDocument(events) {
 
     stale
       .slice()
-      .sort((a, b) => a.name.localeCompare(b.name))
+      .sort(byGuildThenName)
       .forEach((event) => {
         lines.push(
           `| ${escapeCell(event.name)} ` +
