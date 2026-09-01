@@ -77,14 +77,13 @@ threshold before it crosses.
 
 ---
 
-## Needs checking (7)
+## Needs checking (6)
 
 Never verified, or last verified 90+ days ago.
 
 | Event | Guild | Host | Region | Runs (UTC) | Last verified |
 | --- | --- | --- | --- | --- | --- |
 | Dragon's End | `[DBJC]` | Shiv Deeviant.8072 | NA | Mon, Tue, Wed, Thu, Fri 22:00 | **never** |
-| SotO Meta Train | `[LILY]` | LilyVelour.8395 | NA | Wed 20:30 | **never** |
 | Casino Blitz | `[MEAT]` | grace.3689 | NA | Daily 00:00 | **never** |
 | HoT Meta Train | `[SHAZ]` | Shazilee.1098 | NA | Wed, Sat, Sun 03:00 | **never** |
 | Hero Point Train | `[SIN]` | Hempia.5981 | NA | Sat 18:00 | **never** |
@@ -99,15 +98,11 @@ lastVerified: "2026-09-01",
 
 ---
 
-## Missing information (9)
+## Missing information (8)
 
 Details still needed for these events. Add what you learn to the event
 in `events.js`, then delete the matching line from its `needsInfo` list —
 an event disappears from here once its list is empty.
-
-### Convergence CMs — [LILY] LilyVelour.8395 (NA, Wed 00:00 · Sat 21:00)
-
-- Tuesday slot runs every OTHER Tuesday, not weekly - the register can only express weekly, so this slot currently over-reports
 
 ### Convergence CMs — [SLPY] (NA, Sat 01:00)
 
@@ -186,7 +181,7 @@ an event disappears from here once its list is empty.
 | Gyala Delve | `[JMAW]` | Ruinandshotel.9278 | Tue, Thu, Sat 01:30 | 2026-09-01 (0d) |
 | HoT Meta Train | `[LEG]` | Lamshire.3058 | Mon, Tue, Thu 02:00 | 2026-09-01 (0d) |
 | Convergence CMs | `[LILY]` | LilyVelour.8395 | Wed 00:00 · Sat 21:00 | 2026-09-01 (0d) |
-| SotO Meta Train | `[LILY]` | LilyVelour.8395 | Wed 20:30 | **never** |
+| SotO Meta Train | `[LILY]` | LilyVelour.8395 | Wed 20:30 | 2026-09-01 (0d) |
 | Casino Blitz | `[MEAT]` | grace.3689 | Daily 00:00 | **never** |
 | Triple Trouble | `[NOPE]` | Wolfspear.7180 | Daily 19:30 | 2026-08-31 (1d) |
 | Triple Trouble | `[RNT]` | Dampevamp.6035 | Daily 07:30 | 2026-08-31 (1d) |

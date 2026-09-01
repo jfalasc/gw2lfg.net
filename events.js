@@ -62,9 +62,6 @@ const events = [
     description: "Hosted by [LILY]!",
     recurring: true,
     lastVerified: "2026-09-01",
-    needsInfo: [
-      "Tuesday slot runs every OTHER Tuesday, not weekly - the register can only express weekly, so this slot currently over-reports",
-    ],
     schedule: [
       { day: "Wednesday", time: "00:00" },
       { day: "Saturday", time: "21:00" },
@@ -77,7 +74,7 @@ const events = [
     guild: "LILY",
     description: "Hosted by [LILY]! Skywatch > Amnytas > Nayos",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Wednesday", time: "20:30" },
     ]
