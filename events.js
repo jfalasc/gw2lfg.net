@@ -567,13 +567,13 @@ const events = [
     recurring: true,
     lastVerified: "2026-08-31",
     schedule: [
-      { day: "Sunday", time: "08:00" },
-      { day: "Monday", time: "08:00" },
-      { day: "Tuesday", time: "08:00" },
-      { day: "Wednesday", time: "08:00" },
-      { day: "Thursday", time: "08:00" },
-      { day: "Friday", time: "08:00" },
-      { day: "Saturday", time: "08:00" },
+      { day: "Sunday", time: "09:30" },
+      { day: "Monday", time: "09:30" },
+      { day: "Tuesday", time: "09:30" },
+      { day: "Wednesday", time: "09:30" },
+      { day: "Thursday", time: "09:30" },
+      { day: "Friday", time: "09:30" },
+      { day: "Saturday", time: "09:30" },
     ]
   },
   {
@@ -714,6 +714,44 @@ const events = [
     lastVerified: "2026-08-31",
     schedule: [
       { day: "Wednesday", time: "01:00" },
+    ]
+  },
+  {
+    name: "Gyala Delve",
+    region: "NA",
+    username: "viioculi.9154",
+    guild: null,
+    description: "Echovald and Aspenwood into Gyala Delve. Announced Friday evenings in the group-finder Discord.",
+    recurring: true,
+    lastVerified: "2026-09-01",
+    needsInfo: [
+      "guild tag",
+    ],
+    schedule: [
+      { day: "Saturday", time: "04:00" },
+    ]
+  },
+  {
+    name: "Inner Nayos",
+    region: "NA",
+    username: "Go Mango",
+    guild: null,
+    description: "Lava Chicken pre-event through to Eparch. Announced nightly in the group-finder Discord.",
+    recurring: true,
+    lastVerified: "2026-09-01",
+    needsInfo: [
+      "full account name — only the character name \"Go Mango\" is known",
+      "guild tag",
+      "confirmed start time — announcements scatter between 02:30 and 05:00 UTC",
+    ],
+    schedule: [
+      { day: "Sunday", time: "04:00" },
+      { day: "Monday", time: "04:00" },
+      { day: "Tuesday", time: "04:00" },
+      { day: "Wednesday", time: "04:00" },
+      { day: "Thursday", time: "04:00" },
+      { day: "Friday", time: "04:00" },
+      { day: "Saturday", time: "04:00" },
     ]
   },
 ];

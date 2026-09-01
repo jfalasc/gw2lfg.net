@@ -105,6 +105,26 @@ function formatVerified(event) {
   return `${event.lastVerified} (${age}d)`;
 }
 
+/* GW2 accounts are Name.1234. A character name in the username field means we
+   never learned the real account, which the register should keep asking for. */
+function accountLooksValid(username) {
+  return /^[^.]+\.\d{4}$/.test(String(username || "").trim());
+}
+
+/* Whatever the event declares in needsInfo, plus anything derivable. */
+function collectMissingInfo(event) {
+  const notes = Array.isArray(event.needsInfo) ? event.needsInfo.slice() : [];
+  const alreadyNoted = notes.some((note) => /account|username/i.test(note));
+
+  if (!accountLooksValid(event.username) && !alreadyNoted) {
+    notes.push(
+      `\`${event.username}\` is not a GW2 account name — expected \`Name.1234\``
+    );
+  }
+
+  return notes;
+}
+
 function needsChecking(event) {
   if (!event.lastVerified) {
     return true;
@@ -253,6 +273,23 @@ function buildDocument(events) {
     "to each visitor's local time in the browser. All times shown in this",
     "document are UTC too.",
     "",
+    "### To flag something you still need to find out",
+    "",
+    "Add a `needsInfo` list to the event. Each line is one missing detail, in",
+    "your own words:",
+    "",
+    "```js",
+    "needsInfo: [",
+    '  "guild tag",',
+    '  "confirmed start time",',
+    "],",
+    "```",
+    "",
+    'They appear under "Missing information" below. Delete a line once you have',
+    "answered it; the event drops off that list when its `needsInfo` is empty.",
+    "A host whose name is not in `Name.1234` form is flagged there",
+    "automatically, whether or not the event has a `needsInfo` list.",
+    "",
     `### What "Needs checking" means`,
     "",
     "An event appears in that list when **any** of these is true:",
@@ -317,6 +354,36 @@ function buildDocument(events) {
       "```",
       ""
     );
+  }
+
+  lines.push("---", "");
+
+  const incomplete = events
+    .map((event) => ({ event, notes: collectMissingInfo(event) }))
+    .filter((row) => row.notes.length > 0)
+    .sort((a, b) => byGuildThenName(a.event, b.event));
+
+  lines.push(`## Missing information (${incomplete.length})`, "");
+
+  if (incomplete.length === 0) {
+    lines.push("_Nothing outstanding — every event has everything we need._", "");
+  } else {
+    lines.push(
+      "Details still needed for these events. Add what you learn to the event",
+      "in `events.js`, then delete the matching line from its `needsInfo` list —",
+      "an event disappears from here once its list is empty.",
+      ""
+    );
+
+    incomplete.forEach(({ event, notes }) => {
+      lines.push(
+        `### ${event.name} — ${event.username} (${event.region})`,
+        ""
+      );
+
+      notes.forEach((note) => lines.push(`- ${note}`));
+      lines.push("");
+    });
   }
 
   lines.push("---", "");

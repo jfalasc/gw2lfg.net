@@ -78,6 +78,17 @@ fresh. Nothing fires if `events.js` is untouched, so a register left alone for
 months still shows months-old ages until someone rebuilds it by hand. Run the
 command occasionally for that.
 
+### How "Missing information" is decided
+
+An event appears there when it has a non-empty `needsInfo` array, and each
+entry is printed as written. The generator also adds one automatically when
+`username` is not in `Name.1234` form, since that means a character name was
+recorded instead of a GW2 account — unless the event's own `needsInfo` already
+mentions the account, so the two do not duplicate each other.
+
+Remove an entry once it is answered; the event drops off the list when the
+array is empty.
+
 ### How "Needs checking" is decided
 
 `staleAfterDays` at the top of the generator is the threshold — currently 90.
@@ -128,6 +139,9 @@ An event's shape:
   description: "Hosted by [LEG]! Tangled Depths -> Auric Basin -> ...",
   recurring: true,
   lastVerified: "2026-08-31",   // or null if never checked
+  needsInfo: [                  // optional; omit when nothing is outstanding
+    "guild tag"
+  ],
   schedule: [
     { day: "Monday", time: "02:00" }   // UTC day, UTC 24-hour time
   ]
