@@ -20,7 +20,7 @@ const events = [
     guild: "LEG",
     description: "Hosted by [LEG]! Tangled Depths -> Auric Basin -> Dragon's Stand -> Auric Basin -> Verdant Brink",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Monday", time: "02:00" },
       { day: "Tuesday", time: "02:00" },
@@ -34,7 +34,7 @@ const events = [
     guild: "JMAW",
     description: "Hosted by [JMAW]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Tuesday", time: "01:30" },
       { day: "Thursday", time: "01:30" },
@@ -45,10 +45,10 @@ const events = [
     name: "Convergence CMs",
     region: "NA",
     username: "SunMatrix.4168",
-    guild: null,
+    guild: "CC",
     description: "Hosted by Convergence Corp!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Tuesday", time: "01:00" },
       { day: "Saturday", time: "18:00" },
@@ -61,10 +61,10 @@ const events = [
     guild: "LILY",
     description: "Hosted by [LILY]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
-      { day: "Tuesday", time: "23:30" },
-      { day: "Saturday", time: "20:30" },
+      { day: "Wednesday", time: "00:00" },
+      { day: "Saturday", time: "21:00" },
     ]
   },
   {
@@ -134,7 +134,7 @@ const events = [
     guild: "BUTR",
     description: "Hosted by [BUTR]! Tequatl -> LLA -> Megadestroyer -> Triple Trouble",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Sunday", time: "00:00" },
       { day: "Monday", time: "00:00" },
@@ -184,9 +184,9 @@ const events = [
     guild: "SAS",
     description: "Hosted by [SAS]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
-      { day: "Monday", time: "22:00" },
+      { day: "Monday", time: "20:00" },
     ]
   },
   {
@@ -196,7 +196,7 @@ const events = [
     guild: "SAS",
     description: "Hosted by [SAS]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Thursday", time: "20:00" },
     ]
@@ -220,7 +220,7 @@ const events = [
     guild: "Sw",
     description: "Hosted by [Sw]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Sunday", time: "23:30" },
       { day: "Monday", time: "23:30" },
@@ -384,7 +384,7 @@ const events = [
     guild: "ZERO",
     description: "Hosted by [ZERO]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Monday", time: "14:00" },
     ]
@@ -486,7 +486,7 @@ const events = [
     guild: "WILT",
     description: "Hosted by [WILT]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Wednesday", time: "01:00" },
       { day: "Thursday", time: "01:00" },
@@ -499,7 +499,7 @@ const events = [
     guild: "COFE",
     description: "Hosted by [COFE]!",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Wednesday", time: "05:00" },
       { day: "Friday", time: "05:00" },
@@ -512,7 +512,7 @@ const events = [
     guild: "uLT",
     description: "Hosted by [uLT]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Saturday", time: "20:00" },
     ]
@@ -524,7 +524,7 @@ const events = [
     guild: "uLT",
     description: "Hosted by [uLT]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Sunday", time: "17:00" },
     ]
@@ -752,6 +752,52 @@ const events = [
       { day: "Thursday", time: "04:00" },
       { day: "Friday", time: "04:00" },
       { day: "Saturday", time: "04:00" },
+    ]
+  },
+  {
+    name: "Convergence CMs",
+    region: "NA",
+    username: null,
+    guild: "SLPY",
+    description: "Hosted by [SLPY] The Sleepiest Warriors! Streamed at twitch.tv/projektdyad.",
+    recurring: true,
+    lastVerified: "2026-09-01",
+    needsInfo: [
+      "host GW2 account name - the schedule page lists only the guild and stream",
+    ],
+    schedule: [
+      { day: "Saturday", time: "01:00" },
+    ]
+  },
+  {
+    name: "Convergence CMs",
+    region: "EU",
+    username: null,
+    guild: null,
+    description: "Hosted by Mook Chivalry.",
+    recurring: true,
+    lastVerified: "2026-09-01",
+    needsInfo: [
+      "host GW2 account name",
+      "guild tag",
+    ],
+    schedule: [
+      { day: "Monday", time: "13:00" },
+    ]
+  },
+  {
+    name: "Convergence CMs",
+    region: "EU",
+    username: null,
+    guild: "VII",
+    description: "Hosted by [VII] Septem!",
+    recurring: true,
+    lastVerified: "2026-09-01",
+    needsInfo: [
+      "host GW2 account name",
+    ],
+    schedule: [
+      { day: "Saturday", time: "12:00" },
     ]
   },
 ];

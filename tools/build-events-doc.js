@@ -157,7 +157,7 @@ function byGuildThenName(a, b) {
   return (
     guildA.localeCompare(guildB, "en", { sensitivity: "base" }) ||
     a.name.localeCompare(b.name) ||
-    a.username.localeCompare(b.username)
+    String(a.username || "").localeCompare(String(b.username || ""))
   );
 }
 
@@ -376,8 +376,16 @@ function buildDocument(events) {
     );
 
     incomplete.forEach(({ event, notes }) => {
+      // Several of these share a name and have no host yet, so the heading
+      // carries the guild and the slot to tell them apart.
+      const who = [
+        event.guild ? `[${event.guild}]` : null,
+        event.username || null
+      ].filter(Boolean).join(" ") || "host unknown";
+
       lines.push(
-        `### ${event.name} — ${event.username} (${event.region})`,
+        `### ${event.name} — ${who} ` +
+        `(${event.region}, ${formatSchedule(event.schedule)})`,
         ""
       );
 
