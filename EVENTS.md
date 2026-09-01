@@ -99,11 +99,15 @@ lastVerified: "2026-09-01",
 
 ---
 
-## Missing information (5)
+## Missing information (9)
 
 Details still needed for these events. Add what you learn to the event
 in `events.js`, then delete the matching line from its `needsInfo` list —
 an event disappears from here once its list is empty.
+
+### Convergence CMs — [LILY] LilyVelour.8395 (NA, Wed 00:00 · Sat 21:00)
+
+- Tuesday slot runs every OTHER Tuesday, not weekly - the register can only express weekly, so this slot currently over-reports
 
 ### Convergence CMs — [SLPY] (NA, Sat 01:00)
 
@@ -113,9 +117,21 @@ an event disappears from here once its list is empty.
 
 - host GW2 account name
 
+### Bava Nisos Farm & Meta — Sylphonete.7583 (NA, Daily 23:20)
+
+- guild tag
+
 ### Convergence CMs — host unknown (EU, Mon 13:00)
 
 - host GW2 account name
+- guild tag
+
+### Dragonfall Farm Train — Maverick.3574 (NA, Mon, Tue, Wed, Thu, Fri 21:00)
+
+- guild tag
+
+### EoD Meta Train — Oregon.9387 (EU, Daily 09:30)
+
 - guild tag
 
 ### Gyala Delve — viioculi.9154 (NA, Sat 04:00)

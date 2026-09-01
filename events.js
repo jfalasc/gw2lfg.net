@@ -62,6 +62,9 @@ const events = [
     description: "Hosted by [LILY]!",
     recurring: true,
     lastVerified: "2026-09-01",
+    needsInfo: [
+      "Tuesday slot runs every OTHER Tuesday, not weekly - the register can only express weekly, so this slot currently over-reports",
+    ],
     schedule: [
       { day: "Wednesday", time: "00:00" },
       { day: "Saturday", time: "21:00" },
@@ -153,6 +156,9 @@ const events = [
     description: "Times subject to change! Weekends depend on availability! Message Maverick.3574 for details",
     recurring: true,
     lastVerified: null,
+    needsInfo: [
+      "guild tag",
+    ],
     schedule: [
       { day: "Monday", time: "21:00" },
       { day: "Tuesday", time: "21:00" },
@@ -257,6 +263,9 @@ const events = [
     description: "Bava Nisos farm train before reset, then meta after reset",
     recurring: true,
     lastVerified: null,
+    needsInfo: [
+      "guild tag",
+    ],
     schedule: [
       { day: "Sunday", time: "23:20" },
       { day: "Monday", time: "23:20" },
@@ -566,6 +575,9 @@ const events = [
     description: "Seitung Province -> Kaineng City -> Echovald Forest -> Dragon's End",
     recurring: true,
     lastVerified: "2026-08-31",
+    needsInfo: [
+      "guild tag",
+    ],
     schedule: [
       { day: "Sunday", time: "09:30" },
       { day: "Monday", time: "09:30" },

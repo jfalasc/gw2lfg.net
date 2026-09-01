@@ -89,6 +89,19 @@ mentions the account, so the two do not duplicate each other.
 Remove an entry once it is answered; the event drops off the list when the
 array is empty.
 
+`guild: null` alone does **not** mean the guild is missing — plenty of events
+are genuinely run by an individual or a Discord community rather than a guild.
+The two cases are told apart by `needsInfo`:
+
+| | meaning |
+| --- | --- |
+| `guild: null`, no `needsInfo` | checked; this event has no guild |
+| `guild: null` + `"guild tag"` in `needsInfo` | we have not found out yet |
+
+So do not auto-flag every null guild. Add the `needsInfo` line when the guild
+is unknown, and leave it off once you have confirmed there isn't one — as with
+the EU Triple Trouble, which is run by a Discord server.
+
 ### How "Needs checking" is decided
 
 `staleAfterDays` at the top of the generator is the threshold — currently 90.
