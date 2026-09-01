@@ -571,6 +571,23 @@ body {
   transform: translate(-50%, 0);
 }
 
+/* Set by script when a tall tooltip — a group of several events — would run
+   off the top of the screen opening upward. */
+.timeline-pin.opens-downward .timeline-pin-tooltip {
+  bottom: auto;
+  top: calc(100% + 12px);
+}
+
+/* The arrow moves to the top edge and points back up at the pin. */
+.timeline-pin.opens-downward .timeline-pin-tooltip::after {
+  bottom: auto;
+  top: -7px;
+  border-right: none;
+  border-bottom: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
 .timeline-pin.near-left-edge .timeline-pin-tooltip {
   left: 0;
   transform: translate(0, 8px);

@@ -1323,6 +1323,33 @@ function createTimelineTooltip(group) {
    an explicit open state. The key survives the 60s timeline re-render. */
 let openTimelinePinKey = null;
 
+/* A tooltip opens upward by default, but a group of several events is tall
+   enough to run off the top of the screen — so flip it below the pin when
+   there is not enough room above. Applies to hover and keyboard focus as well
+   as taps, which is why it is not folded into the open-state handler. */
+function placeTimelineTooltip(pin) {
+  const tooltip = pin && pin.querySelector(".timeline-pin-tooltip");
+
+  if (!tooltip) {
+    return;
+  }
+
+  const gap = 12;
+  const viewportPadding = 8;
+  const pinRect = pin.getBoundingClientRect();
+  const height = tooltip.offsetHeight;
+  const roomAbove = pinRect.top - gap - viewportPadding;
+  const roomBelow = window.innerHeight - pinRect.bottom - gap - viewportPadding;
+
+  // Opening upward is the default look, so only flip when the tooltip does not
+  // fit there AND there is genuinely more space below — flipping to a tighter
+  // side would just move the clipping from one end to the other.
+  pin.classList.toggle(
+    "opens-downward",
+    height > roomAbove && roomBelow > roomAbove
+  );
+}
+
 function positionOpenTimelineTooltip() {
   const pin = document.querySelector(".timeline-pin.is-open");
 
@@ -1342,6 +1369,7 @@ function positionOpenTimelineTooltip() {
     tooltip.style.width = "";
     tooltip.style.top = "";
     tooltip.style.bottom = "";
+    placeTimelineTooltip(pin);
     return;
   }
 
@@ -1351,6 +1379,9 @@ function positionOpenTimelineTooltip() {
     return;
   }
 
+  // The anchored path sets top/bottom inline, so the class form must not also
+  // apply or the two would fight over placement.
+  pin.classList.remove("opens-downward");
   tooltip.classList.add("is-anchored");
 
   const edgePadding = 10;
@@ -1398,6 +1429,7 @@ function toggleTimelineTooltip(pin) {
 
   pin.classList.add("is-open");
   openTimelinePinKey = pin.dataset.groupKey || null;
+  placeTimelineTooltip(pin);
   positionOpenTimelineTooltip();
 }
 
@@ -1480,6 +1512,11 @@ function renderTimelinePins(referenceDate = new Date()) {
       clickEvent.stopPropagation();
       toggleTimelineTooltip(pin);
     });
+
+    // Decide up or down before the tooltip fades in, so it never appears
+    // above the top of the screen and then jump.
+    pin.addEventListener("mouseenter", () => placeTimelineTooltip(pin));
+    pin.addEventListener("focus", () => placeTimelineTooltip(pin));
 
     // Re-apply the open state after a refresh rebuilt the pins.
     if (openTimelinePinKey && pin.dataset.groupKey === openTimelinePinKey) {
@@ -1740,6 +1777,18 @@ function updateDisplayClock() {
   updateScheduleNowState(now);
 }
 
+/* Nothing on this page is worth doing while the tab is in the background. The
+   Discord feed especially: polling every 30 seconds is 2,880 requests a day
+   per open tab, all of it wasted when nobody is looking. Work resumes, and
+   catches up, the moment the tab is shown again. */
+function whileVisible(work) {
+  return () => {
+    if (!document.hidden) {
+      work();
+    }
+  };
+}
+
 function initializePage() {
   initializeRegionToggle();
   initializeTimeDisplayToggle();
@@ -1750,9 +1799,20 @@ function initializePage() {
   loadDiscordFeedsFromJson();
   updateDisplayClock();
 
-  setInterval(updateDisplayClock, 1000);
-  setInterval(renderTimeline, timelineRefreshMilliseconds);
-  setInterval(loadDiscordFeedsFromJson, discordFeedRefreshMilliseconds);
+  setInterval(whileVisible(updateDisplayClock), 1000);
+  setInterval(whileVisible(renderTimeline), timelineRefreshMilliseconds);
+  setInterval(whileVisible(loadDiscordFeedsFromJson), discordFeedRefreshMilliseconds);
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      return;
+    }
+
+    // Catch up on everything that was skipped while hidden.
+    updateDisplayClock();
+    renderTimeline();
+    loadDiscordFeedsFromJson();
+  });
 }
 
 if (document.readyState === "loading") {
