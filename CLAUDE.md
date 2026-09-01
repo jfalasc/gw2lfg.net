@@ -244,6 +244,21 @@ There are no automated tests. Verify changes in a browser at several widths —
 - No element extends past the viewport, and the page never scrolls sideways.
 - Every event for the selected day is reachable.
 - The schedule and timeline agree with each other in both Local and UTC modes.
+- Timeline tooltips, at several scroll positions. Fitting on screen is not the
+  same as being visible: check what is actually painted on top, not just the
+  bounding box. A tooltip once passed a geometry check while rendering behind
+  the schedule panel.
+
+`elementFromPoint` is the way to check that, but the tooltip sets
+`pointer-events: none`, so hit-testing skips it and always reports whatever is
+underneath. Override it for the duration of the check or the result is
+meaningless:
+
+```js
+// in devtools, before probing
+document.head.insertAdjacentHTML("beforeend",
+  "<style>.timeline-pin-tooltip{pointer-events:auto !important}</style>");
+```
 
 To serve locally:
 

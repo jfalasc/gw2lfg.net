@@ -398,7 +398,17 @@ body {
 
 /* ---------- Timeline ---------- */
 
+/* Tooltips overflow the timeline card in both directions, and the card is a
+   stacking context of its own because of its backdrop-filter — so a pin's
+   z-index can never lift a tooltip past the card. The whole section is raised
+   instead: above the corner toggles (1200) and the schedule below it, but
+   under the event popover (1800), which must stay on top of everything.
+   The card itself never overlaps its neighbours, so only the tooltip is
+   affected by this. */
 .timeline-section {
+  position: relative;
+  z-index: 1300;
+
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1696,6 +1706,15 @@ body {
   font-weight: 900;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+/* Muted, and no longer claiming to be live, once the newest post is old
+   enough that the bot has probably stopped. */
+.discord-live-badge.is-stale {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(233, 241, 250, 0.72);
+  letter-spacing: 0.06em;
 }
 
 .discord-feed-messages {
