@@ -5,8 +5,8 @@ each visitor's local time. Hosted on GitHub Pages at <https://www.gw2lfg.net>,
 deployed by pushing to `main`.
 
 No build step, no dependencies, no framework. Open `index.html` and it works.
-Keep it that way — the whole site is five files, and that simplicity is the
-point, not an accident.
+Keep it that way — the site the browser loads is four files plus two images,
+and that simplicity is the point, not an accident.
 
 ## The one rule that matters
 
@@ -169,9 +169,16 @@ of `schedule`), but no event currently uses it.
 `index.html` loads its assets with a `?v=N` query string:
 
 ```html
-<link rel="stylesheet" href="style.css?v=20" />
-<script src="events.js?v=20"></script>
-<script src="script.js?v=20"></script>
+<link rel="stylesheet" href="style.css?v=N" />
+<script src="events.js?v=N"></script>
+<script src="script.js?v=N"></script>
+```
+
+Check what `N` currently is rather than assuming — this note would go stale
+otherwise:
+
+```bash
+grep -o '?v=[0-9]*' index.html | sort -u
 ```
 
 **Bump all three together on every deploy.** They are maintained by hand, so
@@ -221,6 +228,13 @@ and visible to everyone else, who keep getting the old file.
 - Timeline tooltips open on hover, on `:focus-visible`, and on click. The click
   path exists because touch devices have no hover and browsers withhold
   `:focus-visible` from taps.
+- A tooltip covering several events is tall, so `placeTimelineTooltip()` picks
+  a direction as it appears: upward by default, downward only when it does not
+  fit above *and* there is more room below. Comparing both sides matters —
+  flipping to a tighter side just moves the clipping to the other end.
+- All three timers skip their work while `document.hidden`, and catch up on
+  `visibilitychange`. Without that, a tab left open polls the Discord feed
+  2,880 times a day for nobody.
 
 ## Testing
 
