@@ -77,7 +77,7 @@ threshold before it crosses.
 
 ---
 
-## Needs checking (26)
+## Needs checking (19)
 
 Never verified, or last verified 90+ days ago.
 
@@ -85,9 +85,6 @@ Never verified, or last verified 90+ days ago.
 | --- | --- | --- | --- | --- | --- |
 | Core Meta Train | `[BUTR]` | Wolfspear.7180 | NA | Daily 00:00 | **never** |
 | Dragon's End | `[DBJC]` | Shiv Deeviant.8072 | NA | Mon, Tue, Wed, Thu, Fri 22:00 | **never** |
-| Dragon's End & Dragonstorm | `[Hs]` | sim.1203 | NA | Daily 02:30 | **never** |
-| EoD Meta Train | `[Hs]` | Platanium.4532 | EU | Sun 17:30 | **never** |
-| Weekly Rifts | `[Hs]` | Platanium.4532 | EU | Tue 17:30 | **never** |
 | Gyala Delve | `[JMAW]` | Ruinandshotel.9278 | NA | Tue, Thu, Sat 01:30 | **never** |
 | HoT Meta Train | `[LEG]` | Lamshire.3058 | NA | Mon, Tue, Thu 02:00 | **never** |
 | Convergence CMs | `[LILY]` | LilyVelour.8395 | NA | Sat 20:30 · Tue 23:30 | **never** |
@@ -101,11 +98,7 @@ Never verified, or last verified 90+ days ago.
 | JW Convergence CMs | `[uLT]` | Ohnage.1638 | NA | Sat 20:00 | **never** |
 | SotO Convergence CMs | `[uLT]` | Ohnage.1638 | NA | Sun 17:00 | **never** |
 | Convergence CMs | `[WILT]` | calmerthanu.8375 | NA | Wed, Thu 01:00 | **never** |
-| Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | NA | Sun 19:30 | **never** |
-| Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | NA | Mon 18:30 | **never** |
-| Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | EU | Mon 18:30 | **never** |
 | SotO & JW Convergence CMs | `[ZERO]` | darens.2547 | NA | Mon 14:00 | **never** |
-| World Tour Meta Train | `[ZERO]` | darens.2547 | NA | Thu 15:00 | **never** |
 | Bava Nisos Farm & Meta | — | Sylphonete.7583 | NA | Daily 23:20 | **never** |
 | Convergence CMs | — | SunMatrix.4168 | NA | Tue 01:00 · Sat 18:00 | **never** |
 | Dragonfall Farm Train | — | Maverick.3574 | NA | Mon, Tue, Wed, Thu, Fri 21:00 | **never** |
@@ -140,14 +133,14 @@ an event disappears from here once its list is empty.
 
 | Event | Guild | Host | Runs (UTC) | Last verified |
 | --- | --- | --- | --- | --- |
-| EoD Meta Train | `[Hs]` | Platanium.4532 | Sun 17:30 | **never** |
-| Weekly Rifts | `[Hs]` | Platanium.4532 | Tue 17:30 | **never** |
+| EoD Meta Train | `[Hs]` | Platanium.4532 | Sun 17:30 | 2026-09-01 (0d) |
+| Weekly Rifts | `[Hs]` | Platanium.4532 | Tue 17:30 | 2026-09-01 (0d) |
 | Amalgamated Meta Train | `[VEIN]` | Literious.4205 | Mon, Wed, Fri 08:45 | 2026-08-31 (1d) |
 | Drizzlewood Coast | `[VEIN]` | Literious.4205 | Daily 16:30 | 2026-08-31 (1d) |
 | EoD Meta Train | `[VEIN]` | Literious.4205 | Daily 11:30 | 2026-08-31 (1d) |
 | Gyala Delve | `[VEIN]` | Literious.4205 | Daily 14:15 | 2026-08-31 (1d) |
 | VoE Convergence CMs | `[VEIN]` | Literious.4205 | Mon 14:30 | 2026-08-31 (1d) |
-| Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 | **never** |
+| Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 | 2026-09-01 (0d) |
 | EoD Meta Train | — | Oregon.9387 | Daily 09:30 | 2026-08-31 (1d) |
 | Triple Trouble | — | Tanylyla.6397 | Tue, Wed, Thu, Fri, Sat, Sun 19:15 | 2026-08-31 (1d) |
 
@@ -169,7 +162,7 @@ an event disappears from here once its list is empty.
 | S4 Meta Train | `[FB]` | MarshAll.3528 | Sat 01:45 | 2026-08-31 (1d) |
 | SotO Convergence CMs | `[FB]` | MarshAll.3528 | Sun 01:50 | 2026-08-31 (1d) |
 | World Tour Meta Train | `[FB]` | MarshAll.3528 | Mon 02:00 | 2026-08-31 (1d) |
-| Dragon's End & Dragonstorm | `[Hs]` | sim.1203 | Daily 02:30 | **never** |
+| Dragon's End & Dragonstorm | `[Hs]` | sim.1203 | Daily 02:30 | 2026-09-01 (0d) |
 | Gyala Delve | `[JMAW]` | Ruinandshotel.9278 | Tue, Thu, Sat 01:30 | **never** |
 | HoT Meta Train | `[LEG]` | Lamshire.3058 | Mon, Tue, Thu 02:00 | **never** |
 | Convergence CMs | `[LILY]` | LilyVelour.8395 | Sat 20:30 · Tue 23:30 | **never** |
@@ -186,12 +179,12 @@ an event disappears from here once its list is empty.
 | SotO Convergence CMs | `[uLT]` | Ohnage.1638 | Sun 17:00 | **never** |
 | Triple Trouble | `[WHAM]` | CasFamGaming.9843 | Daily 03:30 | 2026-08-31 (1d) |
 | Convergence CMs | `[WILT]` | calmerthanu.8375 | Wed, Thu 01:00 | **never** |
-| Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Sun 19:30 | **never** |
-| Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 | **never** |
+| Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Sun 19:30 | 2026-09-01 (0d) |
+| Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 | 2026-09-01 (0d) |
 | Tower of Nightmares | `[WoM]` | LadyDestinee.5178 | Mon 01:30 | 2026-08-31 (1d) |
 | World Tour Meta Train | `[WoM]` | LadyDestinee.5178 | Sat 23:45 | 2026-08-31 (1d) |
 | SotO & JW Convergence CMs | `[ZERO]` | darens.2547 | Mon 14:00 | **never** |
-| World Tour Meta Train | `[ZERO]` | darens.2547 | Thu 15:00 | **never** |
+| World Tour Meta Train | `[ZERO]` | darens.2547 | Thu 15:00 | 2026-09-01 (0d) |
 | Bava Nisos Farm & Meta | — | Sylphonete.7583 | Daily 23:20 | **never** |
 | Convergence CMs | — | SunMatrix.4168 | Tue 01:00 · Sat 18:00 | **never** |
 | Dragonfall Farm Train | — | Maverick.3574 | Mon, Tue, Wed, Thu, Fri 21:00 | **never** |

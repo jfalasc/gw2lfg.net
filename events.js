@@ -396,7 +396,7 @@ const events = [
     guild: "Hs",
     description: "Hosted by [Hs]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Sunday", time: "02:30" },
       { day: "Monday", time: "02:30" },
@@ -414,7 +414,7 @@ const events = [
     guild: "ZERO",
     description: "Hosted by [ZERO]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Thursday", time: "15:00" },
     ]
@@ -426,7 +426,7 @@ const events = [
     guild: "Wing",
     description: "Hosted by [Wing]! Learn how to get the most out of your griffon!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Sunday", time: "19:30" },
     ]
@@ -438,7 +438,7 @@ const events = [
     guild: "Wing",
     description: "Hosted by [Wing]! Learn how to get the most out of your griffon!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Monday", time: "18:30" },
     ]
@@ -536,7 +536,7 @@ const events = [
     guild: "Wing",
     description: "Hosted by [Wing]! Learn how to get the most out of your griffon!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Monday", time: "18:30" },
     ]
@@ -583,7 +583,7 @@ const events = [
     guild: "Hs",
     description: "Hosted by [Hs]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Tuesday", time: "17:30" },
     ]
@@ -595,7 +595,7 @@ const events = [
     guild: "Hs",
     description: "Hosted by [Hs]! Seitung Province -> Kaineng City -> Echovald Forest -> Dragon's End -> Echovald Forest -> Gyala Delve",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-09-01",
     schedule: [
       { day: "Sunday", time: "17:30" },
     ]
