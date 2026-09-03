@@ -213,6 +213,18 @@ and visible to everyone else, who keep getting the old file.
 - **A class selector outranks `[hidden]`.** Anything given `display: grid` or
   `flex` needs an explicit `[hidden] { display: none }` companion rule, or the
   `hidden` attribute silently does nothing.
+- **Never let `backdrop-filter` be load-bearing for legibility.** The panels
+  are translucent over a busy background image, and the blur is what turns
+  that background into a smooth wash. It does not always paint: hardware
+  acceleration switched off disables it in current Chrome and Firefox, and
+  `@supports` cannot catch that — the browser still reports the property as
+  supported. This reached a user as an unreadable schedule panel.
+
+  So the panels carrying text sit at ~0.95 alpha and are readable on their own,
+  with the blur as decoration on top. Dropping `.schedule-frame` or
+  `.timeline-card` back toward 0.75 reintroduces the bug: at 0.76 the artwork
+  swings the panel's brightness across 32% of the full range, at 0.95 only 7%.
+  `-webkit-backdrop-filter` accompanies every declaration, for Safari before 18.
 
 ## Behaviour worth knowing
 

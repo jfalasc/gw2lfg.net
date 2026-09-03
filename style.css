@@ -421,7 +421,7 @@ body {
   position: relative;
   padding: 14px 18px 16px;
   border-radius: 24px;
-  background: rgba(236, 241, 244, 0.72);
+  background: rgba(236, 241, 244, 0.94);
   border: 1px solid rgba(255, 255, 255, 0.28);
   box-shadow:
     0 14px 28px rgba(0, 0, 0, 0.13),
@@ -803,6 +803,13 @@ body {
 }
 
 .schedule-frame {
+  /* The base layer below sits at ~0.95, not the ~0.75 it started at. Text has
+     to stay readable when backdrop-filter does not paint — which happens with
+     hardware acceleration off, and cannot be feature-detected because the
+     browser still reports the property as supported. Legibility therefore has
+     to come from the panel itself; the blur is decoration on top. Do not drop
+     these alphas back down. */
+
   /* Overwritten per selected day by the .day-* class the script sets here, so
      the whole panel takes on the colour of the day you are looking at. */
   --day-accent-rgb: 74 159 240;
@@ -826,9 +833,9 @@ body {
       rgb(var(--day-accent-rgb) / 0.2) 0%,
       rgb(var(--day-accent-rgb) / 0) 62%),
     linear-gradient(165deg,
-      rgba(238, 243, 246, 0.8) 0%,
-      rgba(213, 231, 242, 0.72) 54%,
-      rgba(196, 219, 234, 0.76) 100%);
+      rgba(238, 243, 246, 0.96) 0%,
+      rgba(213, 231, 242, 0.94) 54%,
+      rgba(196, 219, 234, 0.95) 100%);
   border: 1px solid rgba(255, 255, 255, 0.34);
   box-shadow:
     0 18px 38px rgba(0, 0, 0, 0.16),
@@ -2521,16 +2528,14 @@ body {
 /* ---------- No backdrop-filter: keep the panels readable ---------- */
 
 /*
- * Every frosted surface on this page is deliberately translucent and relies on
- * backdrop-filter to blur the artwork behind it into a smooth wash. Where that
- * property does nothing — hardware acceleration switched off, an older build,
- * Firefox before 103 — the background image shows through sharp instead, and
- * text sits directly on top of high-contrast mountain detail. It is unreadable
- * rather than merely different, so those surfaces become opaque instead.
+ * Belt and braces for browsers that do not have backdrop-filter at all.
  *
- * Only surfaces that sit directly over the page background need this. Anything
- * nested inside one of them (event cards, the now bar, badges) is already over
- * an opaque parent once these apply.
+ * Note this is NOT the main defence. @supports only asks whether the browser
+ * *knows* the property, and Chrome with hardware acceleration switched off
+ * answers yes while never painting the blur — so this block never fires for
+ * the case that actually got reported. The real fix is that the panels
+ * carrying text are opaque enough to read on their own; see the note on
+ * .schedule-frame. This just tidies up the genuinely-unsupported case.
  */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .top-nav {
