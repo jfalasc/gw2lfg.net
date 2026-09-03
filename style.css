@@ -89,6 +89,7 @@ body {
   box-shadow:
     0 12px 24px rgba(0, 0, 0, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
 
@@ -192,6 +193,7 @@ body {
     0 14px 28px rgba(0, 0, 0, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   color: #f4f8ff;
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
 
@@ -250,6 +252,7 @@ body {
   box-shadow:
     0 14px 28px rgba(0, 0, 0, 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
 
@@ -423,6 +426,7 @@ body {
   box-shadow:
     0 14px 28px rgba(0, 0, 0, 0.13),
     inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
 }
 
@@ -558,6 +562,7 @@ body {
   opacity: 0;
   transform: translate(-50%, 8px);
   transition: opacity 0.15s ease, transform 0.15s ease;
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
 
@@ -829,6 +834,7 @@ body {
     0 18px 38px rgba(0, 0, 0, 0.16),
     0 0 26px rgb(var(--day-accent-rgb) / 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   transition: background 0.28s ease, box-shadow 0.28s ease;
 
@@ -1174,6 +1180,7 @@ body {
     0 7px 16px rgba(0, 0, 0, 0.1),
     0 0 14px rgb(var(--day-accent-rgb) / 0.26),
     inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
 
@@ -1197,6 +1204,7 @@ body {
   box-shadow:
     0 6px 14px rgba(0, 0, 0, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
 
@@ -1226,6 +1234,7 @@ body {
     0 8px 18px rgba(0, 0, 0, 0.1),
     0 0 16px rgb(var(--day-accent-rgb) / 0.24),
     inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
 
@@ -1370,6 +1379,7 @@ body {
   cursor: pointer;
   position: relative;
   z-index: 1;
+  -webkit-backdrop-filter: none;
   backdrop-filter: none;
   display: flex;
   align-items: center;
@@ -1569,6 +1579,7 @@ body {
   font-size: 1rem;
   font-weight: 700;
   text-align: center;
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
 }
 
@@ -1650,6 +1661,7 @@ body {
     0 14px 28px rgba(0, 0, 0, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   color: #f4f8ff;
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
 
@@ -1826,6 +1838,7 @@ body {
     0 10px 24px rgba(0, 0, 0, 0.28),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
   color: #ffffff;
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
 
@@ -2359,6 +2372,7 @@ body {
     0 0 24px rgba(143, 211, 255, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.62);
   color: #10202c;
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
 
@@ -2502,5 +2516,57 @@ body {
   .schedule-event-popover-meta p,
   .schedule-event-popover-description {
     font-size: 0.92rem;
+  }
+}
+/* ---------- No backdrop-filter: keep the panels readable ---------- */
+
+/*
+ * Every frosted surface on this page is deliberately translucent and relies on
+ * backdrop-filter to blur the artwork behind it into a smooth wash. Where that
+ * property does nothing — hardware acceleration switched off, an older build,
+ * Firefox before 103 — the background image shows through sharp instead, and
+ * text sits directly on top of high-contrast mountain detail. It is unreadable
+ * rather than merely different, so those surfaces become opaque instead.
+ *
+ * Only surfaces that sit directly over the page background need this. Anything
+ * nested inside one of them (event cards, the now bar, badges) is already over
+ * an opaque parent once these apply.
+ */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .top-nav {
+    background-color: #b9d2e4;
+  }
+
+  .region-toggle,
+  .time-display-toggle {
+    background-color: #b9d2e4;
+  }
+
+  .about-blurb {
+    background-color: #16202c;
+  }
+
+  .timeline-card {
+    background-color: #e2eaf0;
+  }
+
+  .timeline-pin-tooltip {
+    background-color: #121822;
+  }
+
+  .schedule-frame {
+    background-color: #d3e2ee;
+  }
+
+  .panel.discord-panel {
+    background-color: #161f2a;
+  }
+
+  .schedule-event-popover {
+    background-color: #f4f8fa;
+  }
+
+  .utc-clock {
+    background-color: #121822;
   }
 }
