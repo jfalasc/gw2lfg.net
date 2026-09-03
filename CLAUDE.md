@@ -216,8 +216,7 @@ and visible to everyone else, who keep getting the old file.
 - **`backdrop-filter` carries the panels.** They are translucent over a busy
   background image, and the blur is what turns that image into a smooth wash.
   `-webkit-backdrop-filter` accompanies every declaration, because Safari
-  needed the prefix until 18. There is also an `@supports` fallback that makes
-  the panels opaque where the property is genuinely missing.
+  needed the prefix until 18.
 
 ## Before believing a "the site looks wrong" report
 
