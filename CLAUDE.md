@@ -218,6 +218,28 @@ and visible to everyone else, who keep getting the old file.
   `-webkit-backdrop-filter` accompanies every declaration, because Safari
   needed the prefix until 18.
 
+## Colour-rewriting extensions
+
+Two defences, added after the episode below.
+
+`index.html` carries `<meta name="darkreader-lock">`, which asks Dark Reader
+not to process the page at all. That is the real fix — the panels are
+translucent over a background image and Dark Reader turns them unreadable.
+Do not remove it.
+
+The lock only covers Dark Reader, so `initializeColourNotice()` in `script.js`
+shows a notice when it detects the page being recoloured anyway. It looks for
+Dark Reader's own markers (`data-darkreader-mode`, injected `style.darkreader`)
+and, for extensions that leave none, reads back `.colour-probe` — one pixel of
+a known colour. If what comes back is not what the stylesheet set, something
+is rewriting colours. Windows High Contrast is deliberately excluded via
+`forced-colors`, since that is the reader's own choice rather than a fault.
+
+The notice is the one solid surface on the site: no alpha, no backdrop-filter,
+dark text on a light amber ground. It has to stay legible while the very thing
+it warns about is recolouring it, so building it like the frosted panels would
+defeat the purpose. It is dismissible and the choice is remembered.
+
 ## Before believing a "the site looks wrong" report
 
 One user's page looked washed out with the artwork showing through the

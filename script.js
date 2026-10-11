@@ -1819,7 +1819,116 @@ function whileVisible(work) {
   };
 }
 
+/* ---------- Colour-rewriting extension notice ---------- */
+
+/* What .colour-probe is set to in the stylesheet. Read back at runtime: if it
+   comes out as anything else, something is rewriting the page's colours. */
+const colourProbeExpected = "rgb(10, 78, 138)";
+const colourNoticeStorageKey = "gw2LfgColourNoticeDismissed";
+
+/* Extensions apply at their own pace, so re-check for a while after load. */
+const colourNoticeWatchMilliseconds = 10 * 1000;
+
+function isColourNoticeDismissed() {
+  try {
+    return localStorage.getItem(colourNoticeStorageKey) === "yes";
+  } catch (error) {
+    console.warn("Could not read the colour notice preference.");
+    console.warn(error);
+    return false;
+  }
+}
+
+function dismissColourNotice() {
+  const notice = document.getElementById("colourNotice");
+
+  if (notice) {
+    notice.hidden = true;
+  }
+
+  try {
+    localStorage.setItem(colourNoticeStorageKey, "yes");
+  } catch (error) {
+    console.warn("Could not save the colour notice preference.");
+    console.warn(error);
+  }
+}
+
+function isPageBeingRecoloured() {
+  const root = document.documentElement;
+
+  // Dark Reader's own fingerprints — it marks the document and injects styles.
+  if (
+    root.hasAttribute("data-darkreader-mode") ||
+    root.hasAttribute("data-darkreader-scheme") ||
+    document.querySelector("style.darkreader, style[class*='darkreader']")
+  ) {
+    return true;
+  }
+
+  if (getComputedStyle(root).getPropertyValue("--darkreader-neutral-background").trim()) {
+    return true;
+  }
+
+  // Windows High Contrast and similar deliberately replace colours. That is
+  // the reader's own choice, not a broken page, so leave them alone.
+  if (window.matchMedia && window.matchMedia("(forced-colors: active)").matches) {
+    return false;
+  }
+
+  // Generic check, for extensions that leave no marker of their own.
+  const probe = document.getElementById("colourProbe");
+
+  if (probe) {
+    const painted = getComputedStyle(probe).backgroundColor;
+
+    if (painted && painted !== colourProbeExpected) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function refreshColourNotice() {
+  const notice = document.getElementById("colourNotice");
+
+  if (!notice || isColourNoticeDismissed()) {
+    return;
+  }
+
+  notice.hidden = !isPageBeingRecoloured();
+}
+
+function initializeColourNotice() {
+  const closeButton = document.getElementById("colourNoticeClose");
+
+  if (closeButton) {
+    closeButton.addEventListener("click", dismissColourNotice);
+  }
+
+  refreshColourNotice();
+
+  // An extension may finish recolouring after this script runs, so watch for
+  // the markers appearing — then stop, rather than observing forever.
+  if (typeof MutationObserver !== "function") {
+    return;
+  }
+
+  const observer = new MutationObserver(refreshColourNotice);
+
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-darkreader-mode", "data-darkreader-scheme", "style"]
+  });
+
+  observer.observe(document.head, { childList: true });
+
+  setTimeout(() => observer.disconnect(), colourNoticeWatchMilliseconds);
+}
+
 function initializePage() {
+  initializeColourNotice();
   initializeRegionToggle();
   initializeTimeDisplayToggle();
   initializeScheduleEventDetails();

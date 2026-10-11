@@ -2519,3 +2519,121 @@ body {
   }
 }
 
+
+/* ---------- Colour-rewriting extension notice ---------- */
+
+/*
+ * Shown only when the script detects something rewriting the page's colours.
+ *
+ * This one surface is deliberately solid: no alpha, no backdrop-filter, no
+ * dependence on the artwork behind it. Everything else on the page is frosted
+ * glass, and frosted glass is exactly what the extension breaks — a notice
+ * built the same way would be unreadable for the very people it is for. Dark
+ * text on a light ground also survives inversion better than the reverse.
+ *
+ * Amber rather than red: nothing has failed, and the warm tone stands apart
+ * from the site's cool palette without reading as an error.
+ */
+
+.colour-notice[hidden] {
+  display: none;
+}
+
+.colour-notice {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(10px, 1vw, 14px);
+  margin: 0 0 clamp(14px, 1.4vw, 20px);
+  padding: clamp(12px, 1.1vw, 15px) clamp(14px, 1.2vw, 18px);
+
+  border-radius: 18px;
+  background: #f7e6bd;
+  border: 1px solid #d8b263;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  color: #3b2d09;
+
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+.colour-notice-icon {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  border-radius: 999px;
+  background: #7a540b;
+  color: #fdf4de;
+  font-size: 0.86rem;
+  font-weight: 900;
+  line-height: 22px;
+  text-align: center;
+}
+
+.colour-notice-icon::before {
+  content: "!";
+}
+
+.colour-notice-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  font-size: clamp(0.88rem, 0.95vw, 0.96rem);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.colour-notice-text strong {
+  font-weight: 900;
+}
+
+.colour-notice-close {
+  flex: 0 0 auto;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid #d8b263;
+  border-radius: 999px;
+  background: #fbf0d5;
+  color: #6b4d0c;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.colour-notice-close:hover {
+  background: #f1e0b4;
+  border-color: #b8923f;
+}
+
+.colour-notice-close:focus-visible {
+  outline: 3px solid #9a6b12;
+  outline-offset: 2px;
+}
+
+/* One pixel of a known colour, read back by the script. */
+.colour-probe {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 1px;
+  height: 1px;
+  background: #0a4e8a;
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .colour-notice {
+    border-radius: 14px;
+    gap: 10px;
+  }
+
+  .colour-notice-close {
+    width: 34px;
+    height: 34px;
+  }
+}

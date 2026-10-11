@@ -4,13 +4,42 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--
+        Asks Dark Reader to leave this page alone. The panels here are
+        translucent over a background image and rely on backdrop-filter, which
+        Dark Reader rewrites into something unreadable. Removing this brings
+        back the washed-out schedule panel reported in September.
+    -->
+    <meta name="darkreader-lock" />
+
     <title>GW2 LFG</title>
-    <link rel="stylesheet" href="style.css?v=34" />
+    <link rel="stylesheet" href="style.css?v=36" />
     <link rel="icon" type="image/png" href="Web Art/favicon.ico" />
 </head>
 
 <body>
     <div class="page-shell">
+        <div class="colour-notice" id="colourNotice" role="status" hidden>
+            <span class="colour-notice-icon" aria-hidden="true"></span>
+
+            <p class="colour-notice-text">
+                <strong>Colours look wrong?</strong>
+                A browser extension is changing this page's colours. Turning it
+                off for gw2lfg.net will show the site as intended.
+            </p>
+
+            <button type="button" class="colour-notice-close" id="colourNoticeClose"
+                aria-label="Dismiss this notice">&times;</button>
+        </div>
+
+        <!--
+            A known colour the script reads back. If it comes out as anything
+            other than what the stylesheet sets, something is rewriting the
+            page's colours and the notice above applies.
+        -->
+        <span class="colour-probe" id="colourProbe" aria-hidden="true"></span>
+
         <div class="corner-info-stack">
             <div class="site-preference-toggles">
                 <div class="region-toggle" id="regionToggle" role="group" aria-label="Choose event region">
@@ -182,8 +211,8 @@
         </div>
     </div>
 
-    <script src="events.js?v=34"></script>
-    <script src="script.js?v=34"></script>
+    <script src="events.js?v=36"></script>
+    <script src="script.js?v=36"></script>
 </body>
 
 </html>
