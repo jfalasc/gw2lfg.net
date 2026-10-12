@@ -18,7 +18,7 @@ const events = [
     region: "NA",
     username: "Lamshire.3058",
     guild: "LEG",
-    description: "Hosted by [LEG]! Tangled Depths > Auric Basin (+30 min) > Dragon's Stand (+1 hr) > Auric Basin round 2 (+2 hr 30) > Verdant Brink (+3 hr 15). Come to the map 15 minutes before the start or it will be full!",
+    description: "Hosted by [LEG]! Tangled Depths -> Auric Basin -> Dragon's Stand -> Auric Basin -> Verdant Brink",
     recurring: true,
     lastVerified: "2026-10-11",
     schedule: [
@@ -32,7 +32,7 @@ const events = [
     region: "NA",
     username: "Ruinandshotel.9278",
     guild: "JMAW",
-    description: "Hosted by [JMAW]! We crave for the delve. Starts 1 hour 30 minutes after daily reset.",
+    description: "Hosted by [JMAW]! We crave for the delve",
     recurring: true,
     lastVerified: "2026-10-11",
     schedule: [
@@ -59,7 +59,7 @@ const events = [
     region: "NA",
     username: "LilyVelour.8395",
     guild: "LILY",
-    description: "Hosted by [LILY]! Currently VoE convergences on Tuesdays and JW on Saturdays.",
+    description: "Hosted by [LILY]! VoE on Tuesdays & JW on Saturdays",
     recurring: true,
     lastVerified: "2026-10-11",
     schedule: [
@@ -72,7 +72,7 @@ const events = [
     region: "NA",
     username: "LilyVelour.8395",
     guild: "LILY",
-    description: "Hosted by [LILY]! Depths of Cruelty > Secrets of the Weald > Hammerheart Rumble > Shackles of the Ancients, with rifts in between when there's time. Come early to get into the map.",
+    description: "Hosted by [LILY]! Depths of Cruelty -> Secrets of the Weald -> Hammerheart Rumble -> Shackles of the Ancients",
     recurring: true,
     lastVerified: "2026-10-11",
     schedule: [
@@ -341,7 +341,7 @@ const events = [
     region: "NA",
     username: "Dark Raven.2160",
     guild: "DCAP",
-    description: "Hosted by [DCAP]! Friday delving. You will need End of Dragons and Jade Bot mastery for this meta.",
+    description: "Hosted by [DCAP]! Requires EoD & Jade Bot mastery",
     recurring: true,
     lastVerified: "2026-10-11",
     schedule: [
@@ -407,7 +407,7 @@ const events = [
     region: "NA",
     username: "darens.2547",
     guild: "ZERO",
-    description: "Hosted by [ZERO]! Zero to Hero: currencies, materials and gold from every expansion.",
+    description: "Hosted by [ZERO]! Metas from every expansion",
     recurring: true,
     lastVerified: "2026-10-11",
     schedule: [
@@ -557,7 +557,7 @@ const events = [
     region: "EU",
     username: "Platanium.4532",
     guild: "Hs",
-    description: "Hosted by [Hs]! An Overcharged rift train through all 14 rift zones: 2 T1, 2 T2 and 1 T3 rift per map.",
+    description: "Hosted by [Hs]! Overcharged rifts in all 14 rift zones",
     recurring: true,
     lastVerified: "2026-10-11",
     schedule: [
@@ -581,7 +581,7 @@ const events = [
     region: "EU",
     username: "Literious.4205",
     guild: "VEIN",
-    description: "Hosted by [VEIN]! AB > Drakkar > Junundu > Palawadan > Vabbi > VBMatri > Effigy > LLA > Chak > Doomlore > Oil Floes > DBS > EoD Train. The route changes depending on commanders and requests.",
+    description: "Hosted by [VEIN]! AB -> Drakkar -> Junundu -> Palawadan -> Vabbi -> VBMatri -> Effigy -> LLA -> Chak -> Doomlore -> Oil Floes -> DBS -> EoD Train",
     recurring: true,
     lastVerified: "2026-10-11",
     schedule: [
@@ -595,7 +595,7 @@ const events = [
     region: "EU",
     username: "Literious.4205",
     guild: "VEIN",
-    description: "Hosted by [VEIN]! Aetherblade Assault > Kaineng Blackout > Gang War > Soo Won > Aspenwood. Runs into the daily scheduled Gyala Delve.",
+    description: "Hosted by [VEIN]! Aetherblade Assault -> Kaineng Blackout -> Gang War -> Soo Won -> Aspenwood",
     recurring: true,
     lastVerified: "2026-10-11",
     schedule: [
@@ -613,7 +613,7 @@ const events = [
     region: "EU",
     username: "Literious.4205",
     guild: "VEIN",
-    description: "Hosted by [VEIN]! Part 1 + Part 2. Bring Filters, Protocols, Keys and Lures, plus Shrimplings (optional).",
+    description: "Hosted by [VEIN]! Parts 1 & 2",
     recurring: true,
     lastVerified: "2026-10-11",
     schedule: [
@@ -631,7 +631,7 @@ const events = [
     region: "EU",
     username: "Literious.4205",
     guild: "VEIN",
-    description: "Hosted by [VEIN]! SotO convergences on Saturdays (all 5 bosses) and JW on Sundays (all 3 bosses). Voice and performance expected.",
+    description: "Hosted by [VEIN]! SotO on Saturdays & JW on Sundays",
     recurring: true,
     lastVerified: "2026-10-11",
     schedule: [
@@ -644,7 +644,7 @@ const events = [
     region: "EU",
     username: "Literious.4205",
     guild: "VEIN",
-    description: "Hosted by [VEIN]! South + North. Flex schedule - usually daily somewhere between dinner and midnight, and sometimes during the day. Bring Keys (optional).",
+    description: "Hosted by [VEIN]! Times subject to change! Usually daily between dinner and midnight",
     recurring: true,
     lastVerified: "2026-10-11",
     schedule: [
@@ -662,7 +662,7 @@ const events = [
     region: "NA",
     username: "LadyDestinee.5178",
     guild: "WoM",
-    description: "Hosted by [WoM]! All achievements. Meets in Kessex Hills.",
+    description: "Hosted by [WoM]! All achievements",
     recurring: true,
     lastVerified: "2026-10-11",
     schedule: [
@@ -698,7 +698,7 @@ const events = [
     region: "NA",
     username: "viioculi.9154",
     guild: null,
-    description: "Echovald and Aspenwood into Gyala Delve. Announced Friday evenings in the group-finder Discord.",
+    description: "Aspenwood -> Gyala Delve",
     recurring: true,
     lastVerified: "2026-10-11",
     needsInfo: [
@@ -713,7 +713,7 @@ const events = [
     region: "NA",
     username: "Go Mango",
     guild: null,
-    description: "Lava Chicken pre-event through to Eparch. Announced nightly in the group-finder Discord.",
+    description: "Lava Chicken -> Eparch",
     recurring: true,
     lastVerified: "2026-10-11",
     needsInfo: [
@@ -736,7 +736,7 @@ const events = [
     region: "NA",
     username: null,
     guild: "SLPY",
-    description: "Hosted by [SLPY] The Sleepiest Warriors! Streamed at twitch.tv/projektdyad.",
+    description: "Hosted by [SLPY]! Streamed at twitch.tv/projektdyad",
     recurring: true,
     lastVerified: "2026-10-11",
     needsInfo: [
@@ -751,7 +751,7 @@ const events = [
     region: "EU",
     username: "TheLP.3957",
     guild: null,
-    description: "Led by Mook Chivalry! A full challenge-mode run of all 5 SotO and 3 Janthir convergence bosses. Groups start forming 20 minutes before the start. Runs are streamed at twitch.tv/mookchivalry.",
+    description: "Hosted by Mook Chivalry! All SotO & Janthir bosses, streamed at twitch.tv/mookchivalry",
     recurring: true,
     lastVerified: "2026-10-11",
     needsInfo: [
@@ -766,7 +766,7 @@ const events = [
     region: "EU",
     username: null,
     guild: "VII",
-    description: "Hosted by [VII] Septem!",
+    description: "Hosted by [VII]!",
     recurring: true,
     lastVerified: "2026-10-11",
     needsInfo: [
@@ -781,7 +781,7 @@ const events = [
     region: "EU",
     username: null,
     guild: "CUTE",
-    description: "Hosted by [CUTE] Cruel Unending Tyrannic Entity!",
+    description: "Hosted by [CUTE]!",
     recurring: true,
     lastVerified: "2026-10-11",
     needsInfo: [
@@ -797,7 +797,7 @@ const events = [
     region: "NA",
     username: "XxthefoxX.2158",
     guild: null,
-    description: "EoD metas first, then Gyala Delve, Dragonfall and Inner Nayos. The later legs vary week to week. Announced Saturday afternoons in the group-finder Discord.",
+    description: "EoD Meta Train -> Gyala Delve -> Dragonfall -> Inner Nayos",
     recurring: true,
     lastVerified: "2026-10-11",
     needsInfo: [
@@ -812,7 +812,7 @@ const events = [
     region: "NA",
     username: "Kat.3426",
     guild: "BABE",
-    description: "Hosted by [BABE]! Aetherblade Assault > Kaineng Blackout > Gang War > Battle for the Jade Sea.",
+    description: "Hosted by [BABE]! Aetherblade Assault -> Kaineng Blackout -> Gang War -> Soo Won",
     recurring: true,
     lastVerified: "2026-10-11",
     schedule: [

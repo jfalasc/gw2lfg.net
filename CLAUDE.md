@@ -152,6 +152,28 @@ Discord event titles do not follow this convention, so titles taken from
 screenshots usually need trimming — "Gyala Delve Meta @ Daily" is the event
 `Gyala Delve`, running daily.
 
+### Descriptions
+
+Write them in the owner's format, which was chosen deliberately: the first
+batch named guilds in full ("Hosted by Firebranders [FB]") and every one was
+cut back to the tag a few days later.
+
+- Open with `Hosted by [TAG]!` — the tag only, never the guild's full name,
+  and always the `!`. Most descriptions stop there.
+- Add at most one short fragment after it, with no full stop:
+  `Hosted by [FB]! Metas from every expansion`.
+- Routes put ` -> ` between stops, and `&` stands in for "and".
+- An event with no guild gets a plain fragment instead, as with Oregon's
+  `Seitung Province -> Kaineng City -> ...`. Use `Hosted by Name!` only for a
+  named organisation or leader, as with `Hosted by Convergence Corp!`.
+- Leave out what the site already shows or what only matters to us: start
+  times and offsets (the card shows the time in the visitor's own zone),
+  days, and where the event is announced.
+
+Do keep what a visitor needs before joining — a requirement such as
+`Requires EoD & Jade Bot mastery`, or a host's warning that the time moves,
+in the owner's own phrase `Times subject to change!`.
+
 ### One entry per host, not one per run
 
 When a host runs the same event on several days, that is **one** event with
