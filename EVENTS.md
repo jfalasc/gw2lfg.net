@@ -187,7 +187,7 @@ an event disappears from here once its list is empty.
 | S4 Meta Train | `[FB]` | MarshAll.3528 | Sat 01:45 | 2026-10-11 (1d) |
 | World Tour Meta Train | `[FB]` | MarshAll.3528 | Mon 02:00 | 2026-10-11 (1d) |
 | Dragon's End & Dragonstorm | `[Hs]` | sim.1203 | Daily 02:30 | 2026-10-11 (1d) |
-| Gyala Delve | `[JMAW]` | Ruinandshotel.9278 | Tue, Thu, Sat 01:30 | 2026-09-01 (41d) |
+| Gyala Delve | `[JMAW]` | Ruinandshotel.9278 | Tue, Thu, Sat 01:30 | 2026-10-11 (1d) |
 | HoT Meta Train | `[LEG]` | Lamshire.3058 | Mon, Tue, Thu 02:30 | 2026-10-11 (1d) |
 | Convergence CMs | `[LILY]` | LilyVelour.8395 | Tue, Sat 23:00 | 2026-10-11 (1d) |
 | VoE Meta Train | `[LILY]` | LilyVelour.8395 | Wed 23:00 | 2026-10-11 (1d) |

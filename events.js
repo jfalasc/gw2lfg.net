@@ -32,9 +32,9 @@ const events = [
     region: "NA",
     username: "Ruinandshotel.9278",
     guild: "JMAW",
-    description: "Hosted by [JMAW]!",
+    description: "Hosted by [JMAW]! We crave for the delve. Starts 1 hour 30 minutes after daily reset.",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Tuesday", time: "01:30" },
       { day: "Thursday", time: "01:30" },
