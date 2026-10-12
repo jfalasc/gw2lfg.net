@@ -153,15 +153,15 @@ an event disappears from here once its list is empty.
 | Event | Guild | Host | Runs (UTC) | Last verified |
 | --- | --- | --- | --- | --- |
 | Convergence CMs | `[CUTE]` |  | Wed, Thu 18:00 | 2026-10-11 (1d) |
-| EoD Meta Train | `[Hs]` | Platanium.4532 | Sun 17:30 | 2026-09-01 (41d) |
-| Weekly Rifts | `[Hs]` | Platanium.4532 | Tue 17:30 | 2026-09-01 (41d) |
+| EoD Meta Train | `[Hs]` | Platanium.4532 | Sun 17:30 | 2026-10-11 (1d) |
+| Weekly Rifts | `[Hs]` | Platanium.4532 | Tue 17:00 | 2026-10-11 (1d) |
 | Amalgamated Meta Train | `[VEIN]` | Literious.4205 | Mon, Wed, Fri 08:45 | 2026-08-31 (42d) |
 | Convergence CMs | `[VEIN]` | Literious.4205 | Mon 14:30 | 2026-08-31 (42d) |
 | Drizzlewood Coast | `[VEIN]` | Literious.4205 | Daily 16:30 | 2026-08-31 (42d) |
 | EoD Meta Train | `[VEIN]` | Literious.4205 | Daily 11:30 | 2026-08-31 (42d) |
 | Gyala Delve | `[VEIN]` | Literious.4205 | Daily 14:15 | 2026-08-31 (42d) |
 | Convergence CMs | `[VII]` |  | Sat 12:00 | 2026-10-11 (1d) |
-| Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 | 2026-09-01 (41d) |
+| Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 | 2026-10-11 (1d) |
 | Convergence CMs | — | TheLP.3957 | Mon 13:00 | 2026-10-11 (1d) |
 | EoD Meta Train | — | Oregon.9387 | Daily 09:30 | 2026-10-11 (1d) |
 | Triple Trouble | — | Tanylyla.6397 | Tue, Wed, Thu, Fri, Sat, Sun 19:15 | 2026-08-31 (42d) |
@@ -186,7 +186,7 @@ an event disappears from here once its list is empty.
 | EoD Meta Train | `[FB]` | MarshAll.3528 | Tue 03:30 | 2026-10-11 (1d) |
 | S4 Meta Train | `[FB]` | MarshAll.3528 | Sat 01:45 | 2026-10-11 (1d) |
 | World Tour Meta Train | `[FB]` | MarshAll.3528 | Mon 02:00 | 2026-10-11 (1d) |
-| Dragon's End & Dragonstorm | `[Hs]` | sim.1203 | Daily 02:30 | 2026-09-01 (41d) |
+| Dragon's End & Dragonstorm | `[Hs]` | sim.1203 | Daily 02:30 | 2026-10-11 (1d) |
 | Gyala Delve | `[JMAW]` | Ruinandshotel.9278 | Tue, Thu, Sat 01:30 | 2026-09-01 (41d) |
 | HoT Meta Train | `[LEG]` | Lamshire.3058 | Mon, Tue, Thu 02:00 | 2026-09-01 (41d) |
 | Convergence CMs | `[LILY]` | LilyVelour.8395 | Wed 00:00 · Sat 21:00 | 2026-10-11 (1d) |
@@ -202,11 +202,11 @@ an event disappears from here once its list is empty.
 | Convergence CMs | `[uLT]` | Ohnage.1638 | Sun 17:00 · Sat 20:00 | 2026-10-11 (1d) |
 | Triple Trouble | `[WHAM]` | CasFamGaming.9843 | Daily 03:30 | 2026-08-31 (42d) |
 | Convergence CMs | `[WILT]` | calmerthanu.8375 | Wed, Thu 01:00 | 2026-10-11 (1d) |
-| Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 · Sun 19:30 | 2026-09-01 (41d) |
+| Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 · Sun 19:30 | 2026-10-11 (1d) |
 | Tower of Nightmares | `[WoM]` | LadyDestinee.5178 | Mon 01:30 | 2026-08-31 (42d) |
 | World Tour Meta Train | `[WoM]` | LadyDestinee.5178 | Sat 23:45 | 2026-08-31 (42d) |
 | Convergence CMs | `[ZERO]` | darens.2547 | Mon 14:00 | 2026-10-11 (1d) |
-| World Tour Meta Train | `[ZERO]` | darens.2547 | Thu 15:00 | 2026-09-01 (41d) |
+| World Tour Meta Train | `[ZERO]` | darens.2547 | Thu 14:00 | 2026-10-11 (1d) |
 | Amalgamated Meta Train | — | XxthefoxX.2158 | Sat 15:30 | 2026-10-11 (1d) |
 | Bava Nisos Farm & Meta | — | Sylphonete.7583 | Daily 23:20 | **never** |
 | Dragonfall Farm Train | — | Maverick.3574 | Mon, Tue, Wed, Thu, Fri 21:00 | **never** |
@@ -269,7 +269,7 @@ slots before it is added.
 - `13:00` **Dragonstorm & Dragon's Stand** `[DCAP]` — Dark Raven.2160 (NA)
 - `14:15` **Gyala Delve** `[VEIN]` — Literious.4205 (EU)
 - `16:30` **Drizzlewood Coast** `[VEIN]` — Literious.4205 (EU)
-- `17:30` **Weekly Rifts** `[Hs]` — Platanium.4532 (EU)
+- `17:00` **Weekly Rifts** `[Hs]` — Platanium.4532 (EU)
 - `19:15` **Triple Trouble** — Tanylyla.6397 (EU)
 - `19:30` **Triple Trouble** `[NOPE]` — Wolfspear.7180 (NA)
 - `21:00` **Dragonfall Farm Train** — Maverick.3574 (NA)
@@ -320,8 +320,8 @@ slots before it is added.
 - `11:30` **EoD Meta Train** `[VEIN]` — Literious.4205 (EU)
 - `12:00` **Triple Trouble** `[DCAP]` — Dark Raven.2160 (NA)
 - `13:00` **Twisted Marionette** `[DCAP]` — Dark Raven.2160 (NA)
+- `14:00` **World Tour Meta Train** `[ZERO]` — darens.2547 (NA)
 - `14:15` **Gyala Delve** `[VEIN]` — Literious.4205 (EU)
-- `15:00` **World Tour Meta Train** `[ZERO]` — darens.2547 (NA)
 - `16:30` **Drizzlewood Coast** `[VEIN]` — Literious.4205 (EU)
 - `18:00` **Convergence CMs** `[CUTE]` — _host unknown_ (EU)
 - `19:15` **Triple Trouble** — Tanylyla.6397 (EU)

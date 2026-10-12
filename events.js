@@ -391,7 +391,7 @@ const events = [
     guild: "Hs",
     description: "Hosted by [Hs]!",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Sunday", time: "02:30" },
       { day: "Monday", time: "02:30" },
@@ -407,11 +407,11 @@ const events = [
     region: "NA",
     username: "darens.2547",
     guild: "ZERO",
-    description: "Hosted by [ZERO]!",
+    description: "Hosted by [ZERO]! Zero to Hero: currencies, materials and gold from every expansion.",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
-      { day: "Thursday", time: "15:00" },
+      { day: "Thursday", time: "14:00" },
     ]
   },
   {
@@ -421,7 +421,7 @@ const events = [
     guild: "Wing",
     description: "Hosted by [Wing]! Learn how to get the most out of your griffon!",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Sunday", time: "19:30" },
       { day: "Monday", time: "18:30" },
@@ -509,7 +509,7 @@ const events = [
     guild: "Wing",
     description: "Hosted by [Wing]! Learn how to get the most out of your griffon!",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Monday", time: "18:30" },
     ]
@@ -557,11 +557,11 @@ const events = [
     region: "EU",
     username: "Platanium.4532",
     guild: "Hs",
-    description: "Hosted by [Hs]!",
+    description: "Hosted by [Hs]! An Overcharged rift train through all 14 rift zones: 2 T1, 2 T2 and 1 T3 rift per map.",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
-      { day: "Tuesday", time: "17:30" },
+      { day: "Tuesday", time: "17:00" },
     ]
   },
   {
@@ -571,7 +571,7 @@ const events = [
     guild: "Hs",
     description: "Hosted by [Hs]! Seitung Province -> Kaineng City -> Echovald Forest -> Dragon's End -> Echovald Forest -> Gyala Delve",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Sunday", time: "17:30" },
     ]
