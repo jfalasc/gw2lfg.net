@@ -188,7 +188,7 @@ an event disappears from here once its list is empty.
 | World Tour Meta Train | `[FB]` | MarshAll.3528 | Mon 02:00 | 2026-10-11 (1d) |
 | Dragon's End & Dragonstorm | `[Hs]` | sim.1203 | Daily 02:30 | 2026-10-11 (1d) |
 | Gyala Delve | `[JMAW]` | Ruinandshotel.9278 | Tue, Thu, Sat 01:30 | 2026-09-01 (41d) |
-| HoT Meta Train | `[LEG]` | Lamshire.3058 | Mon, Tue, Thu 02:00 | 2026-09-01 (41d) |
+| HoT Meta Train | `[LEG]` | Lamshire.3058 | Mon, Tue, Thu 02:30 | 2026-10-11 (1d) |
 | Convergence CMs | `[LILY]` | LilyVelour.8395 | Tue, Sat 23:00 | 2026-10-11 (1d) |
 | VoE Meta Train | `[LILY]` | LilyVelour.8395 | Wed 23:00 | 2026-10-11 (1d) |
 | Casino Blitz | `[MEAT]` | grace.3689 | Daily 00:00 | **never** |
@@ -225,9 +225,9 @@ slots before it is added.
 - `00:00` **Casino Blitz** `[MEAT]` — grace.3689 (NA)
 - `00:00` **Core Meta Train** `[BUTR]` — Wolfspear.7180 (NA)
 - `01:30` **Tower of Nightmares** `[WoM]` — LadyDestinee.5178 (NA)
-- `02:00` **HoT Meta Train** `[LEG]` — Lamshire.3058 (NA)
 - `02:00` **World Tour Meta Train** `[FB]` — MarshAll.3528 (NA)
 - `02:30` **Dragon's End & Dragonstorm** `[Hs]` — sim.1203 (NA)
+- `02:30` **HoT Meta Train** `[LEG]` — Lamshire.3058 (NA)
 - `03:30` **Triple Trouble** `[WHAM]` — CasFamGaming.9843 (NA)
 - `04:00` **Inner Nayos** — Go Mango (NA)
 - `07:30` **Triple Trouble** `[RNT]` — Dampevamp.6035 (NA)
@@ -256,8 +256,8 @@ slots before it is added.
 - `00:00` **Core Meta Train** `[BUTR]` — Wolfspear.7180 (NA)
 - `01:00` **Convergence CMs** `[CC]` — SunMatrix.4168 (NA)
 - `01:30` **Gyala Delve** `[JMAW]` — Ruinandshotel.9278 (NA)
-- `02:00` **HoT Meta Train** `[LEG]` — Lamshire.3058 (NA)
 - `02:30` **Dragon's End & Dragonstorm** `[Hs]` — sim.1203 (NA)
+- `02:30` **HoT Meta Train** `[LEG]` — Lamshire.3058 (NA)
 - `03:30` **EoD Meta Train** `[FB]` — MarshAll.3528 (NA)
 - `03:30` **Triple Trouble** `[WHAM]` — CasFamGaming.9843 (NA)
 - `04:00` **Inner Nayos** — Go Mango (NA)
@@ -311,8 +311,8 @@ slots before it is added.
 - `00:00` **Core Meta Train** `[BUTR]` — Wolfspear.7180 (NA)
 - `01:00` **Convergence CMs** `[WILT]` — calmerthanu.8375 (NA)
 - `01:30` **Gyala Delve** `[JMAW]` — Ruinandshotel.9278 (NA)
-- `02:00` **HoT Meta Train** `[LEG]` — Lamshire.3058 (NA)
 - `02:30` **Dragon's End & Dragonstorm** `[Hs]` — sim.1203 (NA)
+- `02:30` **HoT Meta Train** `[LEG]` — Lamshire.3058 (NA)
 - `03:30` **Triple Trouble** `[WHAM]` — CasFamGaming.9843 (NA)
 - `04:00` **Inner Nayos** — Go Mango (NA)
 - `07:30` **Triple Trouble** `[RNT]` — Dampevamp.6035 (NA)

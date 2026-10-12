@@ -18,13 +18,13 @@ const events = [
     region: "NA",
     username: "Lamshire.3058",
     guild: "LEG",
-    description: "Hosted by [LEG]! Tangled Depths -> Auric Basin -> Dragon's Stand -> Auric Basin -> Verdant Brink",
+    description: "Hosted by [LEG]! Tangled Depths > Auric Basin (+30 min) > Dragon's Stand (+1 hr) > Auric Basin round 2 (+2 hr 30) > Verdant Brink (+3 hr 15). Come to the map 15 minutes before the start or it will be full!",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
-      { day: "Monday", time: "02:00" },
-      { day: "Tuesday", time: "02:00" },
-      { day: "Thursday", time: "02:00" }
+      { day: "Monday", time: "02:30" },
+      { day: "Tuesday", time: "02:30" },
+      { day: "Thursday", time: "02:30" }
     ]
   },
   {
