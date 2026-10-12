@@ -189,8 +189,8 @@ an event disappears from here once its list is empty.
 | Dragon's End & Dragonstorm | `[Hs]` | sim.1203 | Daily 02:30 | 2026-10-11 (1d) |
 | Gyala Delve | `[JMAW]` | Ruinandshotel.9278 | Tue, Thu, Sat 01:30 | 2026-09-01 (41d) |
 | HoT Meta Train | `[LEG]` | Lamshire.3058 | Mon, Tue, Thu 02:00 | 2026-09-01 (41d) |
-| Convergence CMs | `[LILY]` | LilyVelour.8395 | Wed 00:00 · Sat 21:00 | 2026-10-11 (1d) |
-| SotO Meta Train | `[LILY]` | LilyVelour.8395 | Wed 20:30 | 2026-09-01 (41d) |
+| Convergence CMs | `[LILY]` | LilyVelour.8395 | Tue, Sat 23:00 | 2026-10-11 (1d) |
+| VoE Meta Train | `[LILY]` | LilyVelour.8395 | Wed 23:00 | 2026-10-11 (1d) |
 | Casino Blitz | `[MEAT]` | grace.3689 | Daily 00:00 | **never** |
 | Triple Trouble | `[NOPE]` | Wolfspear.7180 | Daily 19:30 | 2026-08-31 (42d) |
 | Triple Trouble | `[RNT]` | Dampevamp.6035 | Daily 07:30 | 2026-08-31 (42d) |
@@ -274,13 +274,13 @@ slots before it is added.
 - `19:30` **Triple Trouble** `[NOPE]` — Wolfspear.7180 (NA)
 - `21:00` **Dragonfall Farm Train** — Maverick.3574 (NA)
 - `22:00` **Dragon's End** `[DBJC]` — Shiv Deeviant.8072 (NA)
+- `23:00` **Convergence CMs** `[LILY]` — LilyVelour.8395 (NA)
 - `23:20` **Bava Nisos Farm & Meta** — Sylphonete.7583 (NA)
 - `23:30` **Silverwastes RIBA Farm** `[Sw]` — EverCursed.9084 (NA)
 
 ### Wednesday
 
 - `00:00` **Casino Blitz** `[MEAT]` — grace.3689 (NA)
-- `00:00` **Convergence CMs** `[LILY]` — LilyVelour.8395 (NA)
 - `00:00` **Core Meta Train** `[BUTR]` — Wolfspear.7180 (NA)
 - `01:00` **Battle for Lion's Arch** `[DAWN]` — Empress Adorafae.9028 (NA)
 - `01:00` **Convergence CMs** `[WILT]` — calmerthanu.8375 (NA)
@@ -299,9 +299,9 @@ slots before it is added.
 - `18:00` **Convergence CMs** `[CUTE]` — _host unknown_ (EU)
 - `19:15` **Triple Trouble** — Tanylyla.6397 (EU)
 - `19:30` **Triple Trouble** `[NOPE]` — Wolfspear.7180 (NA)
-- `20:30` **SotO Meta Train** `[LILY]` — LilyVelour.8395 (NA)
 - `21:00` **Dragonfall Farm Train** — Maverick.3574 (NA)
 - `22:00` **Dragon's End** `[DBJC]` — Shiv Deeviant.8072 (NA)
+- `23:00` **VoE Meta Train** `[LILY]` — LilyVelour.8395 (NA)
 - `23:20` **Bava Nisos Farm & Meta** — Sylphonete.7583 (NA)
 - `23:30` **Silverwastes RIBA Farm** `[Sw]` — EverCursed.9084 (NA)
 
@@ -381,7 +381,7 @@ slots before it is added.
 - `19:15` **Triple Trouble** — Tanylyla.6397 (EU)
 - `19:30` **Triple Trouble** `[NOPE]` — Wolfspear.7180 (NA)
 - `20:00` **Convergence CMs** `[uLT]` — Ohnage.1638 (NA)
-- `21:00` **Convergence CMs** `[LILY]` — LilyVelour.8395 (NA)
+- `23:00` **Convergence CMs** `[LILY]` — LilyVelour.8395 (NA)
 - `23:20` **Bava Nisos Farm & Meta** — Sylphonete.7583 (NA)
 - `23:30` **Silverwastes RIBA Farm** `[Sw]` — EverCursed.9084 (NA)
 - `23:45` **World Tour Meta Train** `[WoM]` — LadyDestinee.5178 (NA)

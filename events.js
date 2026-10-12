@@ -59,24 +59,24 @@ const events = [
     region: "NA",
     username: "LilyVelour.8395",
     guild: "LILY",
-    description: "Hosted by [LILY]!",
+    description: "Hosted by [LILY]! Currently VoE convergences on Tuesdays and JW on Saturdays.",
     recurring: true,
     lastVerified: "2026-10-11",
     schedule: [
-      { day: "Wednesday", time: "00:00" },
-      { day: "Saturday", time: "21:00" },
+      { day: "Tuesday", time: "23:00" },
+      { day: "Saturday", time: "23:00" },
     ]
   },
   {
-    name: "SotO Meta Train",
+    name: "VoE Meta Train",
     region: "NA",
     username: "LilyVelour.8395",
     guild: "LILY",
-    description: "Hosted by [LILY]! Skywatch > Amnytas > Nayos",
+    description: "Hosted by [LILY]! Depths of Cruelty > Secrets of the Weald > Hammerheart Rumble > Shackles of the Ancients, with rifts in between when there's time. Come early to get into the map.",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
-      { day: "Wednesday", time: "20:30" },
+      { day: "Wednesday", time: "23:00" },
     ]
   },
   {
