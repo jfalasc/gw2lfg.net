@@ -807,4 +807,16 @@ const events = [
       { day: "Saturday", time: "15:30" },
     ]
   },
+  {
+    name: "EoD Meta Train",
+    region: "NA",
+    username: "Kat.3426",
+    guild: "BABE",
+    description: "Hosted by [BABE]! Aetherblade Assault > Kaineng Blackout > Gang War > Battle for the Jade Sea.",
+    recurring: true,
+    lastVerified: "2026-10-11",
+    schedule: [
+      { day: "Tuesday", time: "07:30" },
+    ]
+  },
 ];
