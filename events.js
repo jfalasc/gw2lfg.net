@@ -98,7 +98,7 @@ const events = [
     guild: "FB",
     description: "Hosted by [FB]! Metas from every expansion",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Monday", time: "02:00" },
     ]
@@ -110,7 +110,7 @@ const events = [
     guild: "FB",
     description: "Hosted by [FB]! Seitung Province -> Kaineng City -> Echovald Wilds -> Dragon's End",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Tuesday", time: "03:30" },
     ]
@@ -122,7 +122,7 @@ const events = [
     guild: "FB",
     description: "Hosted by [FB]! Every season 4 meta",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Saturday", time: "01:45" },
     ]
@@ -269,7 +269,7 @@ const events = [
     guild: "AO",
     description: "Hosted by [AO]!",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Saturday", time: "01:30" },
     ]
@@ -538,7 +538,7 @@ const events = [
     guild: null,
     description: "Seitung Province -> Kaineng City -> Echovald Forest -> Dragon's End",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     needsInfo: [
       "guild tag",
     ],
@@ -699,7 +699,7 @@ const events = [
     guild: null,
     description: "Echovald and Aspenwood into Gyala Delve. Announced Friday evenings in the group-finder Discord.",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     needsInfo: [
       "guild tag",
     ],
@@ -714,7 +714,7 @@ const events = [
     guild: null,
     description: "Lava Chicken pre-event through to Eparch. Announced nightly in the group-finder Discord.",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     needsInfo: [
       "full account name — only the character name \"Go Mango\" is known",
       "guild tag",

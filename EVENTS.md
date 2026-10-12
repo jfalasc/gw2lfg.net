@@ -160,14 +160,14 @@ an event disappears from here once its list is empty.
 | Convergence CMs | `[VII]` |  | Sat 12:00 | 2026-10-11 (1d) |
 | Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 | 2026-09-01 (41d) |
 | Convergence CMs | — |  | Mon 13:00 | 2026-10-11 (1d) |
-| EoD Meta Train | — | Oregon.9387 | Daily 09:30 | 2026-08-31 (42d) |
+| EoD Meta Train | — | Oregon.9387 | Daily 09:30 | 2026-10-11 (1d) |
 | Triple Trouble | — | Tanylyla.6397 | Tue, Wed, Thu, Fri, Sat, Sun 19:15 | 2026-08-31 (42d) |
 
 ## NA events (40)
 
 | Event | Guild | Host | Runs (UTC) | Last verified |
 | --- | --- | --- | --- | --- |
-| PoF Meta Train | `[AO]` | OverRealm.3542 | Sat 01:30 | 2026-08-31 (42d) |
+| PoF Meta Train | `[AO]` | OverRealm.3542 | Sat 01:30 | 2026-10-11 (1d) |
 | Core Meta Train | `[BUTR]` | Wolfspear.7180 | Daily 00:00 | 2026-09-01 (41d) |
 | Convergence CMs | `[CC]` | SunMatrix.4168 | Tue 01:00 · Sat 18:00 | 2026-10-11 (1d) |
 | Convergence CMs | `[COFE]` | SoBread.5628 | Wed, Fri 05:00 | 2026-10-11 (1d) |
@@ -179,9 +179,9 @@ an event disappears from here once its list is empty.
 | Triple Trouble | `[DCAP]` | Dark Raven.2160 | Daily 12:00 | 2026-08-31 (42d) |
 | Twisted Marionette | `[DCAP]` | Dark Raven.2160 | Thu 13:00 | 2026-08-31 (42d) |
 | Convergence CMs | `[FB]` | MarshAll.3528 | Sun 01:50 | 2026-10-11 (1d) |
-| EoD Meta Train | `[FB]` | MarshAll.3528 | Tue 03:30 | 2026-08-31 (42d) |
-| S4 Meta Train | `[FB]` | MarshAll.3528 | Sat 01:45 | 2026-08-31 (42d) |
-| World Tour Meta Train | `[FB]` | MarshAll.3528 | Mon 02:00 | 2026-08-31 (42d) |
+| EoD Meta Train | `[FB]` | MarshAll.3528 | Tue 03:30 | 2026-10-11 (1d) |
+| S4 Meta Train | `[FB]` | MarshAll.3528 | Sat 01:45 | 2026-10-11 (1d) |
+| World Tour Meta Train | `[FB]` | MarshAll.3528 | Mon 02:00 | 2026-10-11 (1d) |
 | Dragon's End & Dragonstorm | `[Hs]` | sim.1203 | Daily 02:30 | 2026-09-01 (41d) |
 | Gyala Delve | `[JMAW]` | Ruinandshotel.9278 | Tue, Thu, Sat 01:30 | 2026-09-01 (41d) |
 | HoT Meta Train | `[LEG]` | Lamshire.3058 | Mon, Tue, Thu 02:00 | 2026-09-01 (41d) |
@@ -205,8 +205,8 @@ an event disappears from here once its list is empty.
 | World Tour Meta Train | `[ZERO]` | darens.2547 | Thu 15:00 | 2026-09-01 (41d) |
 | Bava Nisos Farm & Meta | — | Sylphonete.7583 | Daily 23:20 | **never** |
 | Dragonfall Farm Train | — | Maverick.3574 | Mon, Tue, Wed, Thu, Fri 21:00 | **never** |
-| Gyala Delve | — | viioculi.9154 | Sat 04:00 | 2026-09-01 (41d) |
-| Inner Nayos | — | Go Mango | Daily 04:00 | 2026-09-01 (41d) |
+| Gyala Delve | — | viioculi.9154 | Sat 04:00 | 2026-10-11 (1d) |
+| Inner Nayos | — | Go Mango | Daily 04:00 | 2026-10-11 (1d) |
 
 ---
 
