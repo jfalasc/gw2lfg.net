@@ -661,11 +661,11 @@ const events = [
     region: "NA",
     username: "LadyDestinee.5178",
     guild: "WoM",
-    description: "Hosted by [WoM]!",
+    description: "Hosted by [WoM]! All achievements. Meets in Kessex Hills.",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
-      { day: "Monday", time: "01:30" },
+      { day: "Monday", time: "01:15" },
     ]
   },
   {
@@ -675,7 +675,7 @@ const events = [
     guild: "WoM",
     description: "Hosted by [WoM]!",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Saturday", time: "23:45" },
     ]

@@ -203,8 +203,8 @@ an event disappears from here once its list is empty.
 | Triple Trouble | `[WHAM]` | CasFamGaming.9843 | Daily 03:30 | 2026-08-31 (42d) |
 | Convergence CMs | `[WILT]` | calmerthanu.8375 | Wed, Thu 01:00 | 2026-10-11 (1d) |
 | Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 · Sun 19:30 | 2026-10-11 (1d) |
-| Tower of Nightmares | `[WoM]` | LadyDestinee.5178 | Mon 01:30 | 2026-08-31 (42d) |
-| World Tour Meta Train | `[WoM]` | LadyDestinee.5178 | Sat 23:45 | 2026-08-31 (42d) |
+| Tower of Nightmares | `[WoM]` | LadyDestinee.5178 | Mon 01:15 | 2026-10-11 (1d) |
+| World Tour Meta Train | `[WoM]` | LadyDestinee.5178 | Sat 23:45 | 2026-10-11 (1d) |
 | Convergence CMs | `[ZERO]` | darens.2547 | Mon 14:00 | 2026-10-11 (1d) |
 | World Tour Meta Train | `[ZERO]` | darens.2547 | Thu 14:00 | 2026-10-11 (1d) |
 | Amalgamated Meta Train | — | XxthefoxX.2158 | Sat 15:30 | 2026-10-11 (1d) |
@@ -224,7 +224,7 @@ slots before it is added.
 
 - `00:00` **Casino Blitz** `[MEAT]` — grace.3689 (NA)
 - `00:00` **Core Meta Train** `[BUTR]` — Wolfspear.7180 (NA)
-- `01:30` **Tower of Nightmares** `[WoM]` — LadyDestinee.5178 (NA)
+- `01:15` **Tower of Nightmares** `[WoM]` — LadyDestinee.5178 (NA)
 - `02:00` **World Tour Meta Train** `[FB]` — MarshAll.3528 (NA)
 - `02:30` **Dragon's End & Dragonstorm** `[Hs]` — sim.1203 (NA)
 - `02:30` **HoT Meta Train** `[LEG]` — Lamshire.3058 (NA)
