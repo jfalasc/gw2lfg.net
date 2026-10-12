@@ -792,4 +792,19 @@ const events = [
       { day: "Thursday", time: "18:00" },
     ]
   },
+  {
+    name: "Amalgamated Meta Train",
+    region: "NA",
+    username: "XxthefoxX.2158",
+    guild: null,
+    description: "EoD metas first, then Gyala Delve, Dragonfall and Inner Nayos. The later legs vary week to week. Announced Saturday afternoons in the group-finder Discord.",
+    recurring: true,
+    lastVerified: "2026-10-11",
+    needsInfo: [
+      "guild tag",
+    ],
+    schedule: [
+      { day: "Saturday", time: "15:30" },
+    ]
+  },
 ];
