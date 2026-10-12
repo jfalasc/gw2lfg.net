@@ -77,14 +77,13 @@ threshold before it crosses.
 
 ---
 
-## Needs checking (5)
+## Needs checking (4)
 
 Never verified, or last verified 90+ days ago.
 
 | Event | Guild | Host | Region | Runs (UTC) | Last verified |
 | --- | --- | --- | --- | --- | --- |
 | Dragon's End | `[DBJC]` | Shiv Deeviant.8072 | NA | Mon, Tue, Wed, Thu, Fri 22:00 | **never** |
-| Casino Blitz | `[MEAT]` | grace.3689 | NA | Daily 00:00 | **never** |
 | HoT Meta Train | `[SHAZ]` | Shazilee.1098 | NA | Wed, Sat, Sun 03:00 | **never** |
 | Hero Point Train | `[SIN]` | Hempia.5981 | NA | Sat 18:00 | **never** |
 | Bava Nisos Farm & Meta | — | Sylphonete.7583 | NA | Daily 23:20 | **never** |
@@ -190,7 +189,7 @@ an event disappears from here once its list is empty.
 | HoT Meta Train | `[LEG]` | Lamshire.3058 | Mon, Tue, Thu 02:30 | 2026-10-11 (1d) |
 | Convergence CMs | `[LILY]` | LilyVelour.8395 | Tue, Sat 23:00 | 2026-10-11 (1d) |
 | VoE Meta Train | `[LILY]` | LilyVelour.8395 | Wed 23:00 | 2026-10-11 (1d) |
-| Casino Blitz | `[MEAT]` | grace.3689 | Daily 00:00 | **never** |
+| Casino Blitz | `[MEAT]` | grace.3689 | Daily 00:00 | 2026-10-11 (1d) |
 | Triple Trouble | `[NOPE]` | Wolfspear.7180 | Daily 19:30 | 2026-10-11 (1d) |
 | Triple Trouble | `[RNT]` | Dampevamp.6035 | Daily 07:30 | 2026-10-11 (1d) |
 | Convergence CMs | `[SAS]` | jmdhouse.7162 | Mon, Thu 20:00 | 2026-10-11 (1d) |

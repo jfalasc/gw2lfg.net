@@ -230,7 +230,7 @@ const events = [
     guild: "MEAT",
     description: "Crystal Oasis pinata meta hosted by [MEAT]!",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Sunday", time: "00:00" },
       { day: "Monday", time: "00:00" },
