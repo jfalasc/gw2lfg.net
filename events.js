@@ -341,11 +341,11 @@ const events = [
     region: "NA",
     username: "Dark Raven.2160",
     guild: "DCAP",
-    description: "Hosted by [DCAP]!",
+    description: "Hosted by [DCAP]! Friday delving. You will need End of Dragons and Jade Bot mastery for this meta.",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
-      { day: "Friday", time: "08:00" },
+      { day: "Friday", time: "07:00" },
     ]
   },
   {

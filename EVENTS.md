@@ -179,7 +179,7 @@ an event disappears from here once its list is empty.
 | Dragon's End | `[DBJC]` | Shiv Deeviant.8072 | Mon, Tue, Wed, Thu, Fri 22:00 | **never** |
 | Battle for Lion's Arch | `[DCAP]` | Dark Raven.2160 | Mon 13:00 | 2026-08-31 (42d) |
 | Dragonstorm & Dragon's Stand | `[DCAP]` | Dark Raven.2160 | Tue 13:00 | 2026-08-31 (42d) |
-| Gyala Delve | `[DCAP]` | Dark Raven.2160 | Fri 08:00 | 2026-08-31 (42d) |
+| Gyala Delve | `[DCAP]` | Dark Raven.2160 | Fri 07:00 | 2026-10-11 (1d) |
 | Triple Trouble | `[DCAP]` | Dark Raven.2160 | Daily 12:00 | 2026-08-31 (42d) |
 | Twisted Marionette | `[DCAP]` | Dark Raven.2160 | Thu 13:00 | 2026-08-31 (42d) |
 | Convergence CMs | `[FB]` | MarshAll.3528 | Sun 01:50 | 2026-10-11 (1d) |
@@ -340,8 +340,8 @@ slots before it is added.
 - `03:30` **Triple Trouble** `[WHAM]` — CasFamGaming.9843 (NA)
 - `04:00` **Inner Nayos** — Go Mango (NA)
 - `05:00` **Convergence CMs** `[COFE]` — SoBread.5628 (NA)
+- `07:00` **Gyala Delve** `[DCAP]` — Dark Raven.2160 (NA)
 - `07:30` **Triple Trouble** `[RNT]` — Dampevamp.6035 (NA)
-- `08:00` **Gyala Delve** `[DCAP]` — Dark Raven.2160 (NA)
 - `08:45` **Amalgamated Meta Train** `[VEIN]` — Literious.4205 (EU)
 - `09:30` **EoD Meta Train** — Oregon.9387 (EU)
 - `11:30` **EoD Meta Train** `[VEIN]` — Literious.4205 (EU)
