@@ -77,7 +77,7 @@ threshold before it crosses.
 
 ---
 
-## Needs checking (6)
+## Needs checking (5)
 
 Never verified, or last verified 90+ days ago.
 
@@ -88,7 +88,6 @@ Never verified, or last verified 90+ days ago.
 | HoT Meta Train | `[SHAZ]` | Shazilee.1098 | NA | Wed, Sat, Sun 03:00 | **never** |
 | Hero Point Train | `[SIN]` | Hempia.5981 | NA | Sat 18:00 | **never** |
 | Bava Nisos Farm & Meta | — | Sylphonete.7583 | NA | Daily 23:20 | **never** |
-| Dragonfall Farm Train | — | Maverick.3574 | NA | Mon, Tue, Wed, Thu, Fri 21:00 | **never** |
 
 To record a check, set `lastVerified` on that event in `events.js`:
 
@@ -164,7 +163,7 @@ an event disappears from here once its list is empty.
 | Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 | 2026-10-11 (1d) |
 | Convergence CMs | — | TheLP.3957 | Mon 13:00 | 2026-10-11 (1d) |
 | EoD Meta Train | — | Oregon.9387 | Daily 09:30 | 2026-10-11 (1d) |
-| Triple Trouble | — | Tanylyla.6397 | Tue, Wed, Thu, Fri, Sat, Sun 19:15 | 2026-08-31 (42d) |
+| Triple Trouble | — | Tanylyla.6397 | Tue, Wed, Thu, Fri, Sat, Sun 19:15 | 2026-10-11 (1d) |
 
 ## NA events (42)
 
@@ -172,16 +171,16 @@ an event disappears from here once its list is empty.
 | --- | --- | --- | --- | --- |
 | PoF Meta Train | `[AO]` | OverRealm.3542 | Sat 01:30 | 2026-10-11 (1d) |
 | EoD Meta Train | `[BABE]` | Kat.3426 | Tue 07:30 | 2026-10-11 (1d) |
-| Core Meta Train | `[BUTR]` | Wolfspear.7180 | Daily 00:00 | 2026-09-01 (41d) |
+| Core Meta Train | `[BUTR]` | Wolfspear.7180 | Daily 00:00 | 2026-10-11 (1d) |
 | Convergence CMs | `[CC]` | SunMatrix.4168 | Tue 01:00 · Sat 18:00 | 2026-10-11 (1d) |
 | Convergence CMs | `[COFE]` | SoBread.5628 | Wed, Fri 05:00 | 2026-10-11 (1d) |
-| Battle for Lion's Arch | `[DAWN]` | Empress Adorafae.9028 | Wed 01:00 | 2026-08-31 (42d) |
+| Battle for Lion's Arch | `[DAWN]` | Empress Adorafae.9028 | Wed 01:00 | 2026-10-11 (1d) |
 | Dragon's End | `[DBJC]` | Shiv Deeviant.8072 | Mon, Tue, Wed, Thu, Fri 22:00 | **never** |
-| Battle for Lion's Arch | `[DCAP]` | Dark Raven.2160 | Mon 13:00 | 2026-08-31 (42d) |
-| Dragonstorm & Dragon's Stand | `[DCAP]` | Dark Raven.2160 | Tue 13:00 | 2026-08-31 (42d) |
+| Battle for Lion's Arch | `[DCAP]` | Dark Raven.2160 | Mon 13:00 | 2026-10-11 (1d) |
+| Dragonstorm & Dragon's Stand | `[DCAP]` | Dark Raven.2160 | Tue 13:00 | 2026-10-11 (1d) |
 | Gyala Delve | `[DCAP]` | Dark Raven.2160 | Fri 07:00 | 2026-10-11 (1d) |
-| Triple Trouble | `[DCAP]` | Dark Raven.2160 | Daily 12:00 | 2026-08-31 (42d) |
-| Twisted Marionette | `[DCAP]` | Dark Raven.2160 | Thu 13:00 | 2026-08-31 (42d) |
+| Triple Trouble | `[DCAP]` | Dark Raven.2160 | Daily 12:00 | 2026-10-11 (1d) |
+| Twisted Marionette | `[DCAP]` | Dark Raven.2160 | Thu 13:00 | 2026-10-11 (1d) |
 | Convergence CMs | `[FB]` | MarshAll.3528 | Sun 01:50 | 2026-10-11 (1d) |
 | EoD Meta Train | `[FB]` | MarshAll.3528 | Tue 03:30 | 2026-10-11 (1d) |
 | S4 Meta Train | `[FB]` | MarshAll.3528 | Sat 01:45 | 2026-10-11 (1d) |
@@ -192,15 +191,15 @@ an event disappears from here once its list is empty.
 | Convergence CMs | `[LILY]` | LilyVelour.8395 | Tue, Sat 23:00 | 2026-10-11 (1d) |
 | VoE Meta Train | `[LILY]` | LilyVelour.8395 | Wed 23:00 | 2026-10-11 (1d) |
 | Casino Blitz | `[MEAT]` | grace.3689 | Daily 00:00 | **never** |
-| Triple Trouble | `[NOPE]` | Wolfspear.7180 | Daily 19:30 | 2026-08-31 (42d) |
-| Triple Trouble | `[RNT]` | Dampevamp.6035 | Daily 07:30 | 2026-08-31 (42d) |
+| Triple Trouble | `[NOPE]` | Wolfspear.7180 | Daily 19:30 | 2026-10-11 (1d) |
+| Triple Trouble | `[RNT]` | Dampevamp.6035 | Daily 07:30 | 2026-10-11 (1d) |
 | Convergence CMs | `[SAS]` | jmdhouse.7162 | Mon, Thu 20:00 | 2026-10-11 (1d) |
 | HoT Meta Train | `[SHAZ]` | Shazilee.1098 | Wed, Sat, Sun 03:00 | **never** |
 | Hero Point Train | `[SIN]` | Hempia.5981 | Sat 18:00 | **never** |
 | Convergence CMs | `[SLPY]` |  | Sat 01:00 | 2026-10-11 (1d) |
-| Silverwastes RIBA Farm | `[Sw]` | EverCursed.9084 | Daily 23:30 | 2026-09-01 (41d) |
+| Silverwastes RIBA Farm | `[Sw]` | EverCursed.9084 | Daily 23:30 | 2026-10-11 (1d) |
 | Convergence CMs | `[uLT]` | Ohnage.1638 | Sun 17:00 · Sat 20:00 | 2026-10-11 (1d) |
-| Triple Trouble | `[WHAM]` | CasFamGaming.9843 | Daily 03:30 | 2026-08-31 (42d) |
+| Triple Trouble | `[WHAM]` | CasFamGaming.9843 | Daily 03:30 | 2026-10-11 (1d) |
 | Convergence CMs | `[WILT]` | calmerthanu.8375 | Wed, Thu 01:00 | 2026-10-11 (1d) |
 | Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 · Sun 19:30 | 2026-10-11 (1d) |
 | Tower of Nightmares | `[WoM]` | LadyDestinee.5178 | Mon 01:15 | 2026-10-11 (1d) |
@@ -209,7 +208,7 @@ an event disappears from here once its list is empty.
 | World Tour Meta Train | `[ZERO]` | darens.2547 | Thu 14:00 | 2026-10-11 (1d) |
 | Amalgamated Meta Train | — | XxthefoxX.2158 | Sat 15:30 | 2026-10-11 (1d) |
 | Bava Nisos Farm & Meta | — | Sylphonete.7583 | Daily 23:20 | **never** |
-| Dragonfall Farm Train | — | Maverick.3574 | Mon, Tue, Wed, Thu, Fri 21:00 | **never** |
+| Dragonfall Farm Train | — | Maverick.3574 | Mon, Tue, Wed, Thu, Fri 21:00 | 2026-10-11 (1d) |
 | Gyala Delve | — | viioculi.9154 | Sat 04:00 | 2026-10-11 (1d) |
 | Inner Nayos | — | Go Mango | Daily 04:00 | 2026-10-11 (1d) |
 

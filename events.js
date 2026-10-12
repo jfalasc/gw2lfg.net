@@ -134,7 +134,7 @@ const events = [
     guild: "BUTR",
     description: "Hosted by [BUTR]! Tequatl -> LLA -> Megadestroyer -> Triple Trouble",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Sunday", time: "00:00" },
       { day: "Monday", time: "00:00" },
@@ -152,7 +152,7 @@ const events = [
     guild: null,
     description: "Times subject to change! Weekends depend on availability! Message Maverick.3574 for details",
     recurring: true,
-    lastVerified: null,
+    lastVerified: "2026-10-11",
     needsInfo: [
       "guild tag",
     ],
@@ -212,7 +212,7 @@ const events = [
     guild: "Sw",
     description: "Hosted by [Sw]!",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Sunday", time: "23:30" },
       { day: "Monday", time: "23:30" },
@@ -295,7 +295,7 @@ const events = [
     guild: "NOPE",
     description: "Hosted by [NOPE]!",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Sunday", time: "19:30" },
       { day: "Monday", time: "19:30" },
@@ -313,7 +313,7 @@ const events = [
     guild: "DCAP",
     description: "Hosted by [DCAP]!",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Sunday", time: "12:00" },
       { day: "Monday", time: "12:00" },
@@ -331,7 +331,7 @@ const events = [
     guild: "DCAP",
     description: "Hosted by [DCAP]!",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Thursday", time: "13:00" },
     ]
@@ -355,7 +355,7 @@ const events = [
     guild: "DCAP",
     description: "Hosted by [DCAP]!",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Monday", time: "13:00" },
     ]
@@ -367,7 +367,7 @@ const events = [
     guild: "DCAP",
     description: "Hosted by [DCAP]!",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Tuesday", time: "13:00" },
     ]
@@ -434,7 +434,7 @@ const events = [
     guild: "WHAM",
     description: "Hosted by [WHAM]!",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Sunday", time: "03:30" },
       { day: "Monday", time: "03:30" },
@@ -452,7 +452,7 @@ const events = [
     guild: "RNT",
     description: "Hosted by [RNT]!",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Sunday", time: "07:30" },
       { day: "Monday", time: "07:30" },
@@ -521,7 +521,7 @@ const events = [
     guild: null,
     description: "Hosted by the EU TT Discord server: https://discord.com/invite/6YG5CC6",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Sunday", time: "19:15" },
       { day: "Tuesday", time: "19:15" },
@@ -688,7 +688,7 @@ const events = [
     guild: "DAWN",
     description: "Hosted by [DAWN]!",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Wednesday", time: "01:00" },
     ]
