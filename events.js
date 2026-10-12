@@ -48,7 +48,7 @@ const events = [
     guild: "CC",
     description: "Hosted by Convergence Corp!",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Tuesday", time: "01:00" },
       { day: "Saturday", time: "18:00" },
@@ -61,7 +61,7 @@ const events = [
     guild: "LILY",
     description: "Hosted by [LILY]!",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Wednesday", time: "00:00" },
       { day: "Saturday", time: "21:00" },
@@ -80,13 +80,13 @@ const events = [
     ]
   },
   {
-    name: "SotO Convergence CMs",
+    name: "Convergence CMs",
     region: "NA",
     username: "MarshAll.3528",
     guild: "FB",
     description: "Hosted by [FB]!",
     recurring: true,
-    lastVerified: "2026-08-31",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Sunday", time: "01:50" },
     ]
@@ -181,26 +181,15 @@ const events = [
     ]
   },
   {
-    name: "JW Convergence CMs",
+    name: "Convergence CMs",
     region: "NA",
     username: "Mr Paul.8247",
     guild: "SAS",
     description: "Hosted by [SAS]!",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Monday", time: "20:00" },
-    ]
-  },
-  {
-    name: "SotO Convergence CMs",
-    region: "NA",
-    username: "Mr Paul.8247",
-    guild: "SAS",
-    description: "Hosted by [SAS]!",
-    recurring: true,
-    lastVerified: "2026-09-01",
-    schedule: [
       { day: "Thursday", time: "20:00" },
     ]
   },
@@ -384,13 +373,13 @@ const events = [
     ]
   },
   {
-    name: "SotO & JW Convergence CMs",
+    name: "Convergence CMs",
     region: "NA",
     username: "darens.2547",
     guild: "ZERO",
     description: "Hosted by [ZERO]!",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Monday", time: "14:00" },
     ]
@@ -435,17 +424,6 @@ const events = [
     lastVerified: "2026-09-01",
     schedule: [
       { day: "Sunday", time: "19:30" },
-    ]
-  },
-  {
-    name: "Griffon Flight Training",
-    region: "NA",
-    username: "Thy Weeping Willow.6851",
-    guild: "Wing",
-    description: "Hosted by [Wing]! Learn how to get the most out of your griffon!",
-    recurring: true,
-    lastVerified: "2026-09-01",
-    schedule: [
       { day: "Monday", time: "18:30" },
     ]
   },
@@ -492,7 +470,7 @@ const events = [
     guild: "WILT",
     description: "Hosted by [WILT]!",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Wednesday", time: "01:00" },
       { day: "Thursday", time: "01:00" },
@@ -505,33 +483,22 @@ const events = [
     guild: "COFE",
     description: "Hosted by [COFE]!",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Wednesday", time: "05:00" },
       { day: "Friday", time: "05:00" },
     ]
   },
   {
-    name: "JW Convergence CMs",
+    name: "Convergence CMs",
     region: "NA",
     username: "Ohnage.1638",
     guild: "uLT",
     description: "Hosted by [uLT]!",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     schedule: [
       { day: "Saturday", time: "20:00" },
-    ]
-  },
-  {
-    name: "SotO Convergence CMs",
-    region: "NA",
-    username: "Ohnage.1638",
-    guild: "uLT",
-    description: "Hosted by [uLT]!",
-    recurring: true,
-    lastVerified: "2026-09-01",
-    schedule: [
       { day: "Sunday", time: "17:00" },
     ]
   },
@@ -660,7 +627,7 @@ const events = [
     ]
   },
   {
-    name: "VoE Convergence CMs",
+    name: "Convergence CMs",
     region: "EU",
     username: "Literious.4205",
     guild: "VEIN",
@@ -770,7 +737,7 @@ const events = [
     guild: "SLPY",
     description: "Hosted by [SLPY] The Sleepiest Warriors! Streamed at twitch.tv/projektdyad.",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     needsInfo: [
       "host GW2 account name - the schedule page lists only the guild and stream",
     ],
@@ -785,7 +752,7 @@ const events = [
     guild: null,
     description: "Hosted by Mook Chivalry.",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     needsInfo: [
       "host GW2 account name",
       "guild tag",
@@ -801,12 +768,28 @@ const events = [
     guild: "VII",
     description: "Hosted by [VII] Septem!",
     recurring: true,
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-10-11",
     needsInfo: [
       "host GW2 account name",
     ],
     schedule: [
       { day: "Saturday", time: "12:00" },
+    ]
+  },
+  {
+    name: "Convergence CMs",
+    region: "EU",
+    username: null,
+    guild: "CUTE",
+    description: "Hosted by [CUTE] Cruel Unending Tyrannic Entity!",
+    recurring: true,
+    lastVerified: "2026-10-11",
+    needsInfo: [
+      "host GW2 account name",
+    ],
+    schedule: [
+      { day: "Wednesday", time: "18:00" },
+      { day: "Thursday", time: "18:00" },
     ]
   },
 ];

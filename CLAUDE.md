@@ -131,8 +131,12 @@ Name an event after the content, and do not append a redundant "Meta".
   Not `Gyala Delve Meta`, not `Drizzlewood Coast Meta`.
 - A train across several maps — keep the words that say so:
   `HoT Meta Train`, `EoD Meta Train`, `Core Meta Train`, `Hero Point Train`.
-- Convergences take their expansion as a prefix: `SotO Convergence CMs`,
-  `JW Convergence CMs`, `VoE Convergence CMs`.
+- Every convergence is `Convergence CMs`, with **no expansion prefix**. Not
+  `SotO Convergence CMs`, not `JW Convergence CMs`, not `VoE Convergence CMs`.
+  Hosts rotate which convergence they run from week to week, so the prefix
+  recorded a detail that was not stable and split one activity across four
+  names. The expansion stays out of the name; put it in `description` if it
+  is genuinely fixed for that host.
 - "Meta" only earns a place when it distinguishes something, as in
   `Bava Nisos Farm & Meta`, which is a farm before reset and a meta after.
 
@@ -147,6 +151,25 @@ node -e "const e=new Function(require('fs').readFileSync('events.js','utf8')+'; 
 Discord event titles do not follow this convention, so titles taken from
 screenshots usually need trimming — "Gyala Delve Meta @ Daily" is the event
 `Gyala Delve`, running daily.
+
+### One entry per host, not one per run
+
+When a host runs the same event on several days, that is **one** event with
+several entries in `schedule` — not one event object per day. Both render the
+same on the site, but the register prints a row per object, so splitting them
+puts two identical-looking rows next to each other and makes a single activity
+look like a duplicate.
+
+Two entries with the same `name`, `guild`, `username` and `region` are almost
+always this mistake. The check:
+
+```bash
+node -e "const e=new Function(require('fs').readFileSync('events.js','utf8')+'; return events;')(); const m=new Map(); e.forEach(x=>{const k=[x.name,x.guild,x.username,x.region].join('|'); m.set(k,(m.get(k)||0)+1)}); console.log([...m].filter(([,n])=>n>1).map(([k,n])=>n+'x  '+k).join('\n')||'none')"
+```
+
+Same host, same time, **different region** is the exception — `region` holds
+one value, so listing an event for both audiences needs an object each. The
+`[Wing]` Griffon Flight Training at Monday 18:30 is NA and EU deliberately.
 
 An event's shape:
 

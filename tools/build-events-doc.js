@@ -207,10 +207,14 @@ function buildByDay(events) {
     lines.push(`### ${day}`, "");
 
     slots.forEach((slot) => {
+      // A null username must not reach the page as the word "null" — several
+      // events are recorded with the guild only, host still to be found.
+      const host = slot.event.username || "_host unknown_";
+
       lines.push(
         `- \`${slot.time}\` **${slot.event.name}** ` +
         (slot.event.guild ? `\`[${slot.event.guild}]\` ` : "") +
-        `— ${slot.event.username} (${slot.event.region})`
+        `— ${host} (${slot.event.region})`
       );
     });
 
