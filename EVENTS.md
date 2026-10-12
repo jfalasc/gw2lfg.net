@@ -124,9 +124,8 @@ an event disappears from here once its list is empty.
 
 - guild tag
 
-### Convergence CMs — host unknown (EU, Mon 13:00)
+### Convergence CMs — TheLP.3957 (EU, Mon 13:00)
 
-- host GW2 account name
 - guild tag
 
 ### Dragonfall Farm Train — Maverick.3574 (NA, Mon, Tue, Wed, Thu, Fri 21:00)
@@ -163,7 +162,7 @@ an event disappears from here once its list is empty.
 | Gyala Delve | `[VEIN]` | Literious.4205 | Daily 14:15 | 2026-08-31 (42d) |
 | Convergence CMs | `[VII]` |  | Sat 12:00 | 2026-10-11 (1d) |
 | Griffon Flight Training | `[Wing]` | Thy Weeping Willow.6851 | Mon 18:30 | 2026-09-01 (41d) |
-| Convergence CMs | — |  | Mon 13:00 | 2026-10-11 (1d) |
+| Convergence CMs | — | TheLP.3957 | Mon 13:00 | 2026-10-11 (1d) |
 | EoD Meta Train | — | Oregon.9387 | Daily 09:30 | 2026-10-11 (1d) |
 | Triple Trouble | — | Tanylyla.6397 | Tue, Wed, Thu, Fri, Sat, Sun 19:15 | 2026-08-31 (42d) |
 
@@ -195,7 +194,7 @@ an event disappears from here once its list is empty.
 | Casino Blitz | `[MEAT]` | grace.3689 | Daily 00:00 | **never** |
 | Triple Trouble | `[NOPE]` | Wolfspear.7180 | Daily 19:30 | 2026-08-31 (42d) |
 | Triple Trouble | `[RNT]` | Dampevamp.6035 | Daily 07:30 | 2026-08-31 (42d) |
-| Convergence CMs | `[SAS]` | Mr Paul.8247 | Mon, Thu 20:00 | 2026-10-11 (1d) |
+| Convergence CMs | `[SAS]` | jmdhouse.7162 | Mon, Thu 20:00 | 2026-10-11 (1d) |
 | HoT Meta Train | `[SHAZ]` | Shazilee.1098 | Wed, Sat, Sun 03:00 | **never** |
 | Hero Point Train | `[SIN]` | Hempia.5981 | Sat 18:00 | **never** |
 | Convergence CMs | `[SLPY]` |  | Sat 01:00 | 2026-10-11 (1d) |
@@ -237,7 +236,7 @@ slots before it is added.
 - `11:30` **EoD Meta Train** `[VEIN]` — Literious.4205 (EU)
 - `12:00` **Triple Trouble** `[DCAP]` — Dark Raven.2160 (NA)
 - `13:00` **Battle for Lion's Arch** `[DCAP]` — Dark Raven.2160 (NA)
-- `13:00` **Convergence CMs** — _host unknown_ (EU)
+- `13:00` **Convergence CMs** — TheLP.3957 (EU)
 - `14:00` **Convergence CMs** `[ZERO]` — darens.2547 (NA)
 - `14:15` **Gyala Delve** `[VEIN]` — Literious.4205 (EU)
 - `14:30` **Convergence CMs** `[VEIN]` — Literious.4205 (EU)
@@ -245,7 +244,7 @@ slots before it is added.
 - `18:30` **Griffon Flight Training** `[Wing]` — Thy Weeping Willow.6851 (NA)
 - `18:30` **Griffon Flight Training** `[Wing]` — Thy Weeping Willow.6851 (EU)
 - `19:30` **Triple Trouble** `[NOPE]` — Wolfspear.7180 (NA)
-- `20:00` **Convergence CMs** `[SAS]` — Mr Paul.8247 (NA)
+- `20:00` **Convergence CMs** `[SAS]` — jmdhouse.7162 (NA)
 - `21:00` **Dragonfall Farm Train** — Maverick.3574 (NA)
 - `22:00` **Dragon's End** `[DBJC]` — Shiv Deeviant.8072 (NA)
 - `23:20` **Bava Nisos Farm & Meta** — Sylphonete.7583 (NA)
@@ -327,7 +326,7 @@ slots before it is added.
 - `18:00` **Convergence CMs** `[CUTE]` — _host unknown_ (EU)
 - `19:15` **Triple Trouble** — Tanylyla.6397 (EU)
 - `19:30` **Triple Trouble** `[NOPE]` — Wolfspear.7180 (NA)
-- `20:00` **Convergence CMs** `[SAS]` — Mr Paul.8247 (NA)
+- `20:00` **Convergence CMs** `[SAS]` — jmdhouse.7162 (NA)
 - `21:00` **Dragonfall Farm Train** — Maverick.3574 (NA)
 - `22:00` **Dragon's End** `[DBJC]` — Shiv Deeviant.8072 (NA)
 - `23:20` **Bava Nisos Farm & Meta** — Sylphonete.7583 (NA)

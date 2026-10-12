@@ -183,7 +183,7 @@ const events = [
   {
     name: "Convergence CMs",
     region: "NA",
-    username: "Mr Paul.8247",
+    username: "jmdhouse.7162",
     guild: "SAS",
     description: "Hosted by [SAS]!",
     recurring: true,
@@ -748,13 +748,12 @@ const events = [
   {
     name: "Convergence CMs",
     region: "EU",
-    username: null,
+    username: "TheLP.3957",
     guild: null,
-    description: "Hosted by Mook Chivalry.",
+    description: "Led by Mook Chivalry! A full challenge-mode run of all 5 SotO and 3 Janthir convergence bosses. Groups start forming 20 minutes before the start. Runs are streamed at twitch.tv/mookchivalry.",
     recurring: true,
     lastVerified: "2026-10-11",
     needsInfo: [
-      "host GW2 account name",
       "guild tag",
     ],
     schedule: [
