@@ -272,12 +272,24 @@ and visible to everyone else, who keep getting the old file.
 
 ## Colour-rewriting extensions
 
-Two defences, added after the episode below.
+Three defences, added after the episode below.
 
 `index.html` carries `<meta name="darkreader-lock">`, which asks Dark Reader
 not to process the page at all. That is the real fix — the panels are
 translucent over a background image and Dark Reader turns them unreadable.
-Do not remove it.
+Do not remove it. Any site may use the lock; the "site must already be dark"
+rules in Dark Reader's docs apply to its built-in list of dark sites, not to
+the tag.
+
+`style.css` sets `color-scheme: only light` on `html`, which is Chrome's
+documented opt-out from its own automatic dark theme ("darken websites",
+mostly on Android). The Dark Reader lock does not reach that, and the notice
+below cannot see it either, because the browser recolours at paint time and
+the computed colours stay untouched. `only light` changes nothing else — with
+no `color-scheme` declared the page already rendered light.
+
+The About blurb also tells visitors in one line to turn dark mode extensions
+off for the site, for anyone the notice does not reach.
 
 The lock only covers Dark Reader, so `initializeColourNotice()` in `script.js`
 shows a notice when it detects the page being recoloured anyway. It looks for
