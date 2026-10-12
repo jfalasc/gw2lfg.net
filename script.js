@@ -990,12 +990,6 @@ function formatRelativeDuration(milliseconds) {
   const hours = Math.floor(totalMinutes / 60);
   const minutes = totalMinutes % 60;
 
-  // Only the stale-feed badge ever reaches days; events are always same-day.
-  if (hours >= 48) {
-    const days = Math.floor(hours / 24);
-    return `${days} days`;
-  }
-
   if (hours === 0) {
     return `${minutes} min`;
   }
@@ -1578,11 +1572,6 @@ function renderTimeline(referenceDate = new Date()) {
 const discordMessageLimit = 5;
 const discordFeedRefreshMilliseconds = 30 * 1000;
 
-/* How recent the newest post must be for the panel to still claim "Live".
-   The channel runs several posts a day, so overnight gaps are normal and this
-   is set well past them — it is meant to catch a stalled bot, not a quiet
-   night. */
-const discordFeedLiveWindowMilliseconds = 12 * 60 * 60 * 1000;
 const discordFeedJsonUrl =
   "https://gw2-lfg-bot-production.up.railway.app/discordFeed.json";
 
@@ -1676,7 +1665,6 @@ function renderDiscordFeedPanel(panel, feed) {
   const header = document.createElement("div");
   const titleRow = document.createElement("div");
   const title = document.createElement("h2");
-  const badge = document.createElement("span");
   const messageList = document.createElement("div");
 
   header.className = "discord-feed-header";
@@ -1692,28 +1680,12 @@ function renderDiscordFeedPanel(panel, feed) {
     ? feed.messages.slice(0, discordMessageLimit)
     : [];
 
-  /* The bot can stall while the endpoint keeps serving its last good file, so
-     a "Live" badge over month-old posts is a real possibility. Say how old the
-     newest message actually is once it stops being current. */
-  const newestTimestamp = messages.reduce((newest, message) => {
-    const at = new Date(message.timestamp);
-    return isValidDate(at) && (!newest || at > newest) ? at : newest;
-  }, null);
-
-  badge.className = "discord-live-badge";
-
-  if (!newestTimestamp) {
-    badge.classList.add("is-stale");
-    badge.textContent = "No dated posts";
-  } else if (Date.now() - newestTimestamp > discordFeedLiveWindowMilliseconds) {
-    badge.classList.add("is-stale");
-    badge.textContent =
-      `Updated ${formatRelativeDuration(Date.now() - newestTimestamp)} ago`;
-  } else {
-    badge.textContent = "Live";
-  }
-
-  titleRow.append(title, badge);
+  /* No freshness badge here on purpose. "Live" is a claim the page cannot
+     stand behind — the bot can stall while the endpoint keeps serving its
+     last good file — and reporting an age instead cried wolf on ordinary
+     quiet nights. Every message carries its own date and time, which lets a
+     reader judge for themselves without the panel asserting anything. */
+  titleRow.append(title);
   header.appendChild(titleRow);
 
   if (messages.length === 0) {

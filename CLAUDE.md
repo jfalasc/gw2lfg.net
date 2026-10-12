@@ -31,9 +31,16 @@ up on *Friday* evening for North American visitors, and that is correct.
 
 The Discord feed is fetched at runtime from the Railway URL in `script.js` and
 has no local copy. Committed snapshots were tried early on and removed: a stale
-file is worse than nothing here, because the panel labels whatever it renders
-"Live", and this site exists to say what is happening *now*. If the fetch
-fails, the panel says so and keeps the last good data it had this session.
+file is worse than nothing here, and this site exists to say what is happening
+*now*. If the fetch fails, the panel says so and keeps the last good data it
+had this session.
+
+The panel makes **no freshness claim of its own** — there is deliberately no
+"Live" badge. The page cannot stand behind that word, because the bot can
+stall while the endpoint keeps serving its last good file. Reporting an age
+instead was tried and cried wolf on ordinary quiet nights. Every message
+carries its own date and time, so a reader can judge for themselves. Do not
+reintroduce a badge that asserts the feed is current.
 
 ## Adding or changing an event
 

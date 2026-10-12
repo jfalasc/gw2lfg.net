@@ -1706,29 +1706,6 @@ body {
   color: #ffffff;
 }
 
-.discord-live-badge {
-  flex: 0 0 auto;
-  padding: 0.35em 0.7em;
-  border-radius: 999px;
-  background: rgba(143, 211, 255, 0.16);
-  border: 1px solid rgba(143, 211, 255, 0.36);
-  color: #8fd3ff;
-  font-family: "Segoe UI", Tahoma, sans-serif;
-  font-size: 0.7rem;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-/* Muted, and no longer claiming to be live, once the newest post is old
-   enough that the bot has probably stopped. */
-.discord-live-badge.is-stale {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: rgba(233, 241, 250, 0.72);
-  letter-spacing: 0.06em;
-}
-
 .discord-feed-messages {
   display: flex;
   flex-direction: column;
